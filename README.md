@@ -1,1 +1,1 @@
-# CampBlip
+# updated-project-starter
