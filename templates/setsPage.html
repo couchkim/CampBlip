@@ -1,9 +1,15 @@
 <button id="all">Show All Sets</button>
 <section id="inputs">
+    <p class = "criteria">Search by Set Name</p>
     <input type="text" id="byName" ng-model="byName" placeholder="Enter Set Name">
+     <p class = "criteria">Search by Set Number</p>
     <input type="text" id="byNumber" ng-model="byNumber" placeholder="Enter Set Number">
-    <input type="text" id="byTheme" ng-model="byTheme" placeholder="Enter Set Theme">
-    <select id="byPieces" ng-model="byPieces" ng-options="piece for piece in pieces" placeholder = "Number of Pieces"></select>
+     <p class = "criteria">Search by Theme</p>
+    <!--<input type="text" id="byTheme" ng-model="byTheme" placeholder="Enter Set Theme">-->
+    <select id="byTheme" ng-model="byTheme" ng-options="theme for theme in themes"></select>
+     <p class = "criteria">Search by Size</p>
+    <select id="byPieces" ng-model="byPieces" ng-options="piece for piece in pieces"></select>
+     <p class = "criteria">Search by Availability</p>
     <select id="byAvailability" ng-model="byAvailability" ng-options="status for status in available"></select>
 </section>
 <button id="search">Search for Sets</button>
