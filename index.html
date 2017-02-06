@@ -7,24 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src='app.js'></script>
 </head>
 
-<body>
-    <header>
+<body ng-app="CampApp">
 
-        <h1>Header</h1>
-        <p>Time for camp!</p>
+    <header>
+        <h1>Camp Blip</h1>
+        <button id = "login">login</button>
+        <button id = "create">new account</button>
     </header>
-    
+
     <main>
-    <h1>Main Text</h1>
-    <p>Lots of info here</p>
+
+
+        <nav>
+            <ul>
+                <li><a ui-sref="home-page">Home</a></li>
+                <li><a ui-sref="about-page">About</a></li>
+                <li><a ui-sref="register-page">Register</a></li>
+                <li><a ui-sref="sets-page">Our Sets</a></li>
+                <li><a ui-sref="parties-page">Parties</a></li>
+                <li><a ui-sref="news-page">News</a></li>
+                <li><a ui-sref="photos-page">Photos</a></li>
+                <li><a ui-sref="admin-page">Admin</a></li>
+            </ul>
+        </nav>
+
+        <ui-view></ui-view>
+
+
+
 
     </main>
-
 </body>
-
 
 </html>
