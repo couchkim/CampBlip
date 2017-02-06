@@ -6,6 +6,8 @@
 @include foundation-grid;
 
 @import 'globals';
+@import 'home';
+@import 'admin';
 
 body{
     background-color: $creme-color;;
@@ -85,8 +87,19 @@ header{
         color: $creme-color;
         font-family: $primary-font;
 
-    }
-
+         
+}
     
 }
+
+#login:hover {
+             background-color: $green-color;
+             color: white;
+}
+
+#create:hover {
+             background-color: $green-color;
+             color: white;
+}
+         
 

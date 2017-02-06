@@ -4,12 +4,18 @@ module.exports = {
     func: function () {
 
 
+        let sets = [];
+
+        return {
 
 
-        return 
+            getSets() {
 
-           console.log('working');
+                return sets;
+            },
 
         }
+
+    }
 };
 

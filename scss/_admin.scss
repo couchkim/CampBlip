@@ -1,0 +1,22 @@
+#add, #manage{
+        // @include grid-column(6);
+        padding: 8px 16px;
+        margin: 5px 10px;
+         background-color:$orange-color;
+        text-align:center;
+        border-radius: $radius-default;
+        border: 3px solid $gray-color;
+        color: $creme-color;
+        font-family: $primary-font;
+        width: 25%;
+}
+
+#setNumber{
+    // @include grid-column(12);
+    width: 25%;
+    padding: 8px 16px;
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: $secondary-font;
+}
+
