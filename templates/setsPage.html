@@ -1,0 +1,9 @@
+<button id="all">Show All Sets</button>
+<section id="inputs">
+    <input type="text" id="byName" ng-model="byName" placeholder="Enter Set Name">
+    <input type="text" id="byNumber" ng-model="byNumber" placeholder="Enter Set Number">
+    <input type="text" id="byTheme" ng-model="byTheme" placeholder="Enter Set Theme">
+    <select id="byPieces" ng-model="byPieces" ng-options="piece for piece in pieces" placeholder = "Number of Pieces"></select>
+    <select id="byAvailability" ng-model="byAvailability" ng-options="status for status in available"></select>
+</section>
+<button id="search">Search for Sets</button>

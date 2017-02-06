@@ -15,6 +15,12 @@ app.config(function ($stateProvider) {
     });
 
     $stateProvider.state({
+        name: 'sets-page',
+        url: '/sets',
+        component: 'setsPage',
+    });
+
+    $stateProvider.state({
         name: 'home',
         url: '',
         component: 'homePage',
@@ -26,6 +32,7 @@ app.config(function ($stateProvider) {
 const controllers = [
     require('./controllers/homePageController'),
     require('./controllers/adminPageController'),
+    require('./controllers/setsPageController'),
 
 
 ];
@@ -38,6 +45,7 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/homePage'),
     require('./components/adminPage'),
+    require('./components/setsPage'),
 
 
 ];

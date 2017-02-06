@@ -8,6 +8,7 @@
 @import 'globals';
 @import 'home';
 @import 'admin';
+@import 'ourSets';
 
 body{
     background-color: $creme-color;;
@@ -22,7 +23,7 @@ body{
 
 main{
     background-color:$blue-color;
-    height: 300px;
+    height: 500px;
     color: $creme-color;
     border-radius: $radius-default;
     margin-left: 25px;
