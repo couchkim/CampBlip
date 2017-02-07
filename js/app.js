@@ -40,6 +40,8 @@ const controllers = [
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
     require('./controllers/registerPageController'),
+    require('./controllers/displayResultsController'),
+    
 
 
 ];
@@ -54,6 +56,7 @@ const components = [
     require('./components/adminPage'),
     require('./components/setsPage'),
     require('./components/registerPage'),
+    require('./components/displayResults'),
 
 
 ];
