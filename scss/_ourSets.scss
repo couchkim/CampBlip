@@ -2,7 +2,7 @@
 
    
         // width: 40%;
-        margin-top: 10px;
+        margin-top: 15px;
         padding: 8px 16px;
         // margin-left: 10%;
         // margin-right: 10%;
@@ -14,8 +14,13 @@
         font-family: $primary-font;
         // display: block;
 
-}
+};
+
+#all:hover, #search:hover {
+             background-color: $green-color;
+             color: white;
+};
 
 select{
     width: 25%;
-}
+};
