@@ -20,3 +20,8 @@
     font-family: $secondary-font;
 }
 
+
+#add:hover, #manage:hover{
+            background-color: $green-color;
+             color: white;
+    }

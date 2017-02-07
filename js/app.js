@@ -21,6 +21,12 @@ app.config(function ($stateProvider) {
     });
 
     $stateProvider.state({
+        name: 'register-page',
+        url: '/register',
+        component: 'registerPage',
+    });
+
+    $stateProvider.state({
         name: 'home',
         url: '',
         component: 'homePage',
@@ -33,6 +39,7 @@ const controllers = [
     require('./controllers/homePageController'),
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
+    require('./controllers/registerPageController'),
 
 
 ];
@@ -46,6 +53,7 @@ const components = [
     require('./components/homePage'),
     require('./components/adminPage'),
     require('./components/setsPage'),
+    require('./components/registerPage'),
 
 
 ];

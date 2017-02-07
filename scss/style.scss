@@ -9,6 +9,7 @@
 @import 'home';
 @import 'admin';
 @import 'ourSets';
+@import 'register';
 
 body{
     background-color: $creme-color;;
@@ -32,18 +33,19 @@ main{
      border: 3px solid $gray-color;
 }
 
-ul{
+#nav{
      list-style: none;
      width: 20%;
     height: 95%;
     position: fixed;
-    left: 0;
+    left: 10px;
     top: 15px;
     overflow: auto;
     padding-left:  0;
     // background-color: $gray-color;
      border-radius: $radius-default;
      border: 3px solid $blue-color;
+     
        
 }
 
@@ -58,6 +60,7 @@ li a {
     border: 3px solid $gray-color;
     color: $creme-color;
     box-shadow: 5px 5px 2px $gray-color;
+    
 }
 
 li a:hover {
