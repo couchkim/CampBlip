@@ -44,8 +44,6 @@
     #searchDropTwo{
          @include grid-column(4);
     }
-
-
 }
 
 select{
@@ -83,8 +81,6 @@ select{
     h2 a{
         padding: 8px 16px;
         text-decoration: none;
-        // // margin: 25px 10px;
-        // margin-bottom: 30px;
         background-color:$green-color;
         text-align:center;
         border-radius: $radius-default;

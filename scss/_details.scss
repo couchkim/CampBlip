@@ -8,11 +8,10 @@
     
 }
 
-.picBig{
+.picSec{
     @include grid-column(6);
     padding: 0;
     margin: 10px 0;
-    
 }
 
 .basicData{
@@ -42,13 +41,36 @@
 
         .manage, .check{
             padding: 8px 16px;
-            margin: 5px 10px;
-             background-color:$orange-color;
-             text-align:center;
+            margin: 10px 10px;
+            background-color:$orange-color;
+            text-align:center;
             border-radius: $radius-default;
             border: 3px solid $gray-color;
             color: $creme-color;
             font-family: $primary-font;
-            width: 40%;
+            width: 45%;
         }
+    }
+
+.backResult, .parts, .instructions{
+            padding: 2px 4px;
+            margin: 10px 10px;
+            background-color:$orange-color;
+            text-align:center;
+            border-radius: $radius-default;
+            border: 1px solid $gray-color;
+            color: $creme-color;
+            font-family: $primary-font;
+            width: 25%;
+
+}
+
+.manage:hover, .check:hover,.backResult:hover, .parts:hover, .instructions:hover {
+        background-color: $green-color;
+        color: white;
+    }
+
+    a{
+        text-decoration: none;
+        color: $creme-color;
     }

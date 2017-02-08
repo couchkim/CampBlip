@@ -26,6 +26,12 @@ app.config(function ($stateProvider) {
         component: 'detailsPage',
     });
 
+     $stateProvider.state({
+        name: 'parts-page',
+        url: '/parts/:single',
+        component: 'partsPage',
+    });
+
     $stateProvider.state({
         name: 'register-page',
         url: '/register',
@@ -48,6 +54,7 @@ const controllers = [
     require('./controllers/registerPageController'),
     require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
+    require('./controllers/partsPageController'),
     
 
 
@@ -65,6 +72,7 @@ const components = [
     require('./components/registerPage'),
     require('./components/displayResults'),
     require('./components/detailsPage'),
+    require('./components/partsPage'),
 
 
 ];

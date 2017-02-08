@@ -12,10 +12,37 @@ module.exports = {
             this.status = status;
             this.image = image;
             this.year = year;
-
+            this.skill = null;
+            // array with beginner, etc.
+            this.invDate = '4/20/2016';
+            // last inventoried date
+            this.invName = 'Marshall';
+            // who inventoried it
+            this.invNeed = 'No';
+            // Boolean t or f for needs inventory
+            this.lastCheckout = '8/10/2015';
+            // last date that set was checked out
+            this.invParts = 100;
+            // how many parts we had after inventory
+            this.missing = 5;
+            // number of pieces missing from the set
+            this.order = 'lots of pieces';
+            // text string from admin input
+            this.notes = 'many notes to share';
+            // text string from admin input
+            this.parts = [
+                {name: 'antennae',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
+            }
+            ];
+            // array of all parts in the set that comes when parts button is clicked
 
             return this;
-        }
+        };
 
 
         let sets = [];

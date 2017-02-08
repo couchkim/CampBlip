@@ -1,0 +1,23 @@
+<section id="partHeader">
+    <h1 class="partsHead">Parts Inventory List</h1>
+    <h3> {{ partSet.setName }} </h3>
+</section>
+
+<!--<input class='checkAll' type="checkbox" label="Check All">-->
+
+<ul id = "partList">
+    <li class="onePart" ng-repeat="part in parts">
+        <input class="complete" type="checkbox">
+        <input class="num" type="number">
+       
+        <div class="partPic">
+            <img class = "partPic" ng-src="{{ part.photo }}">
+        </div>
+       
+        <div class="partInfo">
+            <p> {{ part.color }} {{ part.name }} </p>
+            <p> Quantity Needed: {{ part.invQuantity }}</p>
+            <p> Part ID: {{ part.id }} </p>
+        </div>
+    </li>
+</ul>
