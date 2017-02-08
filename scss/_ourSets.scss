@@ -1,19 +1,16 @@
 #all, #search{
-
-   
-        // width: 40%;
-        margin-top: 15px;
+    
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20%;
         padding: 8px 16px;
-        // margin-left: 10%;
-        // margin-right: 10%;
-         background-color:$orange-color;
-        text-align:center;
+        background-color: $orange-color;
+        text-align: center;
         border-radius: $radius-default;
         border: 3px solid $gray-color;
         color: $creme-color;
         font-family: $primary-font;
-        // display: block;
-
+        display: inline-block;
 };
 
 #all:hover, #search:hover {
@@ -21,12 +18,46 @@
              color: white;
 };
 
+#inputs{
+    @include grid-row();
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 3px solid $orange-color;
+    padding: 10px;
+    border-radius: $radius-default;
+    
+    
+     p{
+            margin: 0;
+        }
+
+    #searchBox{
+        @include grid-column(4);
+    }
+
+    #searchDropOne{
+        @include grid-column(4);
+
+    }
+
+    #searchDropTwo{
+         @include grid-column(4);
+    }
+
+
+}
+
 select{
-    width: 25%;
+    width: 75%;
 };
 
 #searchResults h1{
     text-align: center;
+    border-radius: $radius-default;
+    background-color: $orange-color;
+    width: 95%;
+    margin: 10px auto;
 }
 
 #results{
@@ -39,6 +70,7 @@ select{
     @include grid-row();
     margin: 0px 10px;
     border: 3px solid $orange-color;
+    border-radius: $radius-default;
 }
 
 .words{
@@ -47,6 +79,10 @@ select{
 
     p, h2{
         margin: 0;
+    }
+
+    p{
+        font-size: 1.25em;
     }
 }
 
