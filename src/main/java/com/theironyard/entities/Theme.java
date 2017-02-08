@@ -10,14 +10,23 @@ import javax.persistence.*;
 public class Theme {
     @Id
     @GeneratedValue
-    int local_id;
+    int localId;
 
     @Column
-    int official_id;
+    int officialId;
 
     @Column
-    Integer official_parent_id;
+    Integer officialParentId;
 
     @Column
     String name;
+
+    public Theme() {
+    }
+
+    public Theme(int officialId, Integer officialParentId, String name) {
+        this.officialId = officialId;
+        this.officialParentId = officialParentId;
+        this.name = name;
+    }
 }

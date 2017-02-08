@@ -8,8 +8,8 @@ import javax.persistence.*;
  * Created by graceconnelly on 2/7/17.
  */
 @Entity
-@Table(name = "inventory-sets")
-public class InventorySet {
+@Table(name = "items")
+public class InventoryItems {
     @Id
     @GeneratedValue
     int id;
@@ -17,9 +17,10 @@ public class InventorySet {
     @Enumerated(EnumType.STRING)
     public Status status;
 
+    public InventoryItems() {
+    }
 
-
-
-
-
+    public InventoryItems(Status status) {
+        this.status = status;
+    }
 }

@@ -13,11 +13,20 @@ public class Part {
     int id;
 
     @Column
-    int element_id;
+    int elementId;
 
     @Column
     String name;
 
     @Column
     int quantity;
+
+    public Part() {
+    }
+
+    public Part(int elementId, String name, int quantity) {
+        this.elementId = elementId;
+        this.name = name;
+        this.quantity = quantity;
+    }
 }

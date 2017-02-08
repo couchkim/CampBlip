@@ -6,24 +6,35 @@ import javax.persistence.*;
  * Created by graceconnelly on 2/7/17.
  */
 @Entity
-@Table(name = "offical-sets")
+@Table(name = "sets")
 public class OfficialSet {
     @Id
     @GeneratedValue
     int id;
 
     @Column
-    String set_num;
+    String setNum;
 
     @Column
     int year;
 
     @Column
-    int theme_id;
+    int themeId;
 
     @Column
-    int num_parts;
+    int numParts;
 
     @Column
-    String set_img_url;
+    String setImgUrl;
+
+    public OfficialSet() {
+    }
+
+    public OfficialSet(String setNum, int year, int themeId, int numParts, String setImgUrl) {
+        this.setNum = setNum;
+        this.year = year;
+        this.themeId = themeId;
+        this.numParts = numParts;
+        this.setImgUrl = setImgUrl;
+    }
 }
