@@ -22,13 +22,12 @@ public class SetView {
     boolean inv_need;
     String last_checkout;
     Integer inv_parts;
-    List <Part> missing_pieces;
     String notes;
 
     public SetView() {
     }
 
-    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, List<Part> missing_pieces, String notes) {
+    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
         this.name = name;
         this.set_num = set_num;
         this.year = year;
@@ -42,7 +41,6 @@ public class SetView {
         this.inv_need = inv_need;
         this.last_checkout = last_checkout;
         this.inv_parts = inv_parts;
-        this.missing_pieces = missing_pieces;
         this.notes = notes;
     }
 
@@ -148,14 +146,6 @@ public class SetView {
 
     public void setInv_parts(Integer inv_parts) {
         this.inv_parts = inv_parts;
-    }
-
-    public List<Part> getMissing_pieces() {
-        return missing_pieces;
-    }
-
-    public void setMissing_pieces(List<Part> missing_pieces) {
-        this.missing_pieces = missing_pieces;
     }
 
     public String getNotes() {

@@ -1,5 +1,6 @@
 package com.theironyard.controllers;
 
+import com.theironyard.entities.Part;
 import com.theironyard.services.InventoryItemsRepository;
 import com.theironyard.services.OfficialSetRepository;
 import com.theironyard.services.PartRepository;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by graceconnelly on 2/7/17.
@@ -41,9 +44,9 @@ public class CampBlipController {
     public SetViewModel homepage() {
 
         SetViewModel model = new SetViewModel();
-//        String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, List<Part> missing_pieces, String notes
-        SetView set = new SetView("Yellow Submarine", 2016, );
-
+//        String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes
+        SetView set = new SetView("Yellow Submarine", "21306-1" , 2016, 553, "https://m.rebrickable.com/media/sets/21306-1.jpg","LEGO Ideas and CUUSOO", "Checked Out", "Advanced", "2/7/2016", "Grace Connelly", true, "2/8/2016", 553, "these are some notes");
+        model.getSets().add(set);
 
 
         return model;

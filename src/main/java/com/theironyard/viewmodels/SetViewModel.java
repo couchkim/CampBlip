@@ -1,12 +1,13 @@
 package com.theironyard.viewmodels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by graceconnelly on 2/8/17.
  */
 public class SetViewModel {
-    List<SetView> sets;
+    List<SetView> sets = new ArrayList<SetView>();
 
     public SetViewModel() {
     }
