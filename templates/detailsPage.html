@@ -1,1 +1,36 @@
-<p>{{item.setName}}</p>
+
+
+<h1>{{item.setName}}</h1>
+
+<img class = "pic" ng-src="{{ item.image }}">
+
+<section id = "stats">
+
+<div id="basicData">
+    
+    <p> {{ item.theme }} {{ item.setNumber }}</p>
+    <p> {{ item.pieces }} pieces </p>
+    <p> {{ item.year }} </p>
+    <p><span ng-class="{'color-green': item.status === 'Available'}">{{ item.status }}</span></p>
+</div>
+
+<div id = "invData">
+    <p>Last Inventory Date:</p>
+    <p>Inventoried By:</p>
+    <p>Last Checked Out:</p>
+    <p>Needs Inventory:</p>
+    <p>Number of Pieces Missing:</p>
+    <p>Pieces on Order:</p>
+    <p>Notes:</p>
+</div>
+
+<div id = "admin">
+    <button id = 'manage'>Manage Set</button>
+    <button id = 'check'>Checked In</button>
+</div>
+
+</section>
+
+
+
+
