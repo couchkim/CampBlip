@@ -1,20 +1,20 @@
 
 
-<h1>{{item.setName}}</h1>
 
-<img class = "pic" ng-src="{{ item.image }}">
 
-<section id = "stats">
+<img class = "picBig" ng-src="{{ item.image }}">
 
-<div id="basicData">
-    
+<section class = "stats">
+
+<div class="basicData">
+    <h1 class = "detailHead">{{item.setName}}</h1>
     <p> {{ item.theme }} {{ item.setNumber }}</p>
     <p> {{ item.pieces }} pieces </p>
     <p> {{ item.year }} </p>
     <p><span ng-class="{'color-green': item.status === 'Available'}">{{ item.status }}</span></p>
 </div>
 
-<div id = "invData">
+<div class = "invData">
     <p>Last Inventory Date:</p>
     <p>Inventoried By:</p>
     <p>Last Checked Out:</p>
@@ -24,9 +24,9 @@
     <p>Notes:</p>
 </div>
 
-<div id = "admin">
-    <button id = 'manage'>Manage Set</button>
-    <button id = 'check'>Checked In</button>
+<div class = "admin">
+    <button class = 'manage'>Manage Set</button>
+    <button class = 'check'>Checked In</button>
 </div>
 
 </section>

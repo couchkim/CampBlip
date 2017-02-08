@@ -1,0 +1,54 @@
+.detailHead{
+    @include grid-row();
+    margin: 10px auto;
+}
+
+.stats{
+    @include grid-column(6);
+    
+}
+
+.picBig{
+    @include grid-column(6);
+    padding: 0;
+    margin: 10px 0;
+    
+}
+
+.basicData{
+    text-align: center;
+    margin: 10px;
+
+    p{
+        font-size: 1.5em;
+        margin: 2px auto;
+    }
+}
+
+.invData{
+
+    border-radius: $radius-default;
+    border: 2px solid $gray-color;
+    color: $blue-color;
+    background-color: $creme-color;
+    padding: 5px;
+
+    p{
+        margin: 0 auto;
+        }
+    }
+
+    .admin{
+
+        .manage, .check{
+            padding: 8px 16px;
+            margin: 5px 10px;
+             background-color:$orange-color;
+             text-align:center;
+            border-radius: $radius-default;
+            border: 3px solid $gray-color;
+            color: $creme-color;
+            font-family: $primary-font;
+            width: 40%;
+        }
+    }
