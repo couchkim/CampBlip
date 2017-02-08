@@ -4,6 +4,7 @@ import com.theironyard.services.InventoryItemsRepository;
 import com.theironyard.services.OfficialSetRepository;
 import com.theironyard.services.PartRepository;
 import com.theironyard.services.ThemeRepository;
+import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +41,11 @@ public class CampBlipController {
     public SetViewModel homepage() {
 
         SetViewModel model = new SetViewModel();
-        model.setHello("Hello, world!");
+//        String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, List<Part> missing_pieces, String notes
+        SetView set = new SetView("Yellow Submarine", 2016, );
+
+
+
         return model;
     }
 
