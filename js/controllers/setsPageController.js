@@ -4,7 +4,7 @@ module.exports = {
     func: function ($scope, CampService) {
 
 
-// all of these arryas will be populated from the initial page load JSON response
+// all of these arrays will be populated from the initial page load JSON response
 
         $scope.levels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
 
@@ -20,6 +20,8 @@ module.exports = {
             $scope.sets = CampService.getSets();
             console.log($scope.sets);
         };
+
+
 
 
 

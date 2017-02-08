@@ -5,8 +5,8 @@ module.exports = {
 
         templateUrl: 'templates/displayResults.html',
         bindings: {
-            // label: '<', 
-
+            item: '<',
+            onClick: '&', 
         },
         controller: 'displayResultsController',
     }

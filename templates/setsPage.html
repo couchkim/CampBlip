@@ -14,4 +14,15 @@
 </section>
 <button id="search">Search for Sets</button>
 
-<display-results></display-results>
+<section id = 'searchResults'>
+    <h1>Search Results</h1>
+    <ul id = "results">
+        <li class = "oneSet" ng-repeat="set in sets">
+            <display-results item = "set" on-click="showSet(single)"></display-results>
+            <!--click on the set name and it will take you to detail page of that set-->
+            <!--but what if i want to show multiple things about the set and if you click
+            on the image or name, you go to a detail page.-->
+            <!--<h2><a ui-sref="show-details({ set_num: set.set_num })">{{ set.name }}</a></h2>-->
+        </li>
+    </ul>
+</section>

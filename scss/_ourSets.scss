@@ -24,3 +24,35 @@
 select{
     width: 25%;
 };
+
+#searchResults h1{
+    text-align: center;
+}
+
+#results{
+    list-style: none;
+    padding-left: 0;
+    
+}
+
+.oneSet{
+    @include grid-row();
+    margin: 0px 10px;
+    border: 3px solid $orange-color;
+}
+
+.words{
+    @include grid-column(8);
+    vertical-align: middle;
+
+    p, h2{
+        margin: 0;
+    }
+}
+
+.pic{
+    @include grid-column(4);
+    margin: 10px;
+    width: 200px;
+
+}
