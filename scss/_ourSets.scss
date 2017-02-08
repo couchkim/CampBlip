@@ -75,7 +75,8 @@ select{
 
 .words{
     @include grid-column(8);
-    vertical-align: middle;
+    text-align: center;
+    color: $creme-color;
 
     p, h2{
         margin: 0;

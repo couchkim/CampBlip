@@ -39,6 +39,15 @@ module.exports = {
                 return sets;
             },
 
+            getSet(id){
+
+                for (let i = 0; i < sets.length; i++){
+                    if (sets[i].setNumber === id){
+                        return sets [i];
+                    }
+                }
+            },
+
         }
     },
 };
