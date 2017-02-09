@@ -8,11 +8,23 @@ app.config(function ($stateProvider) {
         component: 'homePage',
     });
 
+    // home page for the site
+
     $stateProvider.state({
         name: 'admin-page',
         url: '/admin',
         component: 'adminPage',
     });
+
+    // admin page will be landing page after successful login too
+
+     $stateProvider.state({
+        name: 'register-page',
+        url: '/register',
+        component: 'registerPage',
+    });
+
+    // register for a camp session
 
     $stateProvider.state({
         name: 'sets-page',
@@ -20,11 +32,15 @@ app.config(function ($stateProvider) {
         component: 'setsPage',
     });
 
+    // search for sets
+
     $stateProvider.state({
         name: 'details-page',
         url: '/details/:single',
         component: 'detailsPage',
     });
+
+    // see details on a single set
 
      $stateProvider.state({
         name: 'parts-page',
@@ -32,11 +48,15 @@ app.config(function ($stateProvider) {
         component: 'partsPage',
     });
 
+    // see all parts for a single set
+
     $stateProvider.state({
-        name: 'register-page',
-        url: '/register',
-        component: 'registerPage',
+        name: 'account-page',
+        url: '/account',
+        component: 'accountPage',
     });
+
+// handles login or create new account
 
     $stateProvider.state({
         name: 'home',
@@ -55,6 +75,7 @@ const controllers = [
     require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
+    require('./controllers/accountPageController'),
     
 
 
@@ -73,6 +94,7 @@ const components = [
     require('./components/displayResults'),
     require('./components/detailsPage'),
     require('./components/partsPage'),
+    require('./components/accountPage'),
 
 
 ];
