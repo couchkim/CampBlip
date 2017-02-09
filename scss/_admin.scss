@@ -1,4 +1,4 @@
-#add, #manage{
+#add, #manage, #remove{
         // @include grid-column(6);
         padding: 8px 16px;
         margin: 5px 10px;
@@ -9,6 +9,7 @@
         color: $creme-color;
         font-family: $primary-font;
         width: 25%;
+        display: block;
 }
 
 #setNumber{
@@ -16,12 +17,12 @@
     width: 25%;
     padding: 8px 16px;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 10px;
     font-family: $secondary-font;
 }
 
 
-#add:hover, #manage:hover{
+#add:hover, #manage:hover, #remove:hover{
             background-color: $green-color;
              color: white;
     }
