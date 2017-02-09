@@ -37,6 +37,20 @@ module.exports = {
                 photo:'https://i.stack.imgur.com/xCxdq.jpg',
                 setQuantity: 3,
                 invQuantity: 3,
+            },
+            {name: 'antennae longer name',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
+            },
+            {name: 'antennae',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
             }
             ];
             // array of all parts in the set that comes when parts button is clicked
@@ -59,7 +73,7 @@ module.exports = {
 
             getSets() {
 
-                $http.get("https://camp-blip-legos.herokuapp.com/").then(function (response) {
+                $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
                 });
