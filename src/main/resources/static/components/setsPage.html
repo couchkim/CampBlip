@@ -1,0 +1,33 @@
+<section id="inputs">
+    <div id="searchBox">
+        <p class="criteria">Search by Set Name</p>
+        <input type="text" id="byName" ng-model="byName" placeholder="Enter Set Name">
+        <p class="criteria">Search by Set Number</p>
+        <input type="text" id="byNumber" ng-model="byNumber" placeholder="Enter Set Number">
+    </div>
+    <div id="searchDropOne">
+        <p class="criteria">Search by Theme</p>
+        <select id="byTheme" ng-model="byTheme" ng-options="theme for theme in themes"></select>
+        <p class="criteria">Search by Skill Level</p>
+        <select id="byLevel" ng-model="byLevel" ng-options="level for level in levels"></select>
+    </div>
+    <div id="searchDropTwo">
+        <p class="criteria">Search by Status</p>
+        <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
+    </div>
+</section>
+<button id="all" ng-click="viewSets()">Show All Sets</button>
+<button id="search">Search for Sets</button>
+
+<section id='searchResults'>
+    <h1>Search Results</h1>
+    <ul id="results">
+        <li class="oneSet" ng-repeat="set in sets">
+            <display-results item="set" on-click="showSet(target)"></display-results>
+            <!--click on the set name and it will take you to detail page of that set-->
+            <!--but what if i want to show multiple things about the set and if you click
+            on the image or name, you go to a detail page.-->
+            <!--<h2><a ui-sref="show-details({ singleSet: set.set_num })">{{ set.name }}</a></h2>-->
+        </li>
+    </ul>
+</section>

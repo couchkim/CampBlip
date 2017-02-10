@@ -1,14 +1,13 @@
-/**
- * Purpose of a gulpfile is to describe 'tasks' that
- * convert from 'developer mode' to 'production mode'. Things
- * like converting Sass => CSS, removing comments, merging
- * files, etc.
- */
+
 
 // Step 1: import gulp
 let gulp = require('gulp');
 let sass = require('gulp-sass');
 let browser = require('gulp-browser');
+
+const BUILD_URL = 'build/resources/main/static';
+const SRC_URL = 'src/main/resources/static';
+
 
 // Step 2: create default task 
 gulp.task('default', ['html', 'css', 'js']);
@@ -18,26 +17,30 @@ gulp.task('html', function () {
     // Now that I have a templates directory, I also need to copy 
     // those over.
     gulp.src('templates/*.html')
-        .pipe(gulp.dest('public/templates'));
+        .pipe(gulp.dest(`${BUILD_URL}/components`))
+        .pipe(gulp.dest(`${SRC_URL}/components`));
 
-    // Copy index.html into the public/ directory.
-    return gulp.src('index.html')
-        .pipe(gulp.dest('public/'));
+    // index.html and other html files
+    return gulp.src('*.html')
+        .pipe(gulp.dest(BUILD_URL))
+        .pipe(gulp.dest(SRC_URL));
 });
 
 gulp.task('css', function () {
     // Convert style.scss into style.css.
     // Copy to public/
-    return gulp.src('scss/style.scss')
-        .pipe(sass()) // requires gulp-sass
-        .pipe(gulp.dest('public/'));
+   return gulp.src('scss/style.scss')
+        .pipe(sass())
+        .pipe(gulp.dest(BUILD_URL))
+        .pipe(gulp.dest(SRC_URL));
 });
 
 gulp.task('js', function () {
     // Copy js file into public/
     return gulp.src('js/app.js')
         .pipe(browser.browserify())
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest(BUILD_URL))
+        .pipe(gulp.dest(SRC_URL));
 });
 
 gulp.task('watch', ['default'], function () {
@@ -48,3 +51,24 @@ gulp.task('watch', ['default'], function () {
     gulp.watch('*.html', ['html']);
     gulp.watch('templates/*.html', ['html']);
 });
+
+
+/**
+ * RULE: replace 'public' with 
+ *  - 'build/resources/main/static'
+ *  - 'src/main/resources/static'
+ * 
+ * HTML
+ * Starts in the root directory
+ * Goes to src/main/resources/static
+ * 
+ * CSS
+ * Starts in scss/
+ * Goes to src/main/resources/static
+ * 
+ * JS
+ * Starts in js/
+ * Goes to src/main/resources/static
+ */
+
+
