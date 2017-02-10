@@ -1,4 +1,6 @@
 const app = angular.module('CampApp', ['ui.router']);
+// const app = angular.module('CampApp', ['ui.router'], ['ngEmbed']);
+
 
 app.config(function ($stateProvider) {
 
@@ -18,7 +20,7 @@ app.config(function ($stateProvider) {
 
     // admin page will be landing page after successful login too
 
-     $stateProvider.state({
+    $stateProvider.state({
         name: 'register-page',
         url: '/register',
         component: 'registerPage',
@@ -42,7 +44,7 @@ app.config(function ($stateProvider) {
 
     // see details on a single set
 
-     $stateProvider.state({
+    $stateProvider.state({
         name: 'parts-page',
         url: '/parts/:single',
         component: 'partsPage',
@@ -56,7 +58,13 @@ app.config(function ($stateProvider) {
         component: 'accountPage',
     });
 
-// handles login or create new account
+    // handles login or create new account
+
+    $stateProvider.state({
+        name: 'instructions-page',
+        url: '/instructions/:single',
+        component: 'instructionsPage',
+    });
 
     $stateProvider.state({
         name: 'home',
@@ -76,7 +84,8 @@ const controllers = [
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
-    
+    require('./controllers/instructionsPageController'),
+
 
 
 ];
@@ -95,6 +104,7 @@ const components = [
     require('./components/detailsPage'),
     require('./components/partsPage'),
     require('./components/accountPage'),
+    require('./components/instructionsPage'),
 
 
 ];

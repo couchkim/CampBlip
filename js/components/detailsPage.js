@@ -5,8 +5,7 @@ module.exports = {
 
         templateUrl: 'templates/detailsPage.html',
         bindings: {
-            // item: '<',
-            // onClick: '&', 
+            
         },
         controller: 'detailsPageController',
     }

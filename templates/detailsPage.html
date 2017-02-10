@@ -3,7 +3,7 @@
     <img class="picBig" ng-src="{{ item.image }}">
     <button class="backResult">Back</button>
     <a ui-sref="parts-page({ single: item.setNumber })"><button class="parts">Parts</button></a>
-    <button class="instructions">Instructions</button>
+    <a ui-sref="instructions-page({ single: item.setNumber })"><button class="instructions">Instructions</button></a>
 
 </section>
 

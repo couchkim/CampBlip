@@ -5,17 +5,21 @@
 <head>
     <title>Camp Blip</title>
     <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="path/to/ng-embed.min.css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
+    <!--<script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>-->
+    <!--<script src="path/to/ng-embed.js"></script>-->
     <script src='app.js'></script>
 </head>
 
 <body ng-app="CampApp">
 
     <header>
-        <h1 id = "title">Camp Blip</h1>
+        <h1 id="title">Camp Blip</h1>
         <a ui-sref="account-page"><button id = "login">login</button></a>
         <a ui-sref="account-page"><button id = "create">new account</button></a>
     </header>
@@ -25,15 +29,15 @@
 
         <nav>
             <ul id="nav">
-                <li class = "navLi"><a ui-sref="home-page">Home</a></li>
-                <li class = "navLi"><a ui-sref="about-page">About</a></li>
-                <li class = "navLi"><a ui-sref="register-page">Register</a></li>
-                <li class = "navLi"><a ui-sref="sets-page">Our Sets</a></li>
-                <li class = "navLi"><a ui-sref="parties-page">Parties</a></li>
-                <li class = "navLi"><a ui-sref="news-page">News</a></li>
-                <li class = "navLi"><a ui-sref="photos-page">Photos</a></li>
-                <li class = "navLi"><a ui-sref="admin-page">Admin</a></li>
-                <li class = "navLi"><a ui-sref="store-page">Camp Store</a></li>
+                <li class="navLi"><a ui-sref="home-page">Home</a></li>
+                <li class="navLi"><a ui-sref="about-page">About</a></li>
+                <li class="navLi"><a ui-sref="register-page">Register</a></li>
+                <li class="navLi"><a ui-sref="sets-page">Our Sets</a></li>
+                <li class="navLi"><a ui-sref="parties-page">Parties</a></li>
+                <li class="navLi"><a ui-sref="news-page">News</a></li>
+                <li class="navLi"><a ui-sref="photos-page">Photos</a></li>
+                <li class="navLi"><a ui-sref="admin-page">Admin</a></li>
+                <li class="navLi"><a ui-sref="store-page">Camp Store</a></li>
             </ul>
         </nav>
 

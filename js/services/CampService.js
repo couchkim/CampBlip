@@ -54,6 +54,8 @@ module.exports = {
             }
             ];
             // array of all parts in the set that comes when parts button is clicked
+            this.instructions = 'https://mi-od-live-s.legocdn.com/bigdownloads/buildinginstructions/4617445.pdf';
+
 
             return this;
         };
