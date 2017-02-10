@@ -3,7 +3,7 @@ module.exports = {
     name: 'accountPage',
     object: {
 
-        templateUrl: 'templates/accountPage.html',
+        templateUrl: 'components/accountPage.html',
         bindings: {
             // label: '<', 
 

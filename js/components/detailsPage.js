@@ -3,7 +3,7 @@ module.exports = {
     name: 'detailsPage',
     object: {
 
-        templateUrl: 'templates/detailsPage.html',
+        templateUrl: 'components/detailsPage.html',
         bindings: {
             
         },

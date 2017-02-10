@@ -3,7 +3,7 @@ module.exports = {
     name: 'adminPage',
     object: {
 
-        templateUrl: 'templates/adminPage.html',
+        templateUrl: 'components/adminPage.html',
         bindings: {
             // label: '<', 
 

@@ -3,7 +3,7 @@ module.exports = {
     name: 'setsPage',
     object: {
 
-        templateUrl: 'templates/setsPage.html',
+        templateUrl: 'components/setsPage.html',
         bindings: {
             // label: '<', 
 
