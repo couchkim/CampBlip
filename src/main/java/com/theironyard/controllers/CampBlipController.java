@@ -1,10 +1,8 @@
 package com.theironyard.controllers;
 
-import com.theironyard.entities.Part;
-import com.theironyard.services.InventoryItemsRepository;
-import com.theironyard.services.OfficialSetRepository;
+import com.theironyard.services.UsersRepository;
+import com.theironyard.services.SetRepository;
 import com.theironyard.services.PartRepository;
-import com.theironyard.services.ThemeRepository;
 import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by graceconnelly on 2/7/17.
@@ -23,16 +19,13 @@ import java.util.List;
 @RestController
 public class CampBlipController {
     @Autowired
-    InventoryItemsRepository items;
+    UsersRepository users;
 
     @Autowired
-    OfficialSetRepository sets;
+    SetRepository sets;
 
     @Autowired
     PartRepository parts;
-
-    @Autowired
-    ThemeRepository themes;
 
 
     @PostConstruct

@@ -10,23 +10,15 @@ import javax.persistence.*;
 public class Part {
     @Id
     @GeneratedValue
-    int id;
+    private int id;
 
-    @Column
-    int elementId;
+    @Column(nullable = false)
+    private int elementId;
 
-    @Column
-    String name;
+    @Column(nullable = false)
+    private String name;
 
-    @Column
-    int quantity;
+    @Column(nullable = false)
+    private int quantity;
 
-    public Part() {
-    }
-
-    public Part(int elementId, String name, int quantity) {
-        this.elementId = elementId;
-        this.name = name;
-        this.quantity = quantity;
-    }
 }
