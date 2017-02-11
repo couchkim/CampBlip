@@ -3,7 +3,7 @@ module.exports = {
     name: 'instructionsPage',
     object: {
 
-        templateUrl: 'templates/instructionsPage.html',
+        templateUrl: 'components/instructionsPage.html',
         bindings: {
             // item: '<',
             // onClick: '&', 

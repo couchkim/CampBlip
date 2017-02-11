@@ -68,6 +68,12 @@ app.config(function ($stateProvider) {
     });
 
     $stateProvider.state({
+        name: 'about-page',
+        url: '/about',
+        component: 'aboutPage',
+    });
+
+    $stateProvider.state({
         name: 'home',
         url: '',
         component: 'homePage',
@@ -86,6 +92,7 @@ const controllers = [
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
+    require('./controllers/aboutPageController'),
 
 
 
@@ -106,6 +113,7 @@ const components = [
     require('./components/partsPage'),
     require('./components/accountPage'),
     require('./components/instructionsPage'),
+    require('./components/aboutPage'),
 
 
 ];
@@ -126,13 +134,28 @@ for (let i = 0; i < services.length; i++) {
 
 
 
-},{"./components/accountPage":2,"./components/adminPage":3,"./components/detailsPage":4,"./components/displayResults":5,"./components/homePage":6,"./components/instructionsPage":7,"./components/partsPage":8,"./components/registerPage":9,"./components/setsPage":10,"./controllers/accountPageController":11,"./controllers/adminPageController":12,"./controllers/detailsPageController":13,"./controllers/displayResultsController":14,"./controllers/homePageController":15,"./controllers/instructionsPageController":16,"./controllers/partsPageController":17,"./controllers/registerPageController":18,"./controllers/setsPageController":19,"./services/CampService":20}],2:[function(require,module,exports){
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partsPage":9,"./components/registerPage":10,"./components/setsPage":11,"./controllers/aboutPageController":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/homePageController":17,"./controllers/instructionsPageController":18,"./controllers/partsPageController":19,"./controllers/registerPageController":20,"./controllers/setsPageController":21,"./services/CampService":22}],2:[function(require,module,exports){
+module.exports = {
+
+    name: 'aboutPage',
+    object: {
+
+        templateUrl: 'components/aboutPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'aboutPageController',
+    }
+
+};
+},{}],3:[function(require,module,exports){
 module.exports = {
 
     name: 'accountPage',
     object: {
 
-        templateUrl: 'templates/accountPage.html',
+        templateUrl: 'components/accountPage.html',
         bindings: {
             // label: '<', 
 
@@ -141,13 +164,13 @@ module.exports = {
     }
 
 }
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = {
 
     name: 'adminPage',
     object: {
 
-        templateUrl: 'templates/adminPage.html',
+        templateUrl: 'components/adminPage.html',
         bindings: {
             // label: '<', 
 
@@ -156,13 +179,13 @@ module.exports = {
     }
 
 }
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = {
 
     name: 'detailsPage',
     object: {
 
-        templateUrl: 'templates/detailsPage.html',
+        templateUrl: 'components/detailsPage.html',
         bindings: {
             
         },
@@ -172,13 +195,13 @@ module.exports = {
 }
 
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = {
 
     name: 'displayResults',
     object: {
 
-        templateUrl: 'templates/displayResults.html',
+        templateUrl: 'components/displayResults.html',
         bindings: {
             item: '<',
             onClick: '&', 
@@ -187,13 +210,13 @@ module.exports = {
     }
 
 }
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = {
 
     name: 'homePage',
     object: {
 
-        templateUrl: 'templates/homePage.html',
+        templateUrl: 'components/homePage.html',
         bindings: {
             // label: '<', 
 
@@ -202,13 +225,13 @@ module.exports = {
     }
 
 }
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = {
 
     name: 'instructionsPage',
     object: {
 
-        templateUrl: 'templates/instructionsPage.html',
+        templateUrl: 'components/instructionsPage.html',
         bindings: {
             // item: '<',
             // onClick: '&', 
@@ -217,13 +240,13 @@ module.exports = {
     }
 
 }
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = {
 
     name: 'partsPage',
     object: {
 
-        templateUrl: 'templates/partsPage.html',
+        templateUrl: 'components/partsPage.html',
         bindings: {
             // item: '<',
             // onClick: '&', 
@@ -233,13 +256,13 @@ module.exports = {
 
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = {
 
     name: 'registerPage',
     object: {
 
-        templateUrl: 'templates/registerPage.html',
+        templateUrl: 'components/registerPage.html',
         bindings: {
             // label: '<', 
 
@@ -248,13 +271,13 @@ module.exports = {
     }
 
 }
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = {
 
     name: 'setsPage',
     object: {
 
-        templateUrl: 'templates/setsPage.html',
+        templateUrl: 'components/setsPage.html',
         bindings: {
             // label: '<', 
 
@@ -263,7 +286,19 @@ module.exports = {
     }
 
 }
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+module.exports = {
+
+    name: "aboutPageController",
+    func: function ($scope, CampService) {
+
+         console.log('about page controller working');
+            
+        
+
+    },
+}
+},{}],13:[function(require,module,exports){
 module.exports = {
 
     name: "accountPageController",
@@ -275,7 +310,7 @@ module.exports = {
 
     },
 }
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
 
     name: "adminPageController",
@@ -287,7 +322,7 @@ module.exports = {
 
     },
 }
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
 
     name: "detailsPageController",
@@ -307,7 +342,7 @@ module.exports = {
 
 
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
 
     name: "displayResultsController",
@@ -323,7 +358,7 @@ module.exports = {
 
 
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = {
 
     name: "homePageController",
@@ -335,7 +370,7 @@ module.exports = {
 
     },
 }
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
 
     name: "instructionsPageController",
@@ -353,7 +388,7 @@ module.exports = {
 
     },
 }
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
 
     name: "partsPageController",
@@ -373,7 +408,7 @@ module.exports = {
 }
 
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
 
     name: "registerPageController",
@@ -385,7 +420,7 @@ module.exports = {
 
     },
 }
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = {
 
     name: "setsPageController",
@@ -419,7 +454,7 @@ module.exports = {
 
     },
 }
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = {
 
     name: "CampService",
