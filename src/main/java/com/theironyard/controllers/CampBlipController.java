@@ -1,8 +1,10 @@
 package com.theironyard.controllers;
 
+import com.theironyard.datamodels.Instructions.LegoWebImport;
 import com.theironyard.datamodels.PartsImport.PartImport;
 import com.theironyard.datamodels.SetImport;
 import com.theironyard.datamodels.ThemeImport;
+import com.theironyard.helpers.SetHelper;
 import com.theironyard.services.SetPartRepository;
 import com.theironyard.services.UsersRepository;
 import com.theironyard.services.SetRepository;
@@ -88,20 +90,26 @@ public class CampBlipController {
 
     @RequestMapping (path = "/add-set/{set_id}", method = RequestMethod.POST)
     public SetViewModel addset(@PathVariable("set_id") String setId) {
+        Map<String,String> apiSetIds = SetHelper.setCorrectId(setId);
         Map<String, String> urlParams = new HashMap<>();
-        urlParams.put("set_id", setId);
+
+        urlParams.put("rebrickable_set_id", apiSetIds.get("brickSetId"));
+        urlParams.put("lego_set_id", apiSetIds.get("legoSetId"));
         urlParams.put("brickKey", prop.getProperty("SECRETBRICK_KEY"));
 
         SetImport newSet = restTemplate.getForObject(
-                "https://rebrickable.com/api/v3/lego/sets/{set_id}/?key={brickKey}", SetImport.class, urlParams);
+                "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_id}/?key={brickKey}", SetImport.class, urlParams);
         urlParams.put("theme_id", Integer.toString(newSet.getTheme_id()));
         ThemeImport theme = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}", ThemeImport.class, urlParams);
         PartImport parts = restTemplate.getForObject(
-                "https://rebrickable.com/api/v3/lego/sets/{set_id}/parts/?key={brickKey}", PartImport.class, urlParams);
+                "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_id}/parts/?key={brickKey}", PartImport.class, urlParams);
+        //LegoWebImport fromlego = restTemplate.getForObject(
+        //        "https://www.lego.com/service/biservice/search?fromIndex=0&locale=en-US&onlyAlternatives=false&prefixText={lego_set_id}", LegoWebImport.class, urlParams);
         System.out.println(newSet.toString());
         System.out.println(theme.toString());
         System.out.println(parts.toString());
+        //System.out.println(fromlego.toString());
 
 
         SetViewModel model = new SetViewModel();
