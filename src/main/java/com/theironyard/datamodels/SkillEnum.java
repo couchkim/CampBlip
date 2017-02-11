@@ -1,4 +1,4 @@
-package com.theironyard.models;
+package com.theironyard.datamodels;
 
 /**
  * Created by graceconnelly on 2/7/17.

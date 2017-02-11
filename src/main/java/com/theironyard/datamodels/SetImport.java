@@ -1,4 +1,4 @@
-package com.theironyard.models;
+package com.theironyard.datamodels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,6 +15,14 @@ public class SetImport {
     private String set_img_url;
 
     public SetImport() {
+    }
+
+    public SetImport(String set_num, String name, int year, int theme_id, String set_img_url) {
+        this.set_num = set_num;
+        this.name = name;
+        this.year = year;
+        this.theme_id = theme_id;
+        this.set_img_url = set_img_url;
     }
 
     public String getSet_num() {
