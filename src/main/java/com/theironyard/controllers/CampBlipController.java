@@ -1,5 +1,6 @@
 package com.theironyard.controllers;
 
+import com.theironyard.datamodels.PartsImport.PartImport;
 import com.theironyard.datamodels.SetImport;
 import com.theironyard.datamodels.ThemeImport;
 import com.theironyard.services.SetPartRepository;
@@ -11,9 +12,7 @@ import com.theironyard.viewmodels.SetViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
@@ -97,11 +96,13 @@ public class CampBlipController {
                 "https://rebrickable.com/api/v3/lego/sets/{set_id}/?key={brickKey}", SetImport.class, urlParams);
         urlParams.put("theme_id", Integer.toString(newSet.getTheme_id()));
         ThemeImport theme = restTemplate.getForObject(
-                "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}",ThemeImport.class, urlParams);
-
+                "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}", ThemeImport.class, urlParams);
+        PartImport parts = restTemplate.getForObject(
+                "https://rebrickable.com/api/v3/lego/sets/{set_id}/parts/?key={brickKey}", PartImport.class, urlParams);
         System.out.println(newSet.toString());
         System.out.println(theme.toString());
-        Syste;
+        System.out.println(parts.toString());
+
 
         SetViewModel model = new SetViewModel();
         return model;
