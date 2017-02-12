@@ -21,7 +21,7 @@ public class Part {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, name = "part_img_url")
+    @Column(name = "part_img_url")
     private String partUrl;
 
     @Column(nullable = false, name = "part_color")

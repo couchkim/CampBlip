@@ -33,7 +33,6 @@ import java.util.Properties;
 
 import static com.theironyard.datamodels.StatusEnum.AVAILABLE;
 
-
 /**
  * Created by graceconnelly on 2/7/17.
  */
