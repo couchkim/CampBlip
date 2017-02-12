@@ -58,29 +58,8 @@ public class CampBlipController {
     @Autowired
     RestTemplate restTemplate;
 
-    Properties prop = new Properties();
-
     @PostConstruct
     public void init() {
-        //brings in environment variables for api and database
-        InputStream config = null;
-        try{
-            config = new FileInputStream(".env");
-            prop.load(config);
-        }
-        catch(IOException ex) {
-            ex.printStackTrace();
-        }finally {
-            if (config != null) {
-                try {
-                    config.close();
-                }
-                    catch(IOException e) {
-                        e.printStackTrace();
-                }
-
-            }
-        }
     }
 
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
@@ -118,7 +97,7 @@ public class CampBlipController {
 
         urlParams.put("rebrickable_set_id", apiSetIds.get("brickSetId"));
         urlParams.put("lego_set_id", apiSetIds.get("legoSetId"));
-        urlParams.put("brickKey", prop.getProperty("SECRETBRICK_KEY"));
+        urlParams.put("brickKey", System.getenv("SECRETBRICK_KEY"));
 
         SetImport newApiSet = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_id}/?key={brickKey}", SetImport.class, urlParams);
