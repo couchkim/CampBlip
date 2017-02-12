@@ -1,7 +1,6 @@
 package com.theironyard.datamodels.PartsImport;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.theironyard.datamodels.PartsImport.Part;
 
 /**
  * Created by graceconnelly on 2/11/17.
@@ -12,13 +11,13 @@ public class Result {
         private int element_id;;
         private int quantity;
         private String set_num;
-        private Part part;
+        private PartPiece part;
         private Color color;
 
         public Result() {
         }
 
-        public Result(int element_id, int quantity, String set_num, Part part, Color color) {
+        public Result(int element_id, int quantity, String set_num, PartPiece part, Color color) {
             this.element_id = element_id;
             this.quantity = quantity;
             this.set_num = set_num;
@@ -50,11 +49,11 @@ public class Result {
             this.set_num = set_num;
         }
 
-        public Part getPart() {
+        public PartPiece getPart() {
             return part;
         }
 
-        public void setPart(Part part) {
+        public void setPart(PartPiece part) {
             this.part = part;
         }
 

@@ -1,5 +1,7 @@
 package com.theironyard.viewmodels;
 
+import com.theironyard.datamodels.SkillEnum;
+import com.theironyard.datamodels.StatusEnum;
 import com.theironyard.entities.Part;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class SetView {
     int num_parts;
     String set_img_url;
     String theme;
-    String status;
-    String skill_level;
+    StatusEnum status;
+    SkillEnum skill_level;
     String inv_date;
     String inv_name;
     boolean inv_need;
@@ -27,7 +29,7 @@ public class SetView {
     public SetView() {
     }
 
-    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
+    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
         this.name = name;
         this.set_num = set_num;
         this.year = year;
@@ -92,19 +94,19 @@ public class SetView {
         this.theme = theme;
     }
 
-    public String getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
 
-    public String getSkill_level() {
+    public SkillEnum getSkill_level() {
         return skill_level;
     }
 
-    public void setSkill_level(String skill_level) {
+    public void setSkill_level(SkillEnum skill_level) {
         this.skill_level = skill_level;
     }
 

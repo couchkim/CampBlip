@@ -6,15 +6,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Created by graceconnelly on 2/11/17.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Part {
+public class PartPiece {
     private String name;
     private String part_img_url;
     private int part_cat_id;
 
-    public Part() {
+    public PartPiece() {
     }
 
-    public Part(String name, String part_img_url, int part_cat_id) {
+    public PartPiece(String name, String part_img_url, int part_cat_id) {
         this.name = name;
         this.part_img_url = part_img_url;
         this.part_cat_id = part_cat_id;
@@ -46,7 +46,7 @@ public class Part {
 
     @Override
     public String toString() {
-        return "Part{" +
+        return "PartPiece{" +
                 "name='" + name + '\'' +
                 ", part_img_url='" + part_img_url + '\'' +
                 ", part_cat_id=" + part_cat_id +

@@ -1,5 +1,7 @@
 package com.theironyard.helpers;
 
+import com.theironyard.datamodels.SkillEnum;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,19 @@ public class SetHelper {
             apiSetIds.put("legoSetId", setId);
         }
         return apiSetIds;
+    }
+    public static SkillEnum setSkill (int count) {
+        if (count < 200) {
+            return SkillEnum.BEGINNER;
+        }
+        if (count < 500) {
+            return SkillEnum.INTERMEDIATE;
+        }
+        if (count < 1000) {
+            return SkillEnum.ADVANCED;
+        } else {
+            return SkillEnum.EXPERT;
+        }
     }
 
 }
