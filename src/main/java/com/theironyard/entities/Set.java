@@ -1,7 +1,7 @@
 package com.theironyard.entities;
 
-import com.theironyard.models.SkillEnum;
-import com.theironyard.models.Status;
+import com.theironyard.datamodels.SkillEnum;
+import com.theironyard.datamodels.StatusEnum;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,8 +21,14 @@ public class Set {
     @Column(nullable = false, name = "set_num")
     String setNum;
 
+    @Column(nullable = false, name = "set_name")
+    String setName;
+
     @Column(nullable = false)
     private int year;
+
+    @Column(nullable = false)
+    private int num_parts;
 
     @Column(nullable = false)
     private String theme;
@@ -32,9 +38,9 @@ public class Set {
 
     @Column(nullable = false, name = "status")
     @Enumerated(EnumType.STRING)
-    private  Status status;
+    private StatusEnum statusEnum;
 
-    @Column(nullable = false , name = "skill_level")
+    @Column(nullable = false, name = "skill_level")
     @Enumerated(EnumType.STRING)
     private SkillEnum skillEnum;
 
@@ -46,19 +52,16 @@ public class Set {
     public Set() {
     }
 
-    public Set(String setNum, int year, String theme, String setImgUrl, Status status, SkillEnum skillEnum, String notes, List<SetPart> setParts) {
+    public Set(String setNum, String setName, int year, int num_parts, String theme, String setImgUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
         this.setNum = setNum;
+        this.setName = setName;
         this.year = year;
+        this.num_parts = num_parts;
         this.theme = theme;
         this.setImgUrl = setImgUrl;
-        this.status = status;
+        this.statusEnum = statusEnum;
         this.skillEnum = skillEnum;
         this.notes = notes;
-        this.setParts = setParts;
-    }
-
-    public void addPiece (SetPart part) {
-        this.setParts.add(part);
     }
 
     public int getId() {
@@ -77,12 +80,28 @@ public class Set {
         this.setNum = setNum;
     }
 
+    public String getSetName() {
+        return setName;
+    }
+
+    public void setSetName(String setName) {
+        this.setName = setName;
+    }
+
     public int getYear() {
         return year;
     }
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public int getNum_parts() {
+        return num_parts;
+    }
+
+    public void setNum_parts(int num_parts) {
+        this.num_parts = num_parts;
     }
 
     public String getTheme() {
@@ -101,12 +120,12 @@ public class Set {
         this.setImgUrl = setImgUrl;
     }
 
-    public Status getStatus() {
-        return status;
+    public StatusEnum getStatusEnum() {
+        return statusEnum;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatusEnum(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
     }
 
     public SkillEnum getSkillEnum() {
@@ -131,5 +150,22 @@ public class Set {
 
     public void setSetParts(List<SetPart> setParts) {
         this.setParts = setParts;
+    }
+
+    @Override
+    public String toString() {
+        return "Set{" +
+                "id=" + id +
+                ", setNum='" + setNum + '\'' +
+                ", setName='" + setName + '\'' +
+                ", year=" + year +
+                ", num_parts=" + num_parts +
+                ", theme='" + theme + '\'' +
+                ", setImgUrl='" + setImgUrl + '\'' +
+                ", statusEnum=" + statusEnum +
+                ", skillEnum=" + skillEnum +
+                ", notes='" + notes + '\'' +
+                ", setParts=" + setParts +
+                '}';
     }
 }
