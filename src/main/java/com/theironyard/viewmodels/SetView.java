@@ -12,6 +12,7 @@ import java.util.List;
 public class SetView {
 
     String name;
+    int set_id;
     String set_num;
     int year;
     int num_parts;
@@ -30,8 +31,9 @@ public class SetView {
     public SetView() {
     }
 
-    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String set_build_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
+    public SetView(String name, int set_id, String set_num, int year, int num_parts, String set_img_url, String set_build_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
         this.name = name;
+        this.set_id = set_id;
         this.set_num = set_num;
         this.year = year;
         this.num_parts = num_parts;
@@ -54,6 +56,14 @@ public class SetView {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getSet_id() {
+        return set_id;
+    }
+
+    public void setSet_id(int set_id) {
+        this.set_id = set_id;
     }
 
     public String getSet_num() {

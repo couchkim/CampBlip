@@ -61,6 +61,7 @@ public class CampBlipController {
         for ( Set viewSet : sets.findAll()) {
             SetView setView = new SetView(
                     viewSet.getSetName(),
+                    viewSet.getId(),
                     viewSet.getSetNum(),
                     viewSet.getYear(),
                     viewSet.getNumParts(),
