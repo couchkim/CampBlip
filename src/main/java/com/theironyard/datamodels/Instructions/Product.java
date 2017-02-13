@@ -12,15 +12,17 @@ public class Product {
     private String productImage;
     private String productName;
     private String themeName;
+    private int launchYear;
     private List<Build> buildingInstructions;
 
     public Product() {
     }
 
-    public Product(String productImage, String productName, String themeName, List<Build> buildingInstructions) {
+    public Product(String productImage, String productName, String themeName, int launchYear, List<Build> buildingInstructions) {
         this.productImage = productImage;
         this.productName = productName;
         this.themeName = themeName;
+        this.launchYear = launchYear;
         this.buildingInstructions = buildingInstructions;
     }
 
@@ -48,6 +50,14 @@ public class Product {
         this.themeName = themeName;
     }
 
+    public int getLaunchYear() {
+        return launchYear;
+    }
+
+    public void setLaunchYear(int launchYear) {
+        this.launchYear = launchYear;
+    }
+
     public List<Build> getBuildingInstructions() {
         return buildingInstructions;
     }
@@ -62,6 +72,7 @@ public class Product {
                 "productImage='" + productImage + '\'' +
                 ", productName='" + productName + '\'' +
                 ", themeName='" + themeName + '\'' +
+                ", launchYear=" + launchYear +
                 ", buildingInstructions=" + buildingInstructions +
                 '}';
     }

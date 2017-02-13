@@ -87,4 +87,15 @@ public class Part {
     public void setSetParts(List<SetPart> setParts) {
         this.setParts = setParts;
     }
+
+    @Override
+    public String toString() {
+        return "Part{" +
+                "id=" + id +
+                ", elementId=" + elementId +
+                ", name='" + name + '\'' +
+                ", partUrl='" + partUrl + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

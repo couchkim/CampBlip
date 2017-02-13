@@ -34,5 +34,4 @@ public class SetHelper {
             return SkillEnum.EXPERT;
         }
     }
-
 }

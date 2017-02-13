@@ -1,11 +1,17 @@
 package com.theironyard.services;
 
 import com.theironyard.entities.SetPart;
-import org.springframework.data.repository.CrudRepository;
+import com.theironyard.viewmodels.PartView;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * Created by graceconnelly on 2/10/17.
  */
-public interface SetPartRepository extends CrudRepository<SetPart, Integer>{
+public interface SetPartRepository extends JpaRepository<SetPart, Integer> {
 
+//    @Query("select new com.theironyard.viewmodels.PartView(pp.name, pp.color, pp.partUrl, pp.elementId, p.setQty, p.invQty) from SetPart p join p.part pp"))
+//    List<PartView> partViewFromSetId ();
 }

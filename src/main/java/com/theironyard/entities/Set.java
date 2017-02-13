@@ -27,14 +27,17 @@ public class Set {
     @Column(nullable = false)
     private int year;
 
-    @Column(nullable = false)
-    private int num_parts;
+    @Column(nullable = false, name = "numParts")
+    private int numParts;
 
     @Column(nullable = false)
     private String theme;
 
-    @Column(nullable = false, name = "set_img_url")
+    @Column(name = "set_img_url")
     private String setImgUrl;
+
+    @Column(name = "set_build_url")
+    private String setBuildUrl;
 
     @Column(nullable = false, name = "status")
     @Enumerated(EnumType.STRING)
@@ -46,19 +49,19 @@ public class Set {
 
     private String notes;
 
-    @OneToMany(mappedBy = "set")
-    private List<SetPart> setParts = new ArrayList<SetPart>();
+//    private List<SetPart> setParts;
 
     public Set() {
     }
 
-    public Set(String setNum, String setName, int year, int num_parts, String theme, String setImgUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
+    public Set(String setNum, String setName, int year, int numParts, String theme, String setImgUrl, String setBuildUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
         this.setNum = setNum;
         this.setName = setName;
         this.year = year;
-        this.num_parts = num_parts;
+        this.numParts = numParts;
         this.theme = theme;
         this.setImgUrl = setImgUrl;
+        this.setBuildUrl = setBuildUrl;
         this.statusEnum = statusEnum;
         this.skillEnum = skillEnum;
         this.notes = notes;
@@ -96,12 +99,12 @@ public class Set {
         this.year = year;
     }
 
-    public int getNum_parts() {
-        return num_parts;
+    public int getNumParts() {
+        return numParts;
     }
 
-    public void setNum_parts(int num_parts) {
-        this.num_parts = num_parts;
+    public void setNumParts(int numParts) {
+        this.numParts = numParts;
     }
 
     public String getTheme() {
@@ -118,6 +121,14 @@ public class Set {
 
     public void setSetImgUrl(String setImgUrl) {
         this.setImgUrl = setImgUrl;
+    }
+
+    public String getSetBuildUrl() {
+        return setBuildUrl;
+    }
+
+    public void setSetBuildUrl(String setBuildUrl) {
+        this.setBuildUrl = setBuildUrl;
     }
 
     public StatusEnum getStatusEnum() {
@@ -143,29 +154,14 @@ public class Set {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-    public List<SetPart> getSetParts() {
-        return setParts;
-    }
-
-    public void setSetParts(List<SetPart> setParts) {
-        this.setParts = setParts;
-    }
-
-    @Override
-    public String toString() {
-        return "Set{" +
-                "id=" + id +
-                ", setNum='" + setNum + '\'' +
-                ", setName='" + setName + '\'' +
-                ", year=" + year +
-                ", num_parts=" + num_parts +
-                ", theme='" + theme + '\'' +
-                ", setImgUrl='" + setImgUrl + '\'' +
-                ", statusEnum=" + statusEnum +
-                ", skillEnum=" + skillEnum +
-                ", notes='" + notes + '\'' +
-                ", setParts=" + setParts +
-                '}';
-    }
+//
+//    @OneToMany(mappedBy = "sets")
+//    @JoinColumn(name = "set_id")
+//    public List<SetPart> getSetParts() {
+//        return setParts;
+//    }
+//
+//    public void setSetParts(List<SetPart> setParts) {
+//        this.setParts = setParts;
+//    }
 }
