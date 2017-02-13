@@ -16,6 +16,7 @@ public class SetView {
     int year;
     int num_parts;
     String set_img_url;
+    String set_build_url;
     String theme;
     StatusEnum status;
     SkillEnum skill_level;
@@ -29,12 +30,13 @@ public class SetView {
     public SetView() {
     }
 
-    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
+    public SetView(String name, String set_num, int year, int num_parts, String set_img_url, String set_build_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
         this.name = name;
         this.set_num = set_num;
         this.year = year;
         this.num_parts = num_parts;
         this.set_img_url = set_img_url;
+        this.set_build_url = set_build_url;
         this.theme = theme;
         this.status = status;
         this.skill_level = skill_level;
@@ -84,6 +86,14 @@ public class SetView {
 
     public void setSet_img_url(String set_img_url) {
         this.set_img_url = set_img_url;
+    }
+
+    public String getSet_build_url() {
+        return set_build_url;
+    }
+
+    public void setSet_build_url(String set_build_url) {
+        this.set_build_url = set_build_url;
     }
 
     public String getTheme() {

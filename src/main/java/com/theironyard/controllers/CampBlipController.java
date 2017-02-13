@@ -65,6 +65,7 @@ public class CampBlipController {
                     viewSet.getYear(),
                     viewSet.getNumParts(),
                     viewSet.getSetImgUrl(),
+                    viewSet.getSetBuildUrl(),
                     viewSet.getTheme(),
                     viewSet.getStatusEnum(),
                     viewSet.getSkillEnum(),
