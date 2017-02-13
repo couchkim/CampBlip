@@ -10,7 +10,7 @@ const SRC_URL = 'src/main/resources/static';
 
 
 // Step 2: create default task 
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('default', ['html', 'css', 'js', 'images']);
 
 // Step 3: create subtasks
 gulp.task('html', function () {
@@ -24,6 +24,12 @@ gulp.task('html', function () {
     return gulp.src('*.html')
         .pipe(gulp.dest(BUILD_URL))
         .pipe(gulp.dest(SRC_URL));
+});
+
+gulp.task('images', function () {
+    return gulp.src('images/*')
+        .pipe(gulp.dest(`${BUILD_URL}/images`))
+        .pipe(gulp.dest(`${SRC_URL}/images`));
 });
 
 gulp.task('css', function () {
