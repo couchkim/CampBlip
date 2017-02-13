@@ -1,0 +1,35 @@
+<section class="picSec">
+
+    <img class="picBig" ng-src="{{ item.image }}">
+    <button class="backResult">Back</button>
+    <a ui-sref="parts-page({ single: item.setNumber })"><button class="parts">Parts</button></a>
+    <a ui-sref="instructions-page({ single: item.setNumber })"><button class="instructions">Instructions</button></a>
+
+</section>
+
+<section class="stats">
+
+    <div class="basicData">
+        <h1 class="detailHead">{{item.setName}}</h1>
+        <p> {{ item.theme }} {{ item.setNumber }}</p>
+        <p> {{ item.pieces }} pieces </p>
+        <p> {{ item.year }} </p>
+        <p><span ng-class="{'color-green': item.statusEnum === 'Available'}">{{ item.statusEnum }}</span></p>
+    </div>
+
+    <div class="invData">
+        <p>Last Inventory Date: {{ item.invDate }}</p>
+        <p>Inventoried By:  {{ item.invName }}</p>
+        <p>Last Checked Out:  {{ item.lastCheckout }}</p>
+        <p>Needs Inventory:  {{ item.invNeed }}</p>
+        <p>Number of Pieces Missing:  {{ item.missing }}</p>
+        <p>Pieces on Order: {{ item.order }}</p>
+        <p>Notes:  {{ item.notes }}</p>
+    </div>
+
+    <div class="admin">
+        <button class='manage'>Manage Set</button>
+        <button class='check'>Checked In</button>
+    </div>
+
+</section>

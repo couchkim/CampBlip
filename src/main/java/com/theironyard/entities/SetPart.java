@@ -16,11 +16,11 @@ import javax.persistence.Table;
 //Creates a joins tables between sets and parts so that many parts and belong to many sets.
 @Entity
 @Table(name = "sets_parts")
-@NamedQueries(value = {
+//@NamedQueries(value = {
         //@NamedQuery(name = "SetPart.findSetParts", query = "select p from SetPart p")
-        @NamedQuery(name = "SetPart.getSetParts", query = "select new com.theironyard.viewmodels.PartView(pp.name, pp.color, pp.partUrl, pp.elementId, p.setQty, p.invQty) from SetPart p join p.part pp join q.set where q.id = setid")
+//        @NamedQuery(name = "SetPart.getSetParts", query = "select new com.theironyard.viewmodels.PartView(pp.name, pp.color, pp.partUrl, pp.elementId, p.setQty, p.invQty) from SetPart p join p.part pp join q.set where q.id = setid")
        // @NamedQuery(name = "makesetpart", query = "select NEW com.theironyard.entities.SetPart(select p from SetPart p)")
-})
+//})
 public class SetPart {
     @Id
     @GeneratedValue

@@ -1,0 +1,557 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+const app = angular.module('CampApp', ['ui.router']);
+// const app = angular.module('CampApp', ['ui.router'], ['ngEmbed']);
+
+
+app.config(function ($stateProvider) {
+
+    $stateProvider.state({
+        name: 'home-page',
+        url: '/home',
+        component: 'homePage',
+    });
+
+    // home page for the site
+
+    $stateProvider.state({
+        name: 'admin-page',
+        url: '/admin',
+        component: 'adminPage',
+    });
+
+    // admin page will be landing page after successful login too
+
+    $stateProvider.state({
+        name: 'register-page',
+        url: '/register',
+        component: 'registerPage',
+    });
+
+    // register for a camp session
+
+    $stateProvider.state({
+        name: 'sets-page',
+        url: '/sets',
+        component: 'setsPage',
+    });
+
+    // search for sets
+
+    $stateProvider.state({
+        name: 'details-page',
+        url: '/details/:single',
+        component: 'detailsPage',
+    });
+
+    // see details on a single set
+
+    $stateProvider.state({
+        name: 'parts-page',
+        url: '/parts/:single',
+        component: 'partsPage',
+    });
+
+    // see all parts for a single set
+
+    $stateProvider.state({
+        name: 'account-page',
+        url: '/account',
+        component: 'accountPage',
+    });
+
+    // handles login or create new account
+
+    $stateProvider.state({
+        name: 'instructions-page',
+        url: '/instructions/:single',
+        component: 'instructionsPage',
+    });
+
+    $stateProvider.state({
+        name: 'about-page',
+        url: '/about',
+        component: 'aboutPage',
+    });
+
+    $stateProvider.state({
+        name: 'home',
+        url: '',
+        component: 'homePage',
+    });
+
+});
+
+
+const controllers = [
+    require('./controllers/homePageController'),
+    require('./controllers/adminPageController'),
+    require('./controllers/setsPageController'),
+    require('./controllers/registerPageController'),
+    require('./controllers/displayResultsController'),
+    require('./controllers/detailsPageController'),
+    require('./controllers/partsPageController'),
+    require('./controllers/accountPageController'),
+    require('./controllers/instructionsPageController'),
+    require('./controllers/aboutPageController'),
+
+
+
+];
+
+for (let i = 0; i < controllers.length; i++) {
+    console.log(controllers[i].name)
+    app.controller(controllers[i].name, controllers[i].func);
+};
+
+const components = [
+    require('./components/homePage'),
+    require('./components/adminPage'),
+    require('./components/setsPage'),
+    require('./components/registerPage'),
+    require('./components/displayResults'),
+    require('./components/detailsPage'),
+    require('./components/partsPage'),
+    require('./components/accountPage'),
+    require('./components/instructionsPage'),
+    require('./components/aboutPage'),
+
+
+];
+
+for (let i = 0; i < components.length; i++) {
+    app.component(components[i].name, components[i].object);
+};
+
+const services = [
+    require('./services/CampService'),
+];
+
+for (let i = 0; i < services.length; i++) {
+    console.log(services[i].name)
+    app.factory(services[i].name, services[i].func);
+};
+
+
+
+
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partsPage":9,"./components/registerPage":10,"./components/setsPage":11,"./controllers/aboutPageController":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/homePageController":17,"./controllers/instructionsPageController":18,"./controllers/partsPageController":19,"./controllers/registerPageController":20,"./controllers/setsPageController":21,"./services/CampService":22}],2:[function(require,module,exports){
+module.exports = {
+
+    name: 'aboutPage',
+    object: {
+
+        templateUrl: 'components/aboutPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'aboutPageController',
+    }
+
+};
+},{}],3:[function(require,module,exports){
+module.exports = {
+
+    name: 'accountPage',
+    object: {
+
+        templateUrl: 'components/accountPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'accountPageController',
+    }
+
+}
+},{}],4:[function(require,module,exports){
+module.exports = {
+
+    name: 'adminPage',
+    object: {
+
+        templateUrl: 'components/adminPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'adminPageController',
+    }
+
+}
+},{}],5:[function(require,module,exports){
+module.exports = {
+
+    name: 'detailsPage',
+    object: {
+
+        templateUrl: 'components/detailsPage.html',
+        bindings: {
+            
+        },
+        controller: 'detailsPageController',
+    }
+
+}
+
+
+},{}],6:[function(require,module,exports){
+module.exports = {
+
+    name: 'displayResults',
+    object: {
+
+        templateUrl: 'components/displayResults.html',
+        bindings: {
+            item: '<',
+            onClick: '&', 
+        },
+        controller: 'displayResultsController',
+    }
+
+}
+},{}],7:[function(require,module,exports){
+module.exports = {
+
+    name: 'homePage',
+    object: {
+
+        templateUrl: 'components/homePage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'homePageController',
+    }
+
+}
+},{}],8:[function(require,module,exports){
+module.exports = {
+
+    name: 'instructionsPage',
+    object: {
+
+        templateUrl: 'components/instructionsPage.html',
+        bindings: {
+            // item: '<',
+            // onClick: '&', 
+        },
+        controller: 'instructionsPageController',
+    }
+
+}
+},{}],9:[function(require,module,exports){
+module.exports = {
+
+    name: 'partsPage',
+    object: {
+
+        templateUrl: 'components/partsPage.html',
+        bindings: {
+            // item: '<',
+            // onClick: '&', 
+        },
+        controller: 'partsPageController',
+    }
+
+}
+
+},{}],10:[function(require,module,exports){
+module.exports = {
+
+    name: 'registerPage',
+    object: {
+
+        templateUrl: 'components/registerPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'registerPageController',
+    }
+
+}
+},{}],11:[function(require,module,exports){
+module.exports = {
+
+    name: 'setsPage',
+    object: {
+
+        templateUrl: 'components/setsPage.html',
+        bindings: {
+            // label: '<', 
+
+        },
+        controller: 'setsPageController',
+    }
+
+}
+},{}],12:[function(require,module,exports){
+module.exports = {
+
+    name: "aboutPageController",
+    func: function ($scope, CampService) {
+
+         console.log('about page controller working');
+            
+        
+
+    },
+}
+},{}],13:[function(require,module,exports){
+module.exports = {
+
+    name: "accountPageController",
+    func: function ($scope, CampService) {
+
+         console.log('account page controller working');
+            
+        
+
+    },
+}
+},{}],14:[function(require,module,exports){
+module.exports = {
+
+    name: "adminPageController",
+    func: function ($scope, CampService) {
+
+       
+            console.log('admin page controller working');
+        
+
+    },
+}
+},{}],15:[function(require,module,exports){
+module.exports = {
+
+    name: "detailsPageController",
+    func: function ($scope, CampService, $stateParams) {
+
+       const id = ($stateParams.single);
+       console.log("hello");
+       $scope.item = CampService.getSet(id);
+       console.log($scope.item);
+
+            console.log('detail page controller working');
+        
+
+    },
+}
+
+
+
+
+},{}],16:[function(require,module,exports){
+module.exports = {
+
+    name: "displayResultsController",
+    func: function ($scope, CampService) {
+
+       
+            console.log('display results controller working');
+        
+
+    },
+}
+
+
+
+
+},{}],17:[function(require,module,exports){
+module.exports = {
+
+    name: "homePageController",
+    func: function ($scope, CampService) {
+
+         console.log('home page controller working');
+            
+        
+
+    },
+}
+},{}],18:[function(require,module,exports){
+module.exports = {
+
+    name: "instructionsPageController",
+    func: function ($scope, CampService, $stateParams) {
+
+       const partSet = ($stateParams.single);
+       console.log("parts");
+       $scope.partSet = CampService.getSet(partSet);
+       console.log($scope.partSet);
+
+       $scope.instructions = $scope.partSet.instructions;
+       console.log($scope.instructions);
+            console.log('parts page controller working');
+        
+
+    },
+}
+},{}],19:[function(require,module,exports){
+module.exports = {
+
+    name: "partsPageController",
+    func: function ($scope, CampService, $stateParams) {
+
+       const partSet = ($stateParams.single);
+       console.log("parts");
+       $scope.partSet = CampService.getSet(partSet);
+       console.log($scope.partSet);
+
+       $scope.parts = $scope.partSet.parts;
+       console.log($scope.parts);
+            console.log('parts page controller working');
+        
+
+    },
+}
+
+
+},{}],20:[function(require,module,exports){
+module.exports = {
+
+    name: "registerPageController",
+    func: function ($scope, CampService) {
+
+         console.log('register page controller working');
+            
+        
+
+    },
+}
+},{}],21:[function(require,module,exports){
+module.exports = {
+
+    name: "setsPageController",
+    func: function ($scope, CampService) {
+
+
+// all of these arrays will be populated from the initial page load JSON response
+
+        $scope.levels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
+
+        $scope.available = ['Available', 'Checked Out', 'Missing Pieces', 'On Display'];
+
+        $scope.themes = ['Advanced Models', 'Agents', 'Alien Conquest', 'Aqua Raiders', 'Architecture', 'Atlantis', 'Batman', 'Bionicle', 'Cars2', 'Castle',
+            'Chima', 'City', 'Creator', 'Dino', 'Friends', 'Galaxy Squad', 'Ghostbusters', 'Harry Potter', 'Hero Factory', 'Hobbit', 'Ideas', 'Indiana Jones', 'Lego Movie',
+            'Lone Ranger', 'Lord of the Rings', 'Mars Mission', 'Minecraft', 'Monster Fighters', 'Ninjago', 'Power Miners', 'Prince of Persia', 'Racers', 'Scooby Doo', 'Space Police',
+            'Speed Champions', 'Spongebob', 'Sports', 'Star Wars', 'Super Heroes', 'Technic', 'Teenage Mutant Ninja Turtles',
+            'The Simpsons', 'Toy Story', 'Ultra Agents', 'Vintage', 'Wall-E'];
+
+        $scope.viewSets = function () {
+            $scope.sets = CampService.getSets();
+            console.log($scope.sets);
+        };
+
+
+
+
+
+        console.log('sets page controller working');
+
+
+
+    },
+}
+},{}],22:[function(require,module,exports){
+module.exports = {
+
+    name: "CampService",
+    func: function ($http) {
+
+
+        function Set(name, number, theme, pieces, status, image, year) {
+            this.setName = name;
+            this.setNumber = number;
+            this.theme = theme;
+            this.pieces = pieces;
+            this.status = status;
+            this.image = image;
+            this.year = year;
+            this.skill = null;
+            // array with beginner, etc.
+            this.invDate = '4/20/2016';
+            // last inventoried date
+            this.invName = 'Marshall';
+            // who inventoried it
+            this.invNeed = 'No';
+            // Boolean t or f for needs inventory
+            this.lastCheckout = '8/10/2015';
+            // last date that set was checked out
+            this.invParts = 100;
+            // how many parts we had after inventory
+            this.missing = 5;
+            // number of pieces missing from the set
+            this.order = 'lots of pieces';
+            // text string from admin input
+            this.notes = 'many notes to share';
+            // text string from admin input
+            this.parts = [
+                {name: 'antennae',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
+            },
+            {name: 'antennae longer name',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
+            },
+            {name: 'antennae',
+                color: 'black',
+                id: '123456',
+                photo:'https://i.stack.imgur.com/xCxdq.jpg',
+                setQuantity: 3,
+                invQuantity: 3,
+            }
+            ];
+            // array of all parts in the set that comes when parts button is clicked
+            this.instructions = 'https://mi-od-live-s.legocdn.com/bigdownloads/buildinginstructions/4617445.pdf';
+
+
+            return this;
+        };
+
+
+        let sets = [];
+
+        sets.push(new Set('Space Moon Buggy', '3365-1', 'City', 37, 'Available', 'http://images.brickset.com/sets/images/3365-1.jpg?201012090229', 2005));
+        sets.push(new Set('The First Night', '21115-1', 'Minecraft', 408, 'Checked Out', 'http://images.brickset.com/sets/large/21115-1.jpg?201410080618', 2014));
+        sets.push(new Set('The Batcave', '6860-1', 'Super Heroes', 690, 'Missing Pieces', 'http://images.brickset.com/sets/images/6860-1.jpg?201110150701', 2013));
+        sets.push(new Set('Death Star', '10188-1', 'Star Wars', 3803, 'On Display', 'http://images.brickset.com/sets/AdditionalImages/10188-1/10188-0000-xx-13-1.jpg', 2015));
+        sets.push(new Set('Yellow Submarine', '21306-1', 'Ideas', 553, 'Checked Out', 'http://images.brickset.com/sets/images/21306-1.jpg?201610150938', 2017));
+
+        console.log(sets);
+
+        return {
+
+            getSets() {
+
+                $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+                    console.log(response);
+
+                });
+
+                return sets;
+            },
+
+            getSet(id){
+
+                for (let i = 0; i < sets.length; i++){
+                    if (sets[i].setNumber === id){
+                        return sets [i];
+                    }
+                }
+            },
+
+        }
+    },
+};
+
+
+},{}]},{},[1]);
