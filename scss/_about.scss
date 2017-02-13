@@ -1,0 +1,16 @@
+.counselorItem{
+    @include grid-row();
+    margin: 15px;
+}
+
+.counselorPic{
+    @include grid-column(4);
+}
+
+.counselorInfo{
+    @include grid-column(8);
+}
+
+img{
+    width: 200px;
+}
