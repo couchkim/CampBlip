@@ -4,6 +4,7 @@ package com.theironyard.viewmodels;
  * Created by graceconnelly on 2/12/17.
  */
 public class PartView {
+    int setId;
     String name;
     String color;
     String partUrl;
@@ -14,13 +15,22 @@ public class PartView {
     public PartView() {
     }
 
-    public PartView(String name, String color, String partUrl, int elementId, int setQty, int invQty) {
+    public PartView(int setId,String name, String color, String partUrl, int elementId, int setQty, int invQty) {
+        this.setId = setId;
         this.name = name;
         this.color = color;
         this.partUrl = partUrl;
         this.elementId = elementId;
         this.setQty = setQty;
         this.invQty = invQty;
+    }
+
+    public int getSetId() {
+        return setId;
+    }
+
+    public void setSetId(int setId) {
+        this.setId = setId;
     }
 
     public String getName() {

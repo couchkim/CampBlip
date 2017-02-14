@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface SetRepository extends JpaRepository<Set,Integer> {
     List<Set> findAllBySetNum (String setNum);
-    Set findById(int id);
+    Set findById (int id);
 }

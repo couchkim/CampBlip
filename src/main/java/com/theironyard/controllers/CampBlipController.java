@@ -17,6 +17,7 @@ import com.theironyard.services.UsersRepository;
 import com.theironyard.services.SetRepository;
 import com.theironyard.services.PartRepository;
 import com.theironyard.viewmodels.PartView;
+import com.theironyard.viewmodels.PartViewModel;
 import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,24 +138,21 @@ public class CampBlipController {
         return model;
     }
 
-//    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
-//    public List<PartView> partsPage(@PathVariable("set_id") int setId) {
-//        return setParts.partViewFromSetId(setId);
-//
-//    }
+    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
+    public PartViewModel partsPage(@PathVariable("set_id") int setId) {
+        PartViewModel model = new PartViewModel();
+        model.setParts(setParts.partViewFromSetId(setId));
+        model.setSet_name(sets.findById(setId).getSetName());
+        return model;
+    }
 
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
     public Set setPage(@PathVariable("set_id") int setId) {
-//        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-//        Session session = sessionFactory.openSession();
-//
-//        Query query = session.createQuery("from Set where set_id = :setid");
-//        query.setParameter("setid", setId);
-//
-//        List<Set> setList = query.list();
-
-        String test = "pants";
         return sets.findById(setId);
-
     }
+
+//    @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
+//    public  (@PathVariable("set_id") int setId) {
+//         sets.delete(setId);
+//    }
 }

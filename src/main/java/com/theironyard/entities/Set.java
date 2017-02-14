@@ -15,28 +15,27 @@ import java.util.List;
 public class Set {
     @Id
     @GeneratedValue
-    @Column(name = "set_id")
     private int id;
 
-    @Column(nullable = false, name = "set_num")
+    @Column(nullable = false)
     String setNum;
 
-    @Column(nullable = false, name = "set_name")
+    @Column(nullable = false)
     String setName;
 
     @Column(nullable = false)
     private int year;
 
-    @Column(nullable = false, name = "numParts")
+    @Column(nullable = false)
     private int numParts;
 
     @Column(nullable = false)
     private String theme;
 
-    @Column(name = "set_img_url")
+    @Column(nullable = true)
     private String setImgUrl;
 
-    @Column(name = "set_build_url")
+    @Column
     private String setBuildUrl;
 
     @Column(nullable = false, name = "status")
@@ -49,7 +48,8 @@ public class Set {
 
     private String notes;
 
-//    private List<SetPart> setParts;
+    @OneToMany(mappedBy = "set")
+    private List<SetPart> setParts;
 
     public Set() {
     }
@@ -154,14 +154,12 @@ public class Set {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-//
-//    @OneToMany(mappedBy = "sets")
-//    @JoinColumn(name = "set_id")
-//    public List<SetPart> getSetParts() {
-//        return setParts;
-//    }
-//
-//    public void setSetParts(List<SetPart> setParts) {
-//        this.setParts = setParts;
-//    }
+
+    public List<SetPart> getSetParts() {
+        return setParts;
+    }
+
+    public void setSetParts(List<SetPart> setParts) {
+        this.setParts = setParts;
+    }
 }
