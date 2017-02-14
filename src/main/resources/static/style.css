@@ -1483,6 +1483,8 @@ select {
       padding-left: 0.9375rem; } }
   .picSec:last-child:not(:first-child) {
     float: right; }
+  .picSec img {
+    width: 400px; }
 
 .basicData {
   text-align: center;
