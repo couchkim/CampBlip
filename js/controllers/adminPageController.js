@@ -5,15 +5,21 @@ module.exports = {
 
 
         $scope.setNumber = '';
+        $scope.setId = '';
 
         $scope.newSet = function () {
             CampService.addSet($scope.setNumber);
         }
 
+        $scope.removeSet = function(){
+                       
+            CampService.deleteSet($scope.setId);
+        }
 
-        //    $scope.setNumber
 
-        console.log('admin page controller working');
+       
+
+        // console.log('admin page controller working');
 
 
     },

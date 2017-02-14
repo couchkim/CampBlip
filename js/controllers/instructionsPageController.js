@@ -10,7 +10,8 @@ module.exports = {
 
        $scope.instructions = $scope.partSet.instructions;
        console.log($scope.instructions);
-            console.log('parts page controller working');
+       
+            // console.log('parts page controller working');
         
 
     },

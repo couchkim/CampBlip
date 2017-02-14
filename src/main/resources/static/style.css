@@ -1268,7 +1268,7 @@ button {
   width: 25%;
   display: block; }
 
-#setNumber {
+#setNumber, #setId {
   width: 25%;
   padding: 8px 16px;
   margin-top: 5%;

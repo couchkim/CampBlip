@@ -98,7 +98,7 @@ const controllers = [
 ];
 
 for (let i = 0; i < controllers.length; i++) {
-    console.log(controllers[i].name)
+    // console.log(controllers[i].name)
     app.controller(controllers[i].name, controllers[i].func);
 };
 
