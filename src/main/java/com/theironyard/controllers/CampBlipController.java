@@ -75,7 +75,7 @@ public class CampBlipController {
                     "inv_name Currently unavailable",
                     false,
                     "last_checkout Currently Unavailable",
-                    42,
+                    42, //TODO: Count all the inventory parts
                     viewSet.getNotes());
             model.getSetViews().add(setView);
         }
@@ -93,17 +93,17 @@ public class CampBlipController {
 
         SetImport newApiSet = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/?key={brickKey}", SetImport.class, urlParams);
-        //System.out.println(newApiSet.toString());
+        System.out.println(newApiSet.toString());
         urlParams.put("theme_id", Integer.toString(newApiSet.getTheme_id()));
         ThemeImport newApiThemes = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}", ThemeImport.class, urlParams);
-        //System.out.println(newApiThemes.toString());
+        System.out.println(newApiThemes.toString());
         PartImport newApiParts = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/parts/?key={brickKey}", PartImport.class, urlParams);
-        //System.out.println(newApiParts.toString());
+        System.out.println(newApiParts.toString());
         LegoWebImport fromlego = restTemplate.getForObject(
                 "https://www.lego.com/service/biservice/search?fromIndex=0&locale=en-US&onlyAlternatives=false&prefixText={lego_set_num}", LegoWebImport.class, urlParams);
-        //System.out.println(fromlego.toString());
+        System.out.println(fromlego.toString());
         Product legoProducts = fromlego.getProducts().get(0);
         Set newSet = new Set (
                 newApiSet.getSet_num(),
