@@ -16,7 +16,6 @@ import com.theironyard.services.SetPartRepository;
 import com.theironyard.services.UsersRepository;
 import com.theironyard.services.SetRepository;
 import com.theironyard.services.PartRepository;
-import com.theironyard.viewmodels.PartView;
 import com.theironyard.viewmodels.PartViewModel;
 import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
@@ -78,13 +77,13 @@ public class CampBlipController {
                     "last_checkout Currently Unavailable",
                     42,
                     viewSet.getNotes());
-            model.getSets().add(setView);
+            model.getSetViews().add(setView);
         }
         return model;
     }
 
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
-    public SetViewModel addset(@PathVariable("set_num") String setId) {
+    public List<String> addset(@PathVariable("set_num") String setId) {
         Map<String,String> apiSetIds = SetHelper.setCorrectId(setId);
         Map<String, String> urlParams = new HashMap<>();
 
@@ -110,7 +109,7 @@ public class CampBlipController {
                 newApiSet.getSet_num(),
                 newApiSet.getName(),
                 newApiSet.getYear(),
-                newApiParts.getCount(),
+                newApiSet.getNum_parts(),
                 legoProducts.getThemeName(),
                 newApiSet.getSet_img_url(),
                 legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
@@ -134,8 +133,10 @@ public class CampBlipController {
             newSet, newPart, thisPart.getQuantity(), thisPart.getQuantity());
             setParts.save(legoSetPart);
         }
-        SetViewModel model = new SetViewModel();
-        return model;
+        List<String> addedView = new ArrayList<>();
+        addedView.add(newSet.getSetName());
+        addedView.add(newSet.getSetNum());
+        return addedView;
     }
 
     @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)

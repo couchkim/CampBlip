@@ -7,20 +7,20 @@ import java.util.List;
  * Created by graceconnelly on 2/8/17.
  */
 public class SetViewModel {
-    List<SetView> sets = new ArrayList<SetView>();
+    List<SetView> setViews = new ArrayList<SetView>();
 
     public SetViewModel() {
     }
 
-    public SetViewModel(List<SetView> sets) {
-        this.sets = sets;
+    public SetViewModel(List<SetView> setViews) {
+        this.setViews = setViews;
     }
 
-    public List<SetView> getSets() {
-        return sets;
+    public List<SetView> getSetViews() {
+        return setViews;
     }
 
-    public void setSets(List<SetView> sets) {
-        this.sets = sets;
+    public void setSetViews(List<SetView> setViews) {
+        this.setViews = setViews;
     }
 }

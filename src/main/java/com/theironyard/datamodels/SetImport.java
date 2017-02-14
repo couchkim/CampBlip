@@ -12,16 +12,18 @@ public class SetImport {
     private String name;
     private int year;
     private int theme_id;
+    private int num_parts;
     private String set_img_url;
 
     public SetImport() {
     }
 
-    public SetImport(String set_num, String name, int year, int theme_id, String set_img_url) {
+    public SetImport(String set_num, String name, int year, int theme_id, int num_parts, String set_img_url) {
         this.set_num = set_num;
         this.name = name;
         this.year = year;
         this.theme_id = theme_id;
+        this.num_parts = num_parts;
         this.set_img_url = set_img_url;
     }
 
@@ -57,22 +59,19 @@ public class SetImport {
         this.theme_id = theme_id;
     }
 
+    public int getNum_parts() {
+        return num_parts;
+    }
+
+    public void setNum_parts(int num_parts) {
+        this.num_parts = num_parts;
+    }
+
     public String getSet_img_url() {
         return set_img_url;
     }
 
     public void setSet_img_url(String set_img_url) {
         this.set_img_url = set_img_url;
-    }
-
-    @Override
-    public String toString() {
-        return "SetImport{" +
-                "set_num='" + set_num + '\'' +
-                ", name='" + name + '\'' +
-                ", year=" + year +
-                ", theme_id=" + theme_id +
-                ", set_img_url='" + set_img_url + '\'' +
-                '}';
     }
 }
