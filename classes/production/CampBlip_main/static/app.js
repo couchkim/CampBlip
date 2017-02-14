@@ -350,8 +350,8 @@ module.exports = {
 
 
        $scope.getParts = function(item){
-           CampService.showParts(item.setId);
-           console.log(CampService.showParts(item.setId));
+           CampService.showParts(item);
+           console.log(CampService.showParts(item));
        }
             // console.log('detail page controller working');
         
@@ -577,9 +577,9 @@ module.exports = {
 
             },
 
-            showParts(id) {
-                $http.get("/parts/" + id).then(function (response) {
-
+            showParts(item) {
+                $http.get("/parts/" + item.setId).then(function (response) {
+                    angular.copy(response.data.parts, item.parts)
                     console.log(response);
                 })
             },
