@@ -6,14 +6,21 @@ module.exports = {
 
         $scope.setNumber = '';
         $scope.setId = '';
+        $scope.newCamper = '';
+        $scope.weeks = '';
 
         $scope.newSet = function () {
-            CampService.addSet($scope.setNumber);
+            let newInfo = CampService.addSet($scope.setNumber);
+            // console.log(newInfo);
         }
 
         $scope.removeSet = function(){
                        
             CampService.deleteSet($scope.setId);
+        }
+
+        $scope.addCamper = function(){
+            CampService.newCamper($scope.newCamper, $scope.weeks);
         }
 
 

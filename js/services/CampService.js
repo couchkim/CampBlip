@@ -82,8 +82,10 @@ module.exports = {
             addSet(num) {
 
                 $http.post("/add-set/" + num).then(function (response) {
-
                     console.log(response);
+                    let info = response.data;
+                    return info;
+                    // console.log(response);
                 })
 
             },
@@ -97,6 +99,13 @@ module.exports = {
 
              deleteSet(id) {
                 // $http.delete("/parts/" + id).then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
+            newCamper(person, time) {
+                // $http.post("/campers/").then(function (response) {
 
                 //     console.log(response);
                 // })

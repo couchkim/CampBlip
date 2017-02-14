@@ -82,10 +82,10 @@ header{
     border: 3px solid $gray-color;
 
     h1{
-        @include grid-column(7);
+        @include grid-column(9.5);
     }
 
-  #login, #create{
+  #login{
         @include grid-column(2);
         padding: 8px 16px;
         margin: 5px 10px;
@@ -95,6 +95,7 @@ header{
         border: 3px solid $gray-color;
         color: $creme-color;
         font-family: $primary-font;
+        width: 15%;
 
          
 }

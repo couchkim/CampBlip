@@ -319,14 +319,21 @@ module.exports = {
 
         $scope.setNumber = '';
         $scope.setId = '';
+        $scope.newCamper = '';
+        $scope.weeks = '';
 
         $scope.newSet = function () {
-            CampService.addSet($scope.setNumber);
+            let newInfo = CampService.addSet($scope.setNumber);
+            // console.log(newInfo);
         }
 
         $scope.removeSet = function(){
                        
             CampService.deleteSet($scope.setId);
+        }
+
+        $scope.addCamper = function(){
+            CampService.newCamper($scope.newCamper, $scope.weeks);
         }
 
 
@@ -562,8 +569,10 @@ module.exports = {
             addSet(num) {
 
                 $http.post("/add-set/" + num).then(function (response) {
-
                     console.log(response);
+                    let info = response.data;
+                    return info;
+                    // console.log(response);
                 })
 
             },
@@ -577,6 +586,13 @@ module.exports = {
 
              deleteSet(id) {
                 // $http.delete("/parts/" + id).then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
+            newCamper(person, time) {
+                // $http.post("/campers/").then(function (response) {
 
                 //     console.log(response);
                 // })
