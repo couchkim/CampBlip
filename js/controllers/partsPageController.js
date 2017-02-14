@@ -10,7 +10,9 @@ module.exports = {
 
        $scope.parts = $scope.partSet.parts;
        console.log($scope.parts);
-            console.log('parts page controller working');
+           
+           
+            // console.log('parts page controller working');
         
 
     },

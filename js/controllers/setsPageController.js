@@ -25,7 +25,7 @@ module.exports = {
 
 
 
-        console.log('sets page controller working');
+        // console.log('sets page controller working');
 
 
 
