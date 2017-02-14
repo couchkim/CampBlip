@@ -83,7 +83,7 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
-    public List<Object> addset(@PathVariable("set_num") String setId) {
+    public List<String> addset(@PathVariable("set_num") String setId) {
         Map<String,String> apiSetIds = SetHelper.setCorrectId(setId);
         Map<String, String> urlParams = new HashMap<>();
 
@@ -133,9 +133,9 @@ public class CampBlipController {
             newSet, newPart, thisPart.getQuantity(), thisPart.getQuantity());
             setParts.save(legoSetPart);
         }
-        List <Object> addedSet = new ArrayList<>();
+        List <String> addedSet = new ArrayList<>();
         addedSet.add(newSet.getSetName());
-        addedSet.add(newSet.getNumParts());
+        addedSet.add(newSet.getSetNum());
         return addedSet;
     }
 
