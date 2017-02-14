@@ -11,16 +11,18 @@ public class SetImport {
     private String set_num;
     private String name;
     private int year;
+    private int num_parts;
     private int theme_id;
     private String set_img_url;
 
     public SetImport() {
     }
 
-    public SetImport(String set_num, String name, int year, int theme_id, String set_img_url) {
+    public SetImport(String set_num, String name, int year, int num_parts, int theme_id, String set_img_url) {
         this.set_num = set_num;
         this.name = name;
         this.year = year;
+        this.num_parts = num_parts;
         this.theme_id = theme_id;
         this.set_img_url = set_img_url;
     }
@@ -49,6 +51,14 @@ public class SetImport {
         this.year = year;
     }
 
+    public int getNum_parts() {
+        return num_parts;
+    }
+
+    public void setNum_parts(int num_parts) {
+        this.num_parts = num_parts;
+    }
+
     public int getTheme_id() {
         return theme_id;
     }
@@ -71,6 +81,7 @@ public class SetImport {
                 "set_num='" + set_num + '\'' +
                 ", name='" + name + '\'' +
                 ", year=" + year +
+                ", num_parts=" + num_parts +
                 ", theme_id=" + theme_id +
                 ", set_img_url='" + set_img_url + '\'' +
                 '}';
