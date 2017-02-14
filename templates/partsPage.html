@@ -16,14 +16,14 @@
             <input class="num" type="number">
 
             <div class="partPic">
-                <img class="partPic" ng-src="{{ part.photo }}">
+                <img class="partPic" ng-src="{{ part.partUrl }}">
             </div>
 
             <div class="partInfo">
                 <p>  {{ part.name }} </p>
                 <p> {{ part.color }} </p>
-                <p> Need: {{ part.invQuantity }}</p>
-                <p> #{{ part.id }} </p>
+                <p> Need: {{ part.invQty }}</p>
+                <p> #{{ part.elementId }} </p>
             </div>
         </li>
     </ul>

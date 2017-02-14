@@ -21,6 +21,7 @@
 .onePart{
     @include grid-column(6);
     padding: 10px;
+    word-wrap: break-word;
 }
 
 #partList{
@@ -42,8 +43,10 @@
     display: inline-block;
     margin-left: 5px;
 
+
     p{
         margin: 0;
+        
     }
 }
 
