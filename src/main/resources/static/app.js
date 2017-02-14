@@ -512,17 +512,8 @@ module.exports = {
             // text string from admin input
             this.notes = notes;
             // text string from admin input
-            this.parts = [
-                // {
-                //     name: 'antennae',
-                //     color: 'black',
-                //     id: '123456',
-                //     photo: 'https://i.stack.imgur.com/xCxdq.jpg',
-                //     setQuantity: 3,
-                //     invQuantity: 3,
-                // },
-                // 
-            ];
+            this.parts = [];
+            
             // array of all parts in the set that comes when parts button is clicked
             this.instructions = instructions;
 
