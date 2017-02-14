@@ -97,9 +97,9 @@ module.exports = {
 
             },
 
-            showParts(id) {
-                $http.get("/parts/" + id).then(function (response) {
-
+            showParts(item) {
+                $http.get("/parts/" + item.setId).then(function (response) {
+                    angular.copy(response.data.parts, item.parts)
                     console.log(response);
                 })
             },

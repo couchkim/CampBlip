@@ -10,8 +10,8 @@ module.exports = {
 
 
        $scope.getParts = function(item){
-           CampService.showParts(item.setId);
-           console.log(CampService.showParts(item.setId));
+           CampService.showParts(item);
+           console.log(CampService.showParts(item));
        }
             // console.log('detail page controller working');
         
