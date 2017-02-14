@@ -21,7 +21,8 @@
 .onePart{
     @include grid-column(6);
     padding: 10px;
-    word-wrap: break-word;
+    border: 1px solid $creme-color;
+    border-radius: $radius-default;
 }
 
 #partList{
@@ -32,27 +33,52 @@
     
 }
 
+.partDisplay{
+    @include grid-row();
+
+}
+
+.partBoxes{
+    @include grid-column(1.5);
+
+    p{
+        
+        background-color: $creme-color;
+        color: $blue-color;
+        // font-size: 1.25em;
+        text-align: center;
+    }
+}
 
 .partPic{
-    width: 120px;
+   @include grid-column(4);
+    width: 150px;
     vertical-align: top;
     display: inline-block;
 }
 
 .partInfo{
+    @include grid-column(6.5);
     display: inline-block;
-    margin-left: 5px;
+ 
 
 
     p{
         margin: 0;
-        
+          
     }
 }
 
 .num{
     width: 40px;
 }
+
+.partName{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
 
 
 
