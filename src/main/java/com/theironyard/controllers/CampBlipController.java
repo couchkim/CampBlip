@@ -83,7 +83,7 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
-    public List<String> addset(@PathVariable("set_num") String setId) {
+    public SetViewModel addset(@PathVariable("set_num") String setId) {
         Map<String,String> apiSetIds = SetHelper.setCorrectId(setId);
         Map<String, String> urlParams = new HashMap<>();
 
@@ -109,7 +109,7 @@ public class CampBlipController {
                 newApiSet.getSet_num(),
                 newApiSet.getName(),
                 newApiSet.getYear(),
-                newApiSet.getNum_parts(),
+                newApiParts.getCount(),
                 legoProducts.getThemeName(),
                 newApiSet.getSet_img_url(),
                 legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
@@ -133,10 +133,8 @@ public class CampBlipController {
             newSet, newPart, thisPart.getQuantity(), thisPart.getQuantity());
             setParts.save(legoSetPart);
         }
-        List<String> addedView = new ArrayList<>();
-        addedView.add(newSet.getSetName());
-        addedView.add(newSet.getSetNum());
-        return addedView;
+        SetViewModel model = new SetViewModel();
+        return model;
     }
 
     @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
