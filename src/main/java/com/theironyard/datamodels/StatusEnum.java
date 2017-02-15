@@ -6,4 +6,5 @@ package com.theironyard.datamodels;
 //describes the possible status of lego sets
 public enum StatusEnum {
     AVAILABLE, CHECKED_OUT, MISSING_PIECES, ON_DISPLAY
+
 }

@@ -1,5 +1,6 @@
 package com.theironyard.controllers;
 
+import com.sun.xml.internal.ws.api.message.Packet;
 import com.theironyard.datamodels.Instructions.LegoWebImport;
 import com.theironyard.datamodels.Instructions.Product;
 import com.theironyard.datamodels.PartsImport.Color;
@@ -7,6 +8,8 @@ import com.theironyard.datamodels.PartsImport.PartImport;
 import com.theironyard.datamodels.PartsImport.PartPiece;
 import com.theironyard.datamodels.PartsImport.Result;
 import com.theironyard.datamodels.SetImport;
+import com.theironyard.datamodels.SkillEnum;
+import com.theironyard.datamodels.StatusEnum;
 import com.theironyard.datamodels.ThemeImport;
 import com.theironyard.entities.Part;
 import com.theironyard.entities.Set;
@@ -16,6 +19,7 @@ import com.theironyard.services.SetPartRepository;
 import com.theironyard.services.UsersRepository;
 import com.theironyard.services.SetRepository;
 import com.theironyard.services.PartRepository;
+import com.theironyard.viewmodels.FilterViewModel;
 import com.theironyard.viewmodels.PartViewModel;
 import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
@@ -25,6 +29,8 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.theironyard.datamodels.StatusEnum.AVAILABLE;
 
@@ -53,13 +59,17 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
-    public SetViewModel setsPage() {
+    public SetViewModel setsPage(String theme, String status, String skill) {
+       List<Set> viewSets = new ArrayList<>();
 
+       if(theme != null || status != null || skill != null) {
+           viewSets = sets.findByThemeByStatusBySkill(theme, StatusEnum.valueOf(status), SkillEnum.valueOf(skill));
+       } else {
+           viewSets = sets.findAll();
+       }
         SetViewModel model = new SetViewModel();
-//        String name, String set_num, int year, int num_parts, String set_img_url, String theme, String status, String skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes
-        //SetView set = new SetView("Yellow Submarine", "21306-1" , 2016, 553, "https://m.rebrickable.com/media/sets/21306-1.jpg","LEGO Ideas and CUUSOO", "Checked Out", "Advanced", "2/7/2016", "Grace Connelly", true, "2/8/2016", 553, "these are some notes");
-        //builds a viewmodel for each set
-        for ( Set viewSet : sets.findAll()) {
+
+        for ( Set viewSet : viewSets) {
             SetView setView = new SetView(
                     viewSet.getSetName(),
                     viewSet.getId(),
@@ -150,6 +160,15 @@ public class CampBlipController {
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
     public Set setPage(@PathVariable("set_id") int setId) {
         return sets.findById(setId);
+    }
+
+    @RequestMapping (path = "/filters", method = RequestMethod.GET)
+    public FilterViewModel filterLayout() {
+        FilterViewModel model = new FilterViewModel();
+        model.setThemes(sets.selectDistinctThemes());
+        model.setSkills(Stream.of(SkillEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        return model;
     }
 
 //    @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
