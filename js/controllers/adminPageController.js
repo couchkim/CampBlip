@@ -12,7 +12,11 @@ module.exports = {
         
 
         $scope.newSet = function () {
-            $scope.newInfo = CampService.addSet($scope.setNumber);
+            CampService.addSet($scope.setNumber).then(function(response){
+                $scope.newInfo = response;
+                console.log(response);
+            })
+                ;
             console.log($scope.newInfo);
             $scope.setNumber = '';
            

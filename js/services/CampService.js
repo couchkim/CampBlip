@@ -106,7 +106,7 @@ module.exports = {
 
             addSet(num) {
 
-                $http.post("/add-set/" + num).then(function (response) {
+                return $http.post("/add-set/" + num).then(function (response) {
                     console.log(response);
                     return response.data;
                     // let info = response.data;
@@ -152,7 +152,14 @@ module.exports = {
 
             //     console.log(response);
             // })
-        }
+
+            getFilters() {
+                $http.get("/filters/").then(function (response) {
+                    console.log(response);
+                    return response;
+                })
+            },
+        };
 
     },
 };

@@ -7,12 +7,15 @@
     </div>
     <div id="searchDropOne">
         <p class="criteria">Search by Theme</p>
+        <!--<select id="byTheme" ng-model="loadFilters()" ng-options="theme for theme in themes"></select>-->
         <select id="byTheme" ng-model="byTheme" ng-options="theme for theme in themes"></select>
         <p class="criteria">Search by Skill Level</p>
+        <!--<select id="byLevel" ng-model = "loadFilters()" ng-options="level for level in levels"></select>-->
         <select id="byLevel" ng-model="byLevel" ng-options="level for level in levels"></select>
     </div>
     <div id="searchDropTwo">
         <p class="criteria">Search by Status</p>
+        <!--<select id="byStatus" ng-model="loadFilters()" ng-options="status for status in available"></select>-->
         <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
     </div>
 </section>
