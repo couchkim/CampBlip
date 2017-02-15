@@ -70,9 +70,10 @@ module.exports = {
                 return sets;
             },
 
-            getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+            // getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+            getSearchSets(themeFilter) {
 
-                $http.get("/sets").then(function (response) {
+                $http.get("/sets/?theme=" + themeFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
@@ -85,6 +86,7 @@ module.exports = {
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
+                    // sets = [];
                     angular.copy(response.data.setViews, sets);
 
 
@@ -143,7 +145,7 @@ module.exports = {
                 } else {
 
                     status = "AVAILABLE";
-                    
+
                 }
                 return status;
             },
