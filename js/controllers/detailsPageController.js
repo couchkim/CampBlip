@@ -14,7 +14,9 @@ module.exports = {
            console.log(CampService.showParts(item));
        }
             // console.log('detail page controller working');
-        
+        $scope.checkToggle = function(){
+            $scope.item.status = CampService.changeStatus($scope.item.status);
+        }
 
     },
 }

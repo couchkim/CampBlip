@@ -20,17 +20,17 @@
     <div class="invData">
         <p>Set ID: {{item.setId }} </p>
         <p>Last Inventory Date: {{ item.invDate }}</p>
-        <p>Inventoried By:  {{ item.invName }}</p>
-        <p>Last Checked Out:  {{ item.lastCheckout }}</p>
-        <p>Needs Inventory:  {{ item.invNeed }}</p>
-        <p>Number of Pieces Missing:  {{ item.missing }}</p>
+        <p>Inventoried By: {{ item.invName }}</p>
+        <p>Last Checked Out: {{ item.lastCheckout }}</p>
+        <p>Needs Inventory: {{ item.invNeed }}</p>
+        <p>Number of Pieces Missing: {{ item.missing }}</p>
         <p>Pieces on Order: {{ item.order }}</p>
-        <p>Notes:  {{ item.notes }}</p>
+        <p>Notes: {{ item.notes }}</p>
     </div>
 
     <div class="admin">
-        <!--<button class='manage'>Manage Set</button>-->
-        <button class='check'>Checked In</button>
+        <button class='check' ng-show= "(item.status === 'AVAILABLE')" ng-click="checkToggle()">Checked In</button>
+        <button class='check' ng-hide= "(item.status === 'AVAILABLE')" ng-click="checkToggle()">Checked Out</button>
     </div>
 
 </section>

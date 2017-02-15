@@ -321,10 +321,14 @@ module.exports = {
         $scope.setId = '';
         $scope.newCamper = '';
         $scope.weeks = '';
+        $scope.newInfo = null;
+        
 
         $scope.newSet = function () {
-            let newInfo = CampService.addSet($scope.setNumber);
-            // console.log(newInfo);
+            $scope.newInfo = CampService.addSet($scope.setNumber);
+            console.log($scope.newInfo);
+            $scope.setNumber = '';
+           
         }
 
         $scope.removeSet = function(){
@@ -335,12 +339,6 @@ module.exports = {
         $scope.addCamper = function(){
             CampService.newCamper($scope.newCamper, $scope.weeks);
         }
-
-
-       
-
-        // console.log('admin page controller working');
-
 
     },
 }
@@ -361,7 +359,9 @@ module.exports = {
            console.log(CampService.showParts(item));
        }
             // console.log('detail page controller working');
-        
+        $scope.checkToggle = function(){
+            $scope.item.status = CampService.changeStatus($scope.item.status);
+        }
 
     },
 }
@@ -469,8 +469,20 @@ module.exports = {
             'Speed Champions', 'Spongebob', 'Sports', 'Star Wars', 'Super Heroes', 'Technic', 'Teenage Mutant Ninja Turtles',
             'The Simpsons', 'Toy Story', 'Ultra Agents', 'Vintage', 'Wall-E'];
 
+        $scope.byName = '';
+        $scope.byNumber = '';
+        $scope.byTheme = '';
+        $scope.byLevel = '';
+        $scope.byStatus = '';
+
         $scope.viewSets = function () {
             $scope.sets = CampService.getSets();
+            console.log($scope.sets);
+        };
+
+         $scope.viewSearchSets = function () {
+            $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
+            $scope.byTheme, $scope.byLevel, $scope.byStatus);
             console.log($scope.sets);
         };
 
@@ -520,7 +532,7 @@ module.exports = {
             this.notes = notes;
             // text string from admin input
             this.parts = [];
-            
+
             // array of all parts in the set that comes when parts button is clicked
             this.instructions = instructions;
 
@@ -557,6 +569,29 @@ module.exports = {
                 return sets;
             },
 
+            getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+
+                $http.get("/sets").then(function (response) {
+                    // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+                    console.log(response);
+
+
+                    for (let i = 0; i < response.data.setViews.length; i++) {
+                        let item = response.data.setViews;
+                        item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
+                            item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
+                            item[i].last_checkout, item[i].set_build_url, item[i].notes);
+
+                    }
+                    angular.copy(response.data.setViews, sets);
+
+
+                });
+
+                return sets;
+            },
+
             getSet(id) {
 
                 for (let i = 0; i < sets.length; i++) {
@@ -570,9 +605,10 @@ module.exports = {
 
                 $http.post("/add-set/" + num).then(function (response) {
                     console.log(response);
-                    let info = response.data;
-                    return info;
-                    // console.log(response);
+                    return response.data;
+                    // let info = response.data;
+                    // console.log(info);
+
                 })
 
             },
@@ -584,7 +620,7 @@ module.exports = {
                 })
             },
 
-             deleteSet(id) {
+            deleteSet(id) {
                 // $http.delete("/parts/" + id).then(function (response) {
 
                 //     console.log(response);
@@ -597,7 +633,24 @@ module.exports = {
                 //     console.log(response);
                 // })
             },
+
+            changeStatus(status) {
+                // $http.post("/campers/").then(function (response) {
+                if (status === "AVAILABLE") {
+                    status = "CHECKED OUT";
+                    // return status;
+                } else {
+
+                    status = "AVAILABLE";
+                    
+                }
+                return status;
+            },
+
+            //     console.log(response);
+            // })
         }
+
     },
 };
 

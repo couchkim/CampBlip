@@ -8,10 +8,14 @@ module.exports = {
         $scope.setId = '';
         $scope.newCamper = '';
         $scope.weeks = '';
+        $scope.newInfo = null;
+        
 
         $scope.newSet = function () {
-            let newInfo = CampService.addSet($scope.setNumber);
-            // console.log(newInfo);
+            $scope.newInfo = CampService.addSet($scope.setNumber);
+            console.log($scope.newInfo);
+            $scope.setNumber = '';
+           
         }
 
         $scope.removeSet = function(){
@@ -22,12 +26,6 @@ module.exports = {
         $scope.addCamper = function(){
             CampService.newCamper($scope.newCamper, $scope.weeks);
         }
-
-
-       
-
-        // console.log('admin page controller working');
-
 
     },
 }

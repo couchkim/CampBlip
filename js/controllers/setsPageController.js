@@ -16,8 +16,20 @@ module.exports = {
             'Speed Champions', 'Spongebob', 'Sports', 'Star Wars', 'Super Heroes', 'Technic', 'Teenage Mutant Ninja Turtles',
             'The Simpsons', 'Toy Story', 'Ultra Agents', 'Vintage', 'Wall-E'];
 
+        $scope.byName = '';
+        $scope.byNumber = '';
+        $scope.byTheme = '';
+        $scope.byLevel = '';
+        $scope.byStatus = '';
+
         $scope.viewSets = function () {
             $scope.sets = CampService.getSets();
+            console.log($scope.sets);
+        };
+
+         $scope.viewSearchSets = function () {
+            $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
+            $scope.byTheme, $scope.byLevel, $scope.byStatus);
             console.log($scope.sets);
         };
 

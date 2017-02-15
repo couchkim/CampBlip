@@ -1256,7 +1256,7 @@ button {
 #title {
   font-size: 2.5em; }
 
-#add, #manage, #remove {
+#add, #manage, #remove, #addCamper {
   padding: 8px 16px;
   margin: 5px 10px;
   background-color: #B75321;
@@ -1268,14 +1268,14 @@ button {
   width: 25%;
   display: block; }
 
-#setNumber, #setId {
+#setNumber, #setId, #newCamper, #campWeek {
   width: 25%;
   padding: 8px 16px;
   margin-top: 5%;
   margin-left: 10px;
   font-family: "Quicksand", sans-serif; }
 
-#add:hover, #manage:hover, #remove:hover {
+#add:hover, #manage:hover, #remove:hover, #addCamper:hover {
   background-color: #157C2B;
   color: white; }
 
