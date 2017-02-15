@@ -1256,7 +1256,7 @@ button {
 #title {
   font-size: 2.5em; }
 
-#add, #manage, #remove {
+#add, #manage, #remove, #addCamper {
   padding: 8px 16px;
   margin: 5px 10px;
   background-color: #B75321;
@@ -1268,14 +1268,14 @@ button {
   width: 25%;
   display: block; }
 
-#setNumber, #setId {
+#setNumber, #setId, #newCamper, #campWeek {
   width: 25%;
   padding: 8px 16px;
   margin-top: 5%;
   margin-left: 10px;
   font-family: "Quicksand", sans-serif; }
 
-#add:hover, #manage:hover, #remove:hover {
+#add:hover, #manage:hover, #remove:hover, #addCamper:hover {
   background-color: #157C2B;
   color: white; }
 
@@ -1502,16 +1502,22 @@ select {
   .invData p {
     margin: 0 auto; }
 
-.admin .manage, .admin .check {
+.admin .check {
   padding: 8px 16px;
-  margin: 10px 10px;
+  margin: 10px auto;
   background-color: #B75321;
   text-align: center;
   border-radius: 5px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
+  float: right;
   width: 45%; }
+
+.admin #camperList {
+  width: 45%;
+  margin-top: 10px;
+  padding: 10px; }
 
 .backResult, .parts, .instructions {
   padding: 2px 4px;
@@ -1524,7 +1530,7 @@ select {
   font-family: "Fredoka One", sans-serif;
   width: 25%; }
 
-.manage:hover, .check:hover, .backResult:hover, .parts:hover, .instructions:hover {
+.check:hover, .backResult:hover, .parts:hover, .instructions:hover {
   background-color: #157C2B;
   color: white; }
 
