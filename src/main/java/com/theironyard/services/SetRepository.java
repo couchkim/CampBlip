@@ -23,7 +23,7 @@ public interface SetRepository extends JpaRepository<Set,Integer> {
 
     List<Set> findByTheme(String theme);
 
-    List<Set> findByThemeByStatusBySkill(String theme, StatusEnum status, SkillEnum skill);
+    //List<Set> findByThemeByStatusBySkill(String theme, StatusEnum status, SkillEnum skill);
 
 
 

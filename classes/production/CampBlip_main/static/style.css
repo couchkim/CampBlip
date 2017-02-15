@@ -1603,7 +1603,7 @@ a {
     float: right; }
   .partBoxes p {
     background-color: #BAB9A5;
-    color: #22557C;
+    color: #5A5353;
     text-align: center; }
 
 .partPic {
@@ -1754,7 +1754,7 @@ header {
   header::after {
     clear: both; }
   header h1 {
-    width: 58.33333%;
+    width: 79.16667%;
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem; }
@@ -1764,7 +1764,7 @@ header {
         padding-left: 0.9375rem; } }
     header h1:last-child:not(:first-child) {
       float: right; }
-  header #login, header #create {
+  header #login {
     width: 16.66667%;
     float: left;
     padding-right: 0.625rem;
@@ -1776,12 +1776,13 @@ header {
     border-radius: 5px;
     border: 3px solid #5A5353;
     color: #BAB9A5;
-    font-family: "Fredoka One", sans-serif; }
+    font-family: "Fredoka One", sans-serif;
+    width: 15%; }
     @media print, screen and (min-width: 40em) {
-      header #login, header #create {
+      header #login {
         padding-right: 0.9375rem;
         padding-left: 0.9375rem; } }
-    header #login:last-child:not(:first-child), header #create:last-child:not(:first-child) {
+    header #login:last-child:not(:first-child) {
       float: right; }
 
 #login:hover, #create:hover {

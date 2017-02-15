@@ -319,14 +319,21 @@ module.exports = {
 
         $scope.setNumber = '';
         $scope.setId = '';
+        $scope.newCamper = '';
+        $scope.weeks = '';
 
         $scope.newSet = function () {
-            CampService.addSet($scope.setNumber);
+            let newInfo = CampService.addSet($scope.setNumber);
+            // console.log(newInfo);
         }
 
         $scope.removeSet = function(){
                        
             CampService.deleteSet($scope.setId);
+        }
+
+        $scope.addCamper = function(){
+            CampService.newCamper($scope.newCamper, $scope.weeks);
         }
 
 
@@ -534,15 +541,15 @@ module.exports = {
                     console.log(response);
 
 
-                    for (let i = 0; i < response.data.sets.length; i++) {
-                        let item = response.data.sets;
+                    for (let i = 0; i < response.data.setViews.length; i++) {
+                        let item = response.data.setViews;
                         item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
                             item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
-                    angular.copy(response.data.sets, sets);
+                    angular.copy(response.data.setViews, sets);
 
 
                 });
@@ -562,8 +569,10 @@ module.exports = {
             addSet(num) {
 
                 $http.post("/add-set/" + num).then(function (response) {
-
                     console.log(response);
+                    let info = response.data;
+                    return info;
+                    // console.log(response);
                 })
 
             },
@@ -577,6 +586,13 @@ module.exports = {
 
              deleteSet(id) {
                 // $http.delete("/parts/" + id).then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
+            newCamper(person, time) {
+                // $http.post("/campers/").then(function (response) {
 
                 //     console.log(response);
                 // })

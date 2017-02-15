@@ -62,8 +62,8 @@ public class CampBlipController {
     public SetViewModel setsPage(String theme, String status, String skill) {
        List<Set> viewSets = new ArrayList<>();
 
-       if(theme != null || status != null || skill != null) {
-           viewSets = sets.findByThemeByStatusBySkill(theme, StatusEnum.valueOf(status), SkillEnum.valueOf(skill));
+       if(theme != null) {
+           viewSets = sets.findByTheme(theme);
        } else {
            viewSets = sets.findAll();
        }
