@@ -86,7 +86,7 @@ module.exports = {
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
-                    // sets = [];
+                    
                     angular.copy(response.data.setViews, sets);
 
 
@@ -109,11 +109,7 @@ module.exports = {
                 return $http.post("/add-set/" + num).then(function (response) {
                     console.log(response);
                     return response.data;
-                    // let info = response.data;
-                    // console.log(info);
-
                 })
-
             },
 
             showParts(item) {
@@ -150,13 +146,11 @@ module.exports = {
                 return status;
             },
 
-            //     console.log(response);
-            // })
-
+            
             getFilters() {
-                $http.get("/filters/").then(function (response) {
+                return $http.get("/filters/").then(function (response) {
                     console.log(response);
-                    return response;
+                    return response.data;
                 })
             },
         };

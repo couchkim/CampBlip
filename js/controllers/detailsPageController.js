@@ -14,12 +14,12 @@ module.exports = {
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-
+    
         $scope.getParts = function (item) {
             CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
-        // console.log('detail page controller working');
+
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.status);
         }
