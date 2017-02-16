@@ -1,5 +1,6 @@
 package com.theironyard.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.theironyard.datamodels.SkillEnum;
 import com.theironyard.datamodels.StatusEnum;
 
@@ -48,6 +49,7 @@ public class Set {
 
     private String notes;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "set")
     private List<SetPart> setParts;
 
@@ -155,11 +157,30 @@ public class Set {
         this.notes = notes;
     }
 
+//    @OneToMany(mappedBy = "set")
     public List<SetPart> getSetParts() {
         return setParts;
     }
 
     public void setSetParts(List<SetPart> setParts) {
         this.setParts = setParts;
+    }
+
+    @Override
+    public String toString() {
+        return "Set{" +
+                "id=" + id +
+                ", setNum='" + setNum + '\'' +
+                ", setName='" + setName + '\'' +
+                ", year=" + year +
+                ", numParts=" + numParts +
+                ", theme='" + theme + '\'' +
+                ", setImgUrl='" + setImgUrl + '\'' +
+                ", setBuildUrl='" + setBuildUrl + '\'' +
+                ", statusEnum=" + statusEnum +
+                ", skillEnum=" + skillEnum +
+                ", notes='" + notes + '\'' +
+                ", setParts=" + setParts +
+                '}';
     }
 }

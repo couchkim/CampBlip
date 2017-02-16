@@ -325,7 +325,11 @@ module.exports = {
         
 
         $scope.newSet = function () {
-            $scope.newInfo = CampService.addSet($scope.setNumber);
+            CampService.addSet($scope.setNumber).then(function(response){
+                $scope.newInfo = response;
+                console.log(response);
+            })
+                ;
             console.log($scope.newInfo);
             $scope.setNumber = '';
            
@@ -359,12 +363,12 @@ module.exports = {
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-
+    
         $scope.getParts = function (item) {
             CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
-        // console.log('detail page controller working');
+
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.status);
         }
@@ -409,16 +413,16 @@ module.exports = {
     name: "instructionsPageController",
     func: function ($scope, CampService, $stateParams) {
 
-       const partSet = ($stateParams.single);
-       console.log("parts");
-       $scope.partSet = CampService.getSet(partSet);
-       console.log($scope.partSet);
+        const partSet = ($stateParams.single);
+        console.log("parts");
 
-       $scope.instructions = $scope.partSet.instructions;
-       console.log($scope.instructions);
-       
-            // console.log('parts page controller working');
-        
+        $scope.partSet = CampService.getSet(partSet);
+        console.log($scope.partSet);
+
+        $scope.instructions = $scope.partSet.instructions;
+        console.log($scope.instructions);
+
+
 
     },
 }
@@ -463,32 +467,55 @@ module.exports = {
     func: function ($scope, CampService) {
 
 
-// all of these arrays will be populated from the initial page load JSON response
+        // all of these arrays will be populated from the initial page load JSON response
 
-        $scope.levels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
+        $scope.levels = [];
+        $scope.available = [];
+        $scope.themes = [];
 
-        $scope.available = ['Available', 'Checked Out', 'Missing Pieces', 'On Display'];
+        // $scope.levels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
 
-        $scope.themes = ['Advanced Models', 'Agents', 'Alien Conquest', 'Aqua Raiders', 'Architecture', 'Atlantis', 'Batman', 'Bionicle', 'Cars2', 'Castle',
-            'Chima', 'City', 'Creator', 'Dino', 'Friends', 'Galaxy Squad', 'Ghostbusters', 'Harry Potter', 'Hero Factory', 'Hobbit', 'Ideas', 'Indiana Jones', 'Lego Movie',
-            'Lone Ranger', 'Lord of the Rings', 'Mars Mission', 'Minecraft', 'Monster Fighters', 'Ninjago', 'Power Miners', 'Prince of Persia', 'Racers', 'Scooby Doo', 'Space Police',
-            'Speed Champions', 'Spongebob', 'Sports', 'Star Wars', 'Super Heroes', 'Technic', 'Teenage Mutant Ninja Turtles',
-            'The Simpsons', 'Toy Story', 'Ultra Agents', 'Vintage', 'Wall-E'];
+        // $scope.available = ['Available', 'Checked Out', 'Missing Pieces', 'On Display'];
+
+        // $scope.themes = ['Advanced Models', 'Agents', 'Alien Conquest', 'Aqua Raiders', 'Architecture', 'Atlantis', 'Batman', 'Bionicle', 'Cars2', 'Castle',
+        //     'Chima', 'City', 'Creator', 'Dino', 'LEGO Friends', 'Galaxy Squad', 'Ghostbusters', 'Harry Potter', 'Hero Factory', 'Hobbit', 'Ideas', 'Indiana Jones', 'Lego Movie',
+        //     'Lone Ranger', 'Lord of the Rings', 'Mars Mission', 'Minecraft', 'Monster Fighters', 'Ninjago', 'Power Miners', 'Prince of Persia', 'Racers', 'Scooby-Doo', 'Space Police',
+        //     'Speed Champions', 'Spongebob', 'Sports', 'Star Wars TM', 'Super Heroes', 'Technic', 'Teenage Mutant Ninja Turtles',
+        //     'The Simpsons', 'Toy Story', 'Ultra Agents', 'Vintage', 'Wall-E'];
 
         $scope.byName = '';
         $scope.byNumber = '';
         $scope.byTheme = '';
         $scope.byLevel = '';
         $scope.byStatus = '';
+        $scope.filters = '';
+
+
+        // const filters = function () {
+        $scope.filters = function () {
+            CampService.getFilters().then(function (response) {
+                $scope.levels = response.skills;
+                $scope.available = response.status;
+                $scope.themes = response.themes;
+
+                console.log(response);
+            });
+            // console.log(filters);
+        }
+
+
+
+
 
         $scope.viewSets = function () {
             $scope.sets = CampService.getSets();
             console.log($scope.sets);
         };
 
-         $scope.viewSearchSets = function () {
-            $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
-            $scope.byTheme, $scope.byLevel, $scope.byStatus);
+        $scope.viewSearchSets = function () {
+            // $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
+            // $scope.byTheme, $scope.byLevel, $scope.byStatus);
+            $scope.sets = CampService.getSearchSets($scope.byTheme);
             console.log($scope.sets);
         };
 
@@ -575,9 +602,10 @@ module.exports = {
                 return sets;
             },
 
-            getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+            // getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+            getSearchSets(themeFilter) {
 
-                $http.get("/sets").then(function (response) {
+                $http.get("/sets/?theme=" + themeFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
@@ -590,6 +618,7 @@ module.exports = {
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
+                    
                     angular.copy(response.data.setViews, sets);
 
 
@@ -609,14 +638,10 @@ module.exports = {
 
             addSet(num) {
 
-                $http.post("/add-set/" + num).then(function (response) {
+                return $http.post("/add-set/" + num).then(function (response) {
                     console.log(response);
                     return response.data;
-                    // let info = response.data;
-                    // console.log(info);
-
                 })
-
             },
 
             showParts(item) {
@@ -648,14 +673,19 @@ module.exports = {
                 } else {
 
                     status = "AVAILABLE";
-                    
+
                 }
                 return status;
             },
 
-            //     console.log(response);
-            // })
-        }
+            
+            getFilters() {
+                return $http.get("/filters/").then(function (response) {
+                    console.log(response);
+                    return response.data;
+                })
+            },
+        };
 
     },
 };

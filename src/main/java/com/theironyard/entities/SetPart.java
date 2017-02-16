@@ -54,18 +54,26 @@ public class SetPart {
         this.id = id;
     }
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "set_id")
     public Set getSet() {
         return set;
     }
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "set_id")
     public void setSet(Set set) {
         this.set = set;
     }
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "part_id")
     public Part getPart() {
         return part;
     }
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "part_id")
     public void setPart(Part part) {
         this.part = part;
     }

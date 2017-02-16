@@ -74,11 +74,11 @@ public class CampBlipController {
                 s.setSkillEnum(SkillEnum.valueOf(skill));
             }
             ExampleMatcher matcher = ExampleMatcher.matching()
+                    .withIgnoreCase()
                     .withIgnoreNullValues();
             viewSets = (List) sets.findAll(Example.of(s,matcher));
 
         SetViewModel model = new SetViewModel();
-
         for ( Set viewSet : viewSets) {
             SetView setView = new SetView(
                     viewSet.getSetName(),
@@ -134,7 +134,7 @@ public class CampBlipController {
                 newApiSet.getSet_img_url(),
                 legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
                 AVAILABLE,
-                SetHelper.setSkill(newApiParts.getCount()),
+                SetHelper.setSkill(newApiSet.getNum_parts()),
                 null);
         newSet = sets.save(newSet);
         for (int i = 0; i < newApiParts.getCount(); i++) {
@@ -181,8 +181,16 @@ public class CampBlipController {
         return model;
     }
 
-//    @RequestMapping (path = "/status", method = RequestMethod.POST)
-//    public Set updateStatus(@PathVariable("set_id") int setId, String status)
+    @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
+    public Set updateStatus(@PathVariable("set_id") int setId, String status) {
+        Set update = sets.findById(setId);
+        System.out.println(update);
+        update.setStatusEnum(StatusEnum.valueOf(status));
+        System.out.println(update);
+        sets.save(update);
+
+        return sets.findById(setId);
+    }
 
 //    @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
 //    public  (@PathVariable("set_id") int setId) {
