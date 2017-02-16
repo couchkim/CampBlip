@@ -67,10 +67,10 @@ public class CampBlipController {
         Set s = new Set();
 
             s.setTheme(theme);
-            if(status != null) {
+            if(status != null && status.length() != 0) {
                 s.setStatusEnum(StatusEnum.valueOf(status));
             }
-            if(skill != null) {
+            if(skill != null && skill.length() != 0) {
                 s.setSkillEnum(SkillEnum.valueOf(skill));
             }
             ExampleMatcher matcher = ExampleMatcher.matching()
@@ -167,7 +167,7 @@ public class CampBlipController {
         return model;
     }
 
-    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
+    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST) //TODO: change this to a get instead of a post
     public Set setPage(@PathVariable("set_id") int setId) {
         return sets.findById(setId);
     }
