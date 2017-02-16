@@ -71,7 +71,6 @@ public class CampBlipController {
             if (setNum != null && setNum.length() != 0) {
                 s.setSetNum(setNum);
             }
-
             if(theme != null && theme.length() != 0) {
                 s.setTheme(theme);
             }
@@ -102,10 +101,10 @@ public class CampBlipController {
                     viewSet.getTheme(),
                     viewSet.getStatusEnum(),
                     viewSet.getSkillEnum(),
-                    "inv_date Currently Unavailable",
-                    "inv_name Currently unavailable",
-                    false,
-                    "last_checkout Currently Unavailable",
+                    "inv_date Currently Unavailable", //ToDo: populate
+                    "inv_name Currently unavailable",//ToDo: populate
+                    false, //todo:populate and add as a enum
+                    "last_checkout Currently Unavailable", //Todo:
                     42, //TODO: Count all the inventory parts
                     viewSet.getNotes());
             model.getSetViews().add(setView);
@@ -178,7 +177,7 @@ public class CampBlipController {
         return model;
     }
 
-    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST) //TODO: change this to a get instead of a post
+    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET) //TODO: change this to a get instead of a post
     public Set setPage(@PathVariable("set_id") int setId) {
         return sets.findById(setId);
     }
@@ -197,6 +196,7 @@ public class CampBlipController {
         Set update = sets.findById(setId);
         System.out.println(update);
         update.setStatusEnum(StatusEnum.valueOf(status));
+
         System.out.println(update);
         sets.save(update);
 
