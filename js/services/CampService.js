@@ -71,9 +71,9 @@ module.exports = {
             },
 
             // getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
-            getSearchSets(themeFilter) {
+            getSearchSets(themeFilter, statFilter, levelFilter) {
 
-                $http.get("/sets/?theme=" + themeFilter).then(function (response) {
+                $http.get("/sets/?theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
@@ -96,7 +96,7 @@ module.exports = {
             },
 
             getSet(id) {
-
+// if length is 0, make getSets request and then iterate over it.  promises
                 for (let i = 0; i < sets.length; i++) {
                     if (sets[i].setNumber === id) {
                         return sets[i];

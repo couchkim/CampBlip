@@ -29,16 +29,16 @@ module.exports = {
 
 
         // const filters = function () {
-        $scope.filters = function () {
-            CampService.getFilters().then(function (response) {
+        // $scope.filters = function () {
+        CampService.getFilters().then(function (response) {
                 $scope.levels = response.skills;
                 $scope.available = response.status;
                 $scope.themes = response.themes;
 
                 console.log(response);
             });
-            // console.log(filters);
-        }
+          
+        // }
 
 
 
@@ -52,7 +52,7 @@ module.exports = {
         $scope.viewSearchSets = function () {
             // $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
             // $scope.byTheme, $scope.byLevel, $scope.byStatus);
-            $scope.sets = CampService.getSearchSets($scope.byTheme);
+            $scope.sets = CampService.getSearchSets($scope.byTheme, $scope.byStatus, $scope.byLevel);
             console.log($scope.sets);
         };
 

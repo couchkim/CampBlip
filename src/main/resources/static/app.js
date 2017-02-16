@@ -411,7 +411,7 @@ module.exports = {
 module.exports = {
 
     name: "instructionsPageController",
-    func: function ($scope, CampService, $stateParams) {
+    func: function ($scope, $sce, $http, CampService, $stateParams) {
 
         const partSet = ($stateParams.single);
         console.log("parts");
@@ -419,7 +419,17 @@ module.exports = {
         $scope.partSet = CampService.getSet(partSet);
         console.log($scope.partSet);
 
-        $scope.instructions = $scope.partSet.instructions;
+        $scope.instructions = $sce.trustAsResourceUrl($scope.partSet.instructions);
+        $http.get($scope.instructions, { responseType: 'arraybuffer' })
+            .then(function (response) {
+                const pdf = new Blob([response.data], {
+                    type: 'application/pdf',
+                });
+
+                const url = URL.createObjectURL(pdf);
+                $scope.knowledge = $sce.trustAsResourceUrl(url);
+                console.log(url);
+            });
         console.log($scope.instructions);
 
 
@@ -492,16 +502,16 @@ module.exports = {
 
 
         // const filters = function () {
-        $scope.filters = function () {
-            CampService.getFilters().then(function (response) {
+        // $scope.filters = function () {
+        CampService.getFilters().then(function (response) {
                 $scope.levels = response.skills;
                 $scope.available = response.status;
                 $scope.themes = response.themes;
 
                 console.log(response);
             });
-            // console.log(filters);
-        }
+          
+        // }
 
 
 
@@ -515,7 +525,7 @@ module.exports = {
         $scope.viewSearchSets = function () {
             // $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
             // $scope.byTheme, $scope.byLevel, $scope.byStatus);
-            $scope.sets = CampService.getSearchSets($scope.byTheme);
+            $scope.sets = CampService.getSearchSets($scope.byTheme, $scope.byStatus, $scope.byLevel);
             console.log($scope.sets);
         };
 
@@ -603,9 +613,9 @@ module.exports = {
             },
 
             // getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
-            getSearchSets(themeFilter) {
+            getSearchSets(themeFilter, statFilter, levelFilter) {
 
-                $http.get("/sets/?theme=" + themeFilter).then(function (response) {
+                $http.get("/sets/?theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
@@ -628,7 +638,7 @@ module.exports = {
             },
 
             getSet(id) {
-
+// if length is 0, make getSets request and then iterate over it.  promises
                 for (let i = 0; i < sets.length; i++) {
                     if (sets[i].setNumber === id) {
                         return sets[i];
