@@ -15,7 +15,7 @@ import java.util.List;
 public class Set {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @Column(nullable = false)
     String setNum;
@@ -24,10 +24,10 @@ public class Set {
     String setName;
 
     @Column(nullable = false)
-    private int year;
+    private Integer year;
 
     @Column(nullable = false)
-    private int numParts;
+    private Integer numParts;
 
     @Column(nullable = false)
     private String theme;
@@ -54,7 +54,7 @@ public class Set {
     public Set() {
     }
 
-    public Set(String setNum, String setName, int year, int numParts, String theme, String setImgUrl, String setBuildUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
+    public Set(String setNum, String setName, Integer year, Integer numParts, String theme, String setImgUrl, String setBuildUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
         this.setNum = setNum;
         this.setName = setName;
         this.year = year;
@@ -67,11 +67,11 @@ public class Set {
         this.notes = notes;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -91,19 +91,19 @@ public class Set {
         this.setName = setName;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public int getNumParts() {
+    public Integer getNumParts() {
         return numParts;
     }
 
-    public void setNumParts(int numParts) {
+    public void setNumParts(Integer numParts) {
         this.numParts = numParts;
     }
 

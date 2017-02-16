@@ -23,6 +23,8 @@ import com.theironyard.viewmodels.PartViewModel;
 import com.theironyard.viewmodels.SetView;
 import com.theironyard.viewmodels.SetViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,6 +34,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.theironyard.datamodels.StatusEnum.AVAILABLE;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
 /**
  * Created by graceconnelly on 2/7/17.
@@ -59,15 +63,20 @@ public class CampBlipController {
 
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String theme, String status, String skill) {
-       List<Set> viewSets = new ArrayList<>();
+        List<Set> viewSets = new ArrayList<Set>();
+        Set s = new Set();
 
+            s.setTheme(theme);
+            if(status != null) {
+                s.setStatusEnum(StatusEnum.valueOf(status));
+            }
+            if(skill != null) {
+                s.setSkillEnum(SkillEnum.valueOf(skill));
+            }
+            ExampleMatcher matcher = ExampleMatcher.matching()
+                    .withIgnoreNullValues();
+            viewSets = (List) sets.findAll(Example.of(s,matcher));
 
-
-       if(theme != null) {
-           viewSets = sets.findByTheme(theme);
-       } else {
-           viewSets = sets.findAll();
-       }
         SetViewModel model = new SetViewModel();
 
         for ( Set viewSet : viewSets) {
@@ -171,6 +180,9 @@ public class CampBlipController {
         model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
         return model;
     }
+
+//    @RequestMapping (path = "/status", method = RequestMethod.POST)
+//    public Set updateStatus(@PathVariable("set_id") int setId, String status)
 
 //    @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
 //    public  (@PathVariable("set_id") int setId) {
