@@ -357,11 +357,14 @@ module.exports = {
             'Alexander Paschal', 'Holden Harrell'];
 
         $scope.camperList = '';
+        
 
         const id = ($stateParams.single);
 
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
+
+        // $scope.item.status = '';
 
     
         $scope.getParts = function (item) {
@@ -370,7 +373,7 @@ module.exports = {
         }
 
         $scope.checkToggle = function () {
-            $scope.item.status = CampService.changeStatus($scope.item.status);
+            $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
         }
 
     },
@@ -590,8 +593,6 @@ module.exports = {
             },
 
             getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
-            // getSearchSets(themeFilter, statFilter, levelFilter) {
-
                 $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
@@ -605,7 +606,7 @@ module.exports = {
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
-                    
+
                     angular.copy(response.data.setViews, sets);
 
 
@@ -615,7 +616,7 @@ module.exports = {
             },
 
             getSet(id) {
-// if length is 0, make getSets request and then iterate over it.  promises
+                // if length is 0, make getSets request and then iterate over it.  promises
                 for (let i = 0; i < sets.length; i++) {
                     if (sets[i].setNumber === id) {
                         return sets[i];
@@ -652,20 +653,20 @@ module.exports = {
                 // })
             },
 
-            changeStatus(status) {
-                // $http.post("/campers/").then(function (response) {
+            changeStatus(set, status) {
+
                 if (status === "AVAILABLE") {
-                    status = "CHECKED OUT";
+                    status = "CHECKED_OUT";
                     // return status;
                 } else {
-
                     status = "AVAILABLE";
-
-                }
+                };
+                $http.post("/set/status/" + set + "/?status=" + status).then(function (response) {
+                });
                 return status;
             },
 
-            
+
             getFilters() {
                 return $http.get("/filters/").then(function (response) {
                     console.log(response);

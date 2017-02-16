@@ -8,11 +8,14 @@ module.exports = {
             'Alexander Paschal', 'Holden Harrell'];
 
         $scope.camperList = '';
+        
 
         const id = ($stateParams.single);
 
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
+
+        // $scope.item.status = '';
 
     
         $scope.getParts = function (item) {
@@ -21,7 +24,7 @@ module.exports = {
         }
 
         $scope.checkToggle = function () {
-            $scope.item.status = CampService.changeStatus($scope.item.status);
+            $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
         }
 
     },
