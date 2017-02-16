@@ -62,9 +62,16 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
-    public SetViewModel setsPage(String theme, String status, String skill) {
+    public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
         List<Set> viewSets = new ArrayList<Set>();
         Set s = new Set();
+            if (setName != null && setName.length() != 0) {
+                s.setSetName(setName);
+            }
+            if (setNum != null && setNum.length() != 0) {
+                s.setSetNum(setNum);
+            }
+
             if(theme != null && theme.length() != 0) {
                 s.setTheme(theme);
             }
@@ -76,7 +83,10 @@ public class CampBlipController {
             }
             ExampleMatcher matcher = ExampleMatcher.matching()
                     .withIgnoreCase()
-                    .withIgnoreNullValues();
+                    .withIgnoreNullValues()
+                    .withMatcher("setName", contains())
+                    .withMatcher("setNum", contains());
+
             viewSets = (List) sets.findAll(Example.of(s,matcher));
 
         SetViewModel model = new SetViewModel();
