@@ -70,10 +70,10 @@ module.exports = {
                 return sets;
             },
 
-            // getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
-            getSearchSets(themeFilter, statFilter, levelFilter) {
+            getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
+            // getSearchSets(themeFilter, statFilter, levelFilter) {
 
-                $http.get("/sets/?theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
+                $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
                     // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
                     console.log(response);
 
