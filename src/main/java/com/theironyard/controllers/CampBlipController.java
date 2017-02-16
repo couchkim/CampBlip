@@ -65,8 +65,9 @@ public class CampBlipController {
     public SetViewModel setsPage(String theme, String status, String skill) {
         List<Set> viewSets = new ArrayList<Set>();
         Set s = new Set();
-
-            s.setTheme(theme);
+            if(theme != null && theme.length() != 0) {
+                s.setTheme(theme);
+            }
             if(status != null && status.length() != 0) {
                 s.setStatusEnum(StatusEnum.valueOf(status));
             }
