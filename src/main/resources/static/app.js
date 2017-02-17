@@ -452,9 +452,19 @@ module.exports = {
 
        $scope.parts = $scope.partSet.parts;
        console.log($scope.parts);
+
+       $scope.partQty = '';
+       $scope.checked = '';
+
+       $scope.changeQty = function(part){
+            // $scope.changeQty = function(qty, part){
+        //    $scope.partQty = part;
+            //   qty = part.setQty;
+              part.invQty = part.setQty;
+       }
            
            
-            // console.log('parts page controller working');
+       
         
 
     },

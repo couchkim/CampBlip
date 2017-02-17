@@ -15,9 +15,10 @@
         <li class="onePart" ng-repeat="part in parts">
             <section class="partDisplay">
                 <div class="partBoxes">
-                    <input class="complete" type="checkbox">
-                    <input class="num" type="number">
-                    <p>{{ part.invQty }}</p>
+                    <input class="complete" type="checkbox" ng-change = "changeQty(part)" ng-model = "checked">
+                    <!--<input class="complete" type="checkbox" ng-checked = "changeQty( $scope.partQty, {{ part.invQty }} )">-->
+                    <input class="num" type="number" ng-model ="part.invQty">
+                    <p>{{ part.setQty }}</p>
                 </div>
 
                 <div class="partPic">
@@ -27,7 +28,7 @@
                 <div class="partInfo">
                     <p class = "partName"> {{ part.name }} </p>
                     <p> {{ part.color }} </p>
-                    <p> Need: {{ part.invQty }}</p>
+                    <p> Need: {{ part.setQty }}</p>
                     <p> #{{ part.elementId }} </p>
                 </div>
             </section>
