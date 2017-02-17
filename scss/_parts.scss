@@ -3,10 +3,30 @@
 }
 
 
+#finalSave, #inProgress{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 8px 16px;
+        background-color: $orange-color;
+        text-align: center;
+        border-radius: $radius-default;
+        border: 3px solid $gray-color;
+        color: $creme-color;
+        font-family: $primary-font;
+        display: inline-block;
+};
+
+
 #partHeader{
     margin-bottom: 10px;
     @include grid-column(12);
+    // position: fixed;
+    // top: 250px;
     text-align: center;
+    // padding: 10px;
+    // background: $blue-color;
+    // border: 1px solid $creme-color;
+    // border-radius: $radius-default;
 
         h1{
             margin:0;
