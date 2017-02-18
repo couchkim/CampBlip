@@ -1,5 +1,7 @@
 package com.theironyard.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class Part {
     private String color;
 
     @OneToMany(mappedBy = "part")
+    @JsonIgnore
     private List<SetPart> setParts = new ArrayList<SetPart>();
 
     public Part() {

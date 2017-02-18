@@ -1,4 +1,4 @@
-package com.theironyard.datamodels;
+package com.theironyard.datamodels.Enums;
 
 /**
  * Created by graceconnelly on 2/7/17.

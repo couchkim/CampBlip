@@ -1,6 +1,6 @@
 package com.theironyard.helpers;
 
-import com.theironyard.datamodels.SkillEnum;
+import com.theironyard.datamodels.Enums.SkillEnum;
 
 import java.util.HashMap;
 import java.util.Map;

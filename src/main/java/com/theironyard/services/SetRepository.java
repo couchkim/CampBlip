@@ -1,10 +1,9 @@
 package com.theironyard.services;
 
-import com.theironyard.datamodels.SkillEnum;
-import com.theironyard.datamodels.StatusEnum;
+import com.theironyard.datamodels.Enums.SkillEnum;
+import com.theironyard.datamodels.Enums.StatusEnum;
 import com.theironyard.entities.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

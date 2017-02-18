@@ -1,8 +1,5 @@
 package com.theironyard.viewmodels;
 
-import com.theironyard.datamodels.SkillEnum;
-import com.theironyard.datamodels.StatusEnum;
-
 import java.util.List;
 
 /**
