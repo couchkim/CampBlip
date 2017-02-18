@@ -14,7 +14,7 @@ import java.util.List;
  * Created by graceconnelly on 2/10/17.
  */
 public interface SetPartRepository extends JpaRepository<SetPart, Integer> {
-    @Query("select new com.theironyard.viewmodels.PartView(s.id, p.name, p.color, p.partUrl, p.elementId, sp.setQty, sp.invQty, sp.id) from SetPart sp " +
+    @Query("select new com.theironyard.viewmodels.PartView(s.id, p.name, p.color, p.partUrl, p.elementId, sp.setQty, sp.invQty, sp.currInv, sp.id) from SetPart sp " +
             "join sp.part p" +
             " join sp.set s" +
             " where s.id = :setId")

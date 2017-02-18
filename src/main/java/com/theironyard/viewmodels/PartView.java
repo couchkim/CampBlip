@@ -11,13 +11,13 @@ public class PartView {
     Integer elementId;
     Integer setQty;
     Integer invQty;
-    Integer currInvQty;
+    Integer currInv;
     Integer setPartId;
 
     public PartView() {
     }
 
-    public PartView(Integer setId, String name, String color, String partUrl, Integer elementId, Integer setQty, Integer invQty, Integer currInvQty, Integer setPartId) {
+    public PartView(Integer setId, String name, String color, String partUrl, Integer elementId, Integer setQty, Integer invQty, Integer currInv, Integer setPartId) {
         this.setId = setId;
         this.name = name;
         this.color = color;
@@ -25,7 +25,7 @@ public class PartView {
         this.elementId = elementId;
         this.setQty = setQty;
         this.invQty = invQty;
-        this.currInvQty = currInvQty;
+        this.currInv = currInv;
         this.setPartId = setPartId;
     }
 
@@ -85,12 +85,12 @@ public class PartView {
         this.invQty = invQty;
     }
 
-    public Integer getCurrInvQty() {
-        return currInvQty;
+    public Integer getCurrInv() {
+        return currInv;
     }
 
-    public void setCurrInvQty(Integer currInvQty) {
-        this.currInvQty = currInvQty;
+    public void setCurrInv(Integer currInv) {
+        this.currInv = currInv;
     }
 
     public Integer getSetPartId() {

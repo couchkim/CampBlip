@@ -76,10 +76,9 @@ public class CampBlipController {
 //                e.printStackTrace();
 //            }
 //        }
-
-        if (sets.count() == 0 && setParts.count() == 0 && parts.count() == 0) {
-            addNewSet("4866");
-        }
+//        if (sets.count() == 0 && setParts.count() == 0 && parts.count() == 0) {
+//            addNewSet("4866");
+//        }
     }
 
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
@@ -147,16 +146,30 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.POST)
-    public int setPartInv(@RequestBody Integer[] setPartInv) {
-        SetPart updateSP = setParts.findFirstById(setPartInv[0]);
-        Set updateS = sets.findById(updateSP.getSet().getId());
-        updateS.setInvStatus(IN_PROGRESS);
-        updateSP.setInvQty(setPartInv[1]);
-        setParts.save(updateSP);
-        return 1;
+    public Integer [] setPartInv(@PathVariable("set_id") int setId, @RequestBody Integer[] setPartInv) {
+        if(setPartInv != null) {
+            Set updateS = sets.findById(setId);
+            if (setPartInv.equals(new Integer[] {9999,9999})) {
+                //Update all of the set parts to store the current inventory as the previous inventory
+                // set current inventory to null
+                // set the inventory flag to complete.
+                for (SetPart part : updateS.getSetParts()) {
+                    part.setInvQty(part.getCurrInv());
+                    part.setCurrInv(null);
+                    setParts.save(part);
+                }
+                updateS.setInvStatus(COMPLETE);
+            }
+            SetPart updateSP = setParts.findFirstById(setPartInv[0]);
+            updateS.setInvStatus(IN_PROGRESS);
+            updateSP.setCurrInv(setPartInv[1]);
+            sets.save(updateS);
+            setParts.save(updateSP);
+            return setPartInv;
+        }
+        return new Integer[2];
     }
-
-    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET) //TODO: change this to a get instead of a post
+    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET)
     public Set setPage(@PathVariable("set_id") Integer setId) {
         return sets.findById(setId);
     }
@@ -186,6 +199,33 @@ public class CampBlipController {
     public void deleteSet(@PathVariable("set_id") Integer setId) {
     }
 
+    @RequestMapping (path = "/add-all-sets", method = RequestMethod.POST)
+    public List<String> addAllSets () {
+        if (sets.count() == 0) {
+            try {
+                File csvSets = new File("LegoSets.csv");
+                Scanner fileScanner = new Scanner(csvSets);
+                List<String> seedSets = new ArrayList<>();
+                while (fileScanner.hasNext()) {
+                    String line = fileScanner.nextLine();
+                    String[] columns = line.split(",");
+                    seedSets.add(columns[0].replaceAll("\\s+",""));
+                }
+                System.out.println(seedSets.toString());
+                for (String setNum : seedSets) {
+                    System.out.println("THIS IS THE SET NUM" + setNum);
+                    addNewSet(setNum);
+                }
+                return seedSets;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return new ArrayList<>();
+    }
+
     public List<String> addNewSet (String setNum) {
 
         Map<String, String> apiSetIds = SetHelper.setCorrectId(setNum);
@@ -197,17 +237,17 @@ public class CampBlipController {
 
         SetImport newApiSet = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/?key={brickKey}", SetImport.class, urlParams);
-        //System.out.println(newApiSet.toString());
+        System.out.println(newApiSet.toString());
         urlParams.put("theme_id", Integer.toString(newApiSet.getTheme_id()));
         ThemeImport newApiThemes = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}", ThemeImport.class, urlParams);
-        //System.out.println(newApiThemes.toString());
+        System.out.println(newApiThemes.toString());
         PartImport newApiParts = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/parts/?key={brickKey}", PartImport.class, urlParams);
-        //System.out.println(newApiParts.toString());
+        System.out.println(newApiParts.toString());
         LegoWebImport fromlego = restTemplate.getForObject(
                 "https://www.lego.com/service/biservice/search?fromIndex=0&locale=en-US&onlyAlternatives=false&prefixText={lego_set_num}", LegoWebImport.class, urlParams);
-        //System.out.println(fromlego.toString());
+        System.out.println(fromlego.toString());
         Product legoProducts = fromlego.getProducts().get(0);
         Set newSet = new Set(
                 newApiSet.getSet_num(),
