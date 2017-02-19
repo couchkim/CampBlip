@@ -15,8 +15,7 @@
         <li class="onePart" ng-repeat="part in parts">
             <section class="partDisplay">
                 <div class="partBoxes">
-                    <input class="complete" type="checkbox" ng-change = "changeQty(part)" ng-model = "checked">
-                    <!--<input class="complete" type="checkbox" ng-checked = "changeQty( $scope.partQty, {{ part.invQty }} )">-->
+                    <input class="complete" type="checkbox" ng-change = "changeQty(partSet.setId, part)" ng-model = "checked">
                     <input class="num" type="number" ng-change = "sendQty(partSet.setId, part)" ng-model ="part.currInv">
                     <p>{{ part.setQty }}</p>
                 </div>

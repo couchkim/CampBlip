@@ -14,11 +14,11 @@ module.exports = {
        $scope.partQty = '';
        $scope.checked = '';
 
-       $scope.changeQty = function(part){
-            // $scope.changeQty = function(qty, part){
-        //    $scope.partQty = part;
-            //   qty = part.setQty;
+       $scope.changeQty = function(set, part){
               part.currInv = part.setQty;
+              CampService.updateQty(set, part.setPartId, part.currInv);
+              console.log(set, part.setPartId, part.currInv);
+
        };
 
          $scope.sendQty = function(set, part){   
