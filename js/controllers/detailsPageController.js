@@ -15,8 +15,6 @@ module.exports = {
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-        // $scope.item.status = '';
-
     
         $scope.getParts = function (item) {
             CampService.showParts(item);

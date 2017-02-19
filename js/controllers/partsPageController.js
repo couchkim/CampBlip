@@ -13,6 +13,7 @@ module.exports = {
 
        $scope.partQty = '';
        $scope.checked = '';
+      
 
        $scope.changeQty = function(set, part){
               part.currInv = part.setQty;
@@ -26,7 +27,6 @@ module.exports = {
            console.log(set, part.setPartId, part.currInv);
 
          };
-       
         
 
     },
