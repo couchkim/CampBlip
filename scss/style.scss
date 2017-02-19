@@ -24,9 +24,12 @@ body{
     margin-left:22%;
     margin-right: 5%;
     border-radius: $radius-default;
+    
 }
 
 main{
+    // background-image: url('images/legopile.png');
+    padding: 25px 10px;
     background-color:$blue-color;
     height: 100%;
     color: $creme-color;
@@ -40,8 +43,9 @@ main{
 #nav{
      list-style: none;
      width: 20%;
-    height: 95%;
+    height: 90%;
     position: fixed;
+    background-color: $blue-color;
     left: 25px;
     top: 15px;
     overflow: auto;
@@ -53,8 +57,8 @@ main{
      img{
          border-radius: $radius-default;
          width: 90%;
-         margin: 25px 10px;
-         border: 3px solid $gray-color;
+         margin: 0 10px;
+         border: 5px solid $gray-color;
          
      }
      
@@ -81,6 +85,7 @@ color: white;
 }
 
 header{
+    background-image: url('images/pile2.png');
     background-color: $blue-color;
     color: $creme-color;
     width: 95%;
@@ -92,13 +97,18 @@ header{
     
 
     h1{
-        @include grid-column(9.5);
+        @include grid-column(5);
+        background-color: $blue-color;
+        margin-left: 50px;
+        border-radius: $radius-default;
+        border: 3px solid $gray-color;
     }
 
   #login{
-        @include grid-column(2);
+        @include grid-column(6.5);
         padding: 8px 16px;
         margin: 5px 10px;
+        float: right;
          background-color:$orange-color;
         text-align:center;
         border-radius: $radius-default;

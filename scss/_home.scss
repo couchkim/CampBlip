@@ -6,12 +6,13 @@
 #homeText {
     // display: inline-block;
     // width: 95%;
-    background-image: url("/images/freebw.png");
-    background-size: 100%;
+    background-image: url("/images/group.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     margin: 15px;
     border: 15px solid $green-color;
     border-radius: $radius-default;
-    padding: 50px 0px;
+    // padding: 50px 50px;
     
     p{
     text-align: center;
