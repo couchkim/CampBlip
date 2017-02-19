@@ -1,11 +1,11 @@
 package com.theironyard.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.theironyard.datamodels.SkillEnum;
-import com.theironyard.datamodels.StatusEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.theironyard.datamodels.Enums.InvEnum;
+import com.theironyard.datamodels.Enums.SkillEnum;
+import com.theironyard.datamodels.Enums.StatusEnum;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,16 +47,22 @@ public class Set {
     @Enumerated(EnumType.STRING)
     private SkillEnum skillEnum;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private InvEnum invStatus;
+
     private String notes;
 
-    @JsonIgnore
+    private Boolean active;
+
+    @JsonBackReference
     @OneToMany(mappedBy = "set")
     private List<SetPart> setParts;
 
     public Set() {
     }
 
-    public Set(String setNum, String setName, Integer year, Integer numParts, String theme, String setImgUrl, String setBuildUrl, StatusEnum statusEnum, SkillEnum skillEnum, String notes) {
+    public Set(String setNum, String setName, Integer year, Integer numParts, String theme, String setImgUrl, String setBuildUrl, StatusEnum statusEnum, SkillEnum skillEnum, InvEnum invStatus, String notes, Boolean active) {
         this.setNum = setNum;
         this.setName = setName;
         this.year = year;
@@ -66,7 +72,9 @@ public class Set {
         this.setBuildUrl = setBuildUrl;
         this.statusEnum = statusEnum;
         this.skillEnum = skillEnum;
+        this.invStatus = invStatus;
         this.notes = notes;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -149,6 +157,14 @@ public class Set {
         this.skillEnum = skillEnum;
     }
 
+    public InvEnum getInvStatus() {
+        return invStatus;
+    }
+
+    public void setInvStatus(InvEnum invStatus) {
+        this.invStatus = invStatus;
+    }
+
     public String getNotes() {
         return notes;
     }
@@ -157,7 +173,14 @@ public class Set {
         this.notes = notes;
     }
 
-//    @OneToMany(mappedBy = "set")
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     public List<SetPart> getSetParts() {
         return setParts;
     }
@@ -179,8 +202,9 @@ public class Set {
                 ", setBuildUrl='" + setBuildUrl + '\'' +
                 ", statusEnum=" + statusEnum +
                 ", skillEnum=" + skillEnum +
+                ", invStatus=" + invStatus +
                 ", notes='" + notes + '\'' +
-                ", setParts=" + setParts +
+                ", active=" + active +
                 '}';
     }
 }

@@ -4,18 +4,20 @@ package com.theironyard.viewmodels;
  * Created by graceconnelly on 2/12/17.
  */
 public class PartView {
-    int setId;
+    Integer setId;
     String name;
     String color;
     String partUrl;
-    int elementId;
-    int setQty;
-    int invQty;
+    Integer elementId;
+    Integer setQty;
+    Integer invQty;
+    Integer currInv;
+    Integer setPartId;
 
     public PartView() {
     }
 
-    public PartView(int setId,String name, String color, String partUrl, int elementId, int setQty, int invQty) {
+    public PartView(Integer setId, String name, String color, String partUrl, Integer elementId, Integer setQty, Integer invQty, Integer currInv, Integer setPartId) {
         this.setId = setId;
         this.name = name;
         this.color = color;
@@ -23,13 +25,15 @@ public class PartView {
         this.elementId = elementId;
         this.setQty = setQty;
         this.invQty = invQty;
+        this.currInv = currInv;
+        this.setPartId = setPartId;
     }
 
-    public int getSetId() {
+    public Integer getSetId() {
         return setId;
     }
 
-    public void setSetId(int setId) {
+    public void setSetId(Integer setId) {
         this.setId = setId;
     }
 
@@ -57,27 +61,43 @@ public class PartView {
         this.partUrl = partUrl;
     }
 
-    public int getElementId() {
+    public Integer getElementId() {
         return elementId;
     }
 
-    public void setElementId(int elementId) {
+    public void setElementId(Integer elementId) {
         this.elementId = elementId;
     }
 
-    public int getSetQty() {
+    public Integer getSetQty() {
         return setQty;
     }
 
-    public void setSetQty(int setQty) {
+    public void setSetQty(Integer setQty) {
         this.setQty = setQty;
     }
 
-    public int getInvQty() {
+    public Integer getInvQty() {
         return invQty;
     }
 
-    public void setInvQty(int invQty) {
+    public void setInvQty(Integer invQty) {
         this.invQty = invQty;
+    }
+
+    public Integer getCurrInv() {
+        return currInv;
+    }
+
+    public void setCurrInv(Integer currInv) {
+        this.currInv = currInv;
+    }
+
+    public Integer getSetPartId() {
+        return setPartId;
+    }
+
+    public void setSetPartId(Integer setPartId) {
+        this.setPartId = setPartId;
     }
 }

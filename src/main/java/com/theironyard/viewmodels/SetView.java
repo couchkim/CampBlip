@@ -1,10 +1,7 @@
 package com.theironyard.viewmodels;
 
-import com.theironyard.datamodels.SkillEnum;
-import com.theironyard.datamodels.StatusEnum;
-import com.theironyard.entities.Part;
-
-import java.util.List;
+import com.theironyard.datamodels.Enums.SkillEnum;
+import com.theironyard.datamodels.Enums.StatusEnum;
 
 /**
  * Created by graceconnelly on 2/7/17.

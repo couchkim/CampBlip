@@ -20,77 +20,92 @@ public class SetPart {
     @Id
     @GeneratedValue
     @Column(name = "set_part_id")
-    private int id;
+    private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "set_id")
     private Set set;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "part_id")
     private Part part;
 
     @Column(nullable = false, name = "set_qty")
-    private int setQty;
+    private Integer setQty;
 
     @Column(nullable = false, name = "inv_qty")
-    private int invQty;
+    private Integer invQty;
+
+    @Column(nullable = true, name = "curr_inv")
+    private Integer currInv;
+
+    private boolean active;
 
     public SetPart() {
     }
 
-    public SetPart(Set set, Part part, int setQty, int invQty) {
+    public SetPart(Set set, Part part, Integer setQty, Integer invQty, Integer currInv, boolean active) {
         this.set = set;
         this.part = part;
         this.setQty = setQty;
         this.invQty = invQty;
+        this.currInv = currInv;
+        this.active = active;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "set_id")
     public Set getSet() {
         return set;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "set_id")
     public void setSet(Set set) {
         this.set = set;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "part_id")
     public Part getPart() {
         return part;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "part_id")
     public void setPart(Part part) {
         this.part = part;
     }
 
-    public int getSetQty() {
+    public Integer getSetQty() {
         return setQty;
     }
 
-    public void setSetQty(int setQty) {
+    public void setSetQty(Integer setQty) {
         this.setQty = setQty;
     }
 
-    public int getInvQty() {
+    public Integer getInvQty() {
         return invQty;
     }
 
-    public void setInvQty(int invQty) {
+    public void setInvQty(Integer invQty) {
         this.invQty = invQty;
+    }
+
+    public Integer getCurrInv() {
+        return currInv;
+    }
+
+    public void setCurrInv(Integer currInv) {
+        this.currInv = currInv;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
