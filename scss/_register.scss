@@ -2,6 +2,7 @@
     @include grid-row();
     text-align: center;
     color: $creme-color;
+    position:relative;
 }
 
 #costInfo{
@@ -16,7 +17,26 @@
 
     li{
         margin: 5px 0px;
-       
-        
+          
     }
 }
+
+#registerPicOne{
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        width: 175px;
+        transform: rotate(-10deg);
+        border-radius: $radius-default;
+        border: 5px solid $orange-color;
+    }
+
+#registerPicTwo{
+        position: absolute;
+        top: 25px;
+        right: 30px;
+        width: 200px;
+        transform: rotate(7deg);
+        border-radius: $radius-default;
+        border: 5px solid $orange-color;
+    }

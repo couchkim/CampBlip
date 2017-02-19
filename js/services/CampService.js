@@ -96,6 +96,9 @@ module.exports = {
             getSet(id) {
                 // if length is 0, make getSets request and then iterate over it.  promises
                 for (let i = 0; i < sets.length; i++) {
+                    // if (sets.length === 0){
+                    //     getSets();
+                    // }
                     if (sets[i].setNumber === id) {
                         return sets[i];
                     }

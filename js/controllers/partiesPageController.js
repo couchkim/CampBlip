@@ -1,14 +1,11 @@
 module.exports = {
 
-    name: "displayResultsController",
+    name: "partiesPageController",
     func: function ($scope, CampService) {
 
-       
         
+            
         
 
     },
 }
-
-
-
