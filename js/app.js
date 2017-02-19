@@ -73,6 +73,12 @@ app.config(function ($stateProvider) {
     });
 
     $stateProvider.state({
+        name: 'parties-page',
+        url: '/parties',
+        component: 'partiesPage',
+    });
+
+    $stateProvider.state({
         name: 'home',
         url: '',
         component: 'homePage',
@@ -92,6 +98,7 @@ const controllers = [
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
     require('./controllers/aboutPageController'),
+    require('./controllers/partiesPageController'),
 
 
 
@@ -113,7 +120,7 @@ const components = [
     require('./components/accountPage'),
     require('./components/instructionsPage'),
     require('./components/aboutPage'),
-
+    require('./components/partiesPage'),
 
 ];
 

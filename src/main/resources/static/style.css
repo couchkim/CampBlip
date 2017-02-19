@@ -1267,7 +1267,7 @@ button {
   margin: 5px 10px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1292,7 +1292,7 @@ button {
   padding: 8px 16px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1311,7 +1311,7 @@ button {
   margin-right: 10px;
   border: 3px solid #B75321;
   padding: 10px;
-  border-radius: 5px; }
+  border-radius: 10px; }
   #inputs::before, #inputs::after {
     display: table;
     content: ' '; }
@@ -1358,7 +1358,7 @@ select {
 
 #searchResults h1 {
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #B75321;
   width: 95%;
   margin: 10px auto; }
@@ -1373,7 +1373,7 @@ select {
   margin-left: auto;
   margin: 0px 10px;
   border: 3px solid #B75321;
-  border-radius: 5px; }
+  border-radius: 10px; }
   .oneSet::before, .oneSet::after {
     display: table;
     content: ' '; }
@@ -1400,7 +1400,7 @@ select {
     text-decoration: none;
     background-color: #157C2B;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 3px solid #5A5353;
     color: #BAB9A5; }
   .words h2 a:hover {
@@ -1447,7 +1447,7 @@ select {
   width: 90%;
   margin: 0 auto;
   border: 3px solid #B75321;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #B75321;
   padding-left: 0; }
   #costInfo li {
@@ -1500,7 +1500,7 @@ select {
     margin: 2px auto; }
 
 .invData {
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid #5A5353;
   color: #22557C;
   background-color: #BAB9A5;
@@ -1513,7 +1513,7 @@ select {
   margin: 10px auto;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1530,7 +1530,7 @@ select {
   margin: 10px 10px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1560,7 +1560,7 @@ a {
   padding: 8px 16px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1591,7 +1591,7 @@ a {
   padding-left: 0.625rem;
   padding: 10px;
   border: 1px solid #BAB9A5;
-  border-radius: 5px; }
+  border-radius: 10px; }
   @media print, screen and (min-width: 40em) {
     .onePart {
       padding-right: 0.9375rem;
@@ -1707,6 +1707,12 @@ a {
 img {
   width: 200px; }
 
+#partiesPage {
+  text-align: center; }
+  #partiesPage ul {
+    list-style: none;
+    padding-left: 0; }
+
 body {
   background-color: #BAB9A5;
   color: #157C2B;
@@ -1714,13 +1720,13 @@ body {
   margin-top: 2%;
   margin-left: 22%;
   margin-right: 5%;
-  border-radius: 5px; }
+  border-radius: 10px; }
 
 main {
   background-color: #22557C;
   height: 100%;
   color: #BAB9A5;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 25px;
   width: 95%;
   max-width: 75rem;
@@ -1743,7 +1749,7 @@ main {
   overflow: auto;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 5px solid #22557C; }
 
 .navLi a {
@@ -1753,7 +1759,7 @@ main {
   margin: 25px 10px;
   background-color: #157C2B;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   box-shadow: 5px 5px 2px #5A5353; }
@@ -1767,7 +1773,7 @@ header {
   color: #BAB9A5;
   width: 95%;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
@@ -1797,7 +1803,7 @@ header {
     margin: 5px 10px;
     background-color: #B75321;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 3px solid #5A5353;
     color: #BAB9A5;
     font-family: "Fredoka One", sans-serif;
