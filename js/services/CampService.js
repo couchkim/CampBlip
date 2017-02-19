@@ -163,6 +163,15 @@ module.exports = {
                  
                 })
             },
+
+            submitInv(set) {
+                const array = [9999, 9999];
+                 $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
         };
 
     },

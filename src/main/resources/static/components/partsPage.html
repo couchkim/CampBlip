@@ -3,8 +3,7 @@
 
 <div id="partsPage">
     <section id="partHeader">
-        <!--<button id="inProgress">Save in Progress</button>-->
-        <button id="finalSave">Inventory Complete</button>
+        <button id="finalSave" ng-click = "finalQty(partSet.setId)">Inventory Complete</button>
         <h1 class="partsHead">Parts Inventory List</h1>
         <h3> {{ partSet.setName }} </h3>
     </section>

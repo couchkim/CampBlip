@@ -27,6 +27,12 @@ module.exports = {
            console.log(set, part.setPartId, part.currInv);
 
          };
+
+         $scope.finalQty = function(set){   
+           CampService.submitInv(set);
+           
+
+         };
         
 
     },
