@@ -89,7 +89,7 @@ header{
     background-color: $blue-color;
     color: $creme-color;
     width: 95%;
-    // margin-left: 50px;
+  padding: 20px 0;
     margin-bottom: 20px;
     border-radius: $radius-default;
     @include grid-row();
@@ -98,6 +98,8 @@ header{
 
     h1{
         @include grid-column(5);
+        font-size: 2.5em;
+        text-align: center;
         background-color: $blue-color;
         margin-left: 50px;
         border-radius: $radius-default;
