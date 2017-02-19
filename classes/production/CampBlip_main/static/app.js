@@ -74,6 +74,12 @@ app.config(function ($stateProvider) {
     });
 
     $stateProvider.state({
+        name: 'parties-page',
+        url: '/parties',
+        component: 'partiesPage',
+    });
+
+    $stateProvider.state({
         name: 'home',
         url: '',
         component: 'homePage',
@@ -93,6 +99,7 @@ const controllers = [
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
     require('./controllers/aboutPageController'),
+    require('./controllers/partiesPageController'),
 
 
 
@@ -114,7 +121,7 @@ const components = [
     require('./components/accountPage'),
     require('./components/instructionsPage'),
     require('./components/aboutPage'),
-
+    require('./components/partiesPage'),
 
 ];
 
@@ -134,7 +141,7 @@ for (let i = 0; i < services.length; i++) {
 
 
 
-},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partsPage":9,"./components/registerPage":10,"./components/setsPage":11,"./controllers/aboutPageController":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/homePageController":17,"./controllers/instructionsPageController":18,"./controllers/partsPageController":19,"./controllers/registerPageController":20,"./controllers/setsPageController":21,"./services/CampService":22}],2:[function(require,module,exports){
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/aboutPageController":13,"./controllers/accountPageController":14,"./controllers/adminPageController":15,"./controllers/detailsPageController":16,"./controllers/displayResultsController":17,"./controllers/homePageController":18,"./controllers/instructionsPageController":19,"./controllers/partiesPageController":20,"./controllers/partsPageController":21,"./controllers/registerPageController":22,"./controllers/setsPageController":23,"./services/CampService":24}],2:[function(require,module,exports){
 module.exports = {
 
     name: 'aboutPage',
@@ -243,6 +250,22 @@ module.exports = {
 },{}],9:[function(require,module,exports){
 module.exports = {
 
+    name: 'partiesPage',
+    object: {
+
+        templateUrl: 'components/partiesPage.html',
+        bindings: {
+            // item: '<',
+            // onClick: '&', 
+        },
+        controller: 'partiesPageController',
+    }
+
+}
+
+},{}],10:[function(require,module,exports){
+module.exports = {
+
     name: 'partsPage',
     object: {
 
@@ -256,7 +279,7 @@ module.exports = {
 
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = {
 
     name: 'registerPage',
@@ -271,7 +294,7 @@ module.exports = {
     }
 
 }
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = {
 
     name: 'setsPage',
@@ -286,7 +309,7 @@ module.exports = {
     }
 
 }
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = {
 
     name: "aboutPageController",
@@ -298,7 +321,7 @@ module.exports = {
 
     },
 }
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
 
     name: "accountPageController",
@@ -310,7 +333,7 @@ module.exports = {
 
     },
 }
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
 
     name: "adminPageController",
@@ -346,7 +369,7 @@ module.exports = {
 
     },
 }
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
 
     name: "detailsPageController",
@@ -382,14 +405,14 @@ module.exports = {
 
 
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = {
 
     name: "displayResultsController",
     func: function ($scope, CampService) {
 
        
-            // console.log('display results controller working');
+        
         
 
     },
@@ -398,7 +421,7 @@ module.exports = {
 
 
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
 
     name: "homePageController",
@@ -410,7 +433,7 @@ module.exports = {
 
     },
 }
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
 
     name: "instructionsPageController",
@@ -422,24 +445,37 @@ module.exports = {
         $scope.partSet = CampService.getSet(partSet);
         console.log($scope.partSet);
 
-        $scope.instructions = $sce.trustAsResourceUrl($scope.partSet.instructions);
-        $http.get($scope.instructions, { responseType: 'arraybuffer' })
-            .then(function (response) {
-                const pdf = new Blob([response.data], {
-                    type: 'application/pdf',
-                });
+        $scope.instructions = $scope.partSet.instructions;
+        // $scope.instructions = $sce.trustAsResourceUrl($scope.partSet.instructions);
+        // $http.get($scope.instructions, { responseType: 'arraybuffer' })
+        //     .then(function (response) {
+        //         const pdf = new Blob([response.data], {
+        //             type: 'application/pdf',
+        //         });
 
-                const url = URL.createObjectURL(pdf);
-                $scope.knowledge = $sce.trustAsResourceUrl(url);
-                console.log(url);
-            });
-        console.log($scope.instructions);
+        //         const url = URL.createObjectURL(pdf);
+        //         $scope.knowledge = $sce.trustAsResourceUrl(url);
+        //         console.log(url);
+        //     });
+        // console.log($scope.instructions);
 
 
 
     },
 }
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
+module.exports = {
+
+    name: "partiesPageController",
+    func: function ($scope, CampService) {
+
+        
+            
+        
+
+    },
+}
+},{}],21:[function(require,module,exports){
 module.exports = {
 
     name: "partsPageController",
@@ -452,16 +488,30 @@ module.exports = {
 
        $scope.parts = $scope.partSet.parts;
        console.log($scope.parts);
-           
-           
-            // console.log('parts page controller working');
+
+       $scope.partQty = '';
+       $scope.checked = '';
+
+       $scope.changeQty = function(set, part){
+              part.currInv = part.setQty;
+              CampService.updateQty(set, part.setPartId, part.currInv);
+              console.log(set, part.setPartId, part.currInv);
+
+       };
+
+         $scope.sendQty = function(set, part){   
+           CampService.updateQty(set, part.setPartId, part.currInv);
+           console.log(set, part.setPartId, part.currInv);
+
+         };
+       
         
 
     },
 }
 
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = {
 
     name: "registerPageController",
@@ -473,7 +523,7 @@ module.exports = {
 
     },
 }
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = {
 
     name: "setsPageController",
@@ -485,7 +535,7 @@ module.exports = {
         $scope.available = [];
         $scope.themes = [];
 
-    
+
         $scope.byName = '';
         $scope.byNumber = '';
         $scope.byTheme = '';
@@ -493,16 +543,17 @@ module.exports = {
         $scope.byStatus = '';
         $scope.filters = '';
 
+        // CampService.getSets();
 
         CampService.getFilters().then(function (response) {
-                $scope.levels = response.skills;
-                $scope.available = response.status;
-                $scope.themes = response.themes;
+            $scope.levels = response.skills;
+            $scope.available = response.status;
+            $scope.themes = response.themes;
 
-                console.log(response);
-            });
-          
-       
+            console.log(response);
+        });
+
+
 
         $scope.viewSets = function () {
             $scope.sets = CampService.getSets();
@@ -511,15 +562,15 @@ module.exports = {
 
         $scope.viewSearchSets = function () {
             $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
-            $scope.byTheme, $scope.byLevel, $scope.byStatus);
-            // $scope.sets = CampService.getSearchSets($scope.byTheme, $scope.byStatus, $scope.byLevel);
+                $scope.byTheme, $scope.byLevel, $scope.byStatus);
+            
             console.log($scope.sets);
         };
 
 
     },
 }
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = {
 
     name: "CampService",
@@ -618,6 +669,9 @@ module.exports = {
             getSet(id) {
                 // if length is 0, make getSets request and then iterate over it.  promises
                 for (let i = 0; i < sets.length; i++) {
+                    // if (sets.length === 0){
+                    //     getSets();
+                    // }
                     if (sets[i].setNumber === id) {
                         return sets[i];
                     }
@@ -671,6 +725,15 @@ module.exports = {
                 return $http.get("/filters/").then(function (response) {
                     console.log(response);
                     return response.data;
+                })
+            },
+
+            updateQty(set, id, update) {
+                const array = [id, update];
+                 $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
                 })
             },
         };

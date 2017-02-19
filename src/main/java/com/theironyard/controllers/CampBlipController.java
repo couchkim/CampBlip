@@ -82,6 +82,7 @@ public class CampBlipController {
 //        }
     }
 
+    //Gets For Sets
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
         List<Set> viewSets = new ArrayList<Set>();
@@ -133,44 +134,6 @@ public class CampBlipController {
         return model;
     }
 
-    @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
-    public List<String> addSet(@PathVariable("set_num") String setId) {
-        return addNewSet(setId);
-    }
-
-    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
-    public PartViewModel partsPage(@PathVariable("set_id") int setId) {
-        PartViewModel model = new PartViewModel();
-        model.setParts(setParts.partViewFromSetId(setId));
-        model.setSet_name(sets.findById(setId).getSetName());
-        return model;
-    }
-
-    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.POST)
-    public Integer [] setPartInv(@PathVariable("set_id") int setId, @RequestBody Integer[] setPartInv) {
-        if(setPartInv != null) {
-            Set updateS = sets.findById(setId);
-            if (setPartInv.equals(new Integer[] {9999,9999})) {
-                //Update all of the set parts to store the current inventory as the previous inventory
-                // set current inventory to null
-                // set the inventory flag to complete.
-                for (SetPart part : updateS.getSetParts()) {
-                    part.setInvQty(part.getCurrInv());
-                    part.setCurrInv(null);
-                    setParts.save(part);
-                }
-                updateS.setInvStatus(COMPLETE);
-            }
-            SetPart updateSP = setParts.findFirstById(setPartInv[0]);
-            updateS.setInvStatus(IN_PROGRESS);
-            updateSP.setCurrInv(setPartInv[1]);
-            sets.save(updateS);
-            setParts.save(updateSP);
-            return setPartInv;
-        }
-        return new Integer[2];
-    }
-
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET)
     public Set setPage(@PathVariable("set_id") Integer setId) {
         return sets.findById(setId);
@@ -183,6 +146,19 @@ public class CampBlipController {
         model.setSkills(Stream.of(SkillEnum.values()).map(Enum::name).collect(Collectors.toList()));
         model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
         return model;
+    }
+
+    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
+    public PartViewModel partsPage(@PathVariable("set_id") int setId) {
+        PartViewModel model = new PartViewModel();
+        model.setParts(setParts.partViewFromSetId(setId));
+        model.setSet_name(sets.findById(setId).getSetName());
+        return model;
+    }
+    //Posts for Sets
+    @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
+    public List<String> addSet(@PathVariable("set_num") String setId) {
+        return addNewSet(setId);
     }
 
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
@@ -212,7 +188,7 @@ public class CampBlipController {
                 while (fileScanner.hasNext()) {
                     String line = fileScanner.nextLine();
                     String[] columns = line.split(",");
-                    seedSets.add(removeUTF8BOM(columns[0].replaceAll("\\s","")));
+                    seedSets.add(SetHelper.removeUTF8BOM(columns[0].replaceAll("\\s","")));
                 }
                 System.out.println(seedSets.toString());
                 for (String setNum : seedSets) {
@@ -227,7 +203,34 @@ public class CampBlipController {
         }
         return createdSets;
     }
-
+    //Posts for Parts
+    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.POST)
+    public Integer [] setPartInv(@PathVariable("set_id") int setId, @RequestBody Integer[] setPartInv) {
+        if(setPartInv != null) {
+            Set updateS = sets.findById(setId);
+            //Save In progress inventory to last inventoried
+            Integer [] saveArray = new Integer[] {9999,9999};
+            if (Arrays.equals(setPartInv,saveArray)) {
+                //Update all of the set parts to store the current inventory as the previous inventory
+                // set current inventory to null
+                // set the inventory flag to complete.
+                for (SetPart part : updateS.getSetParts()) {
+                    part.setInvQty(part.getCurrInv() == null ? 0 : part.getCurrInv());
+                    part.setCurrInv(null);
+                    setParts.save(part);
+                }
+                updateS.setInvStatus(COMPLETE);
+            }
+            SetPart updateSP = setParts.findFirstById(setPartInv[0]);
+            updateS.setInvStatus(IN_PROGRESS);
+            updateSP.setCurrInv(setPartInv[1]);
+            sets.save(updateS);
+            setParts.save(updateSP);
+            return setPartInv;
+        }
+        return new Integer[2];
+    }
+    //Methods for Sets
     public List<String> addNewSet (String setNum) {
 
         List<String> addedSet = new ArrayList<>();
@@ -295,11 +298,5 @@ public class CampBlipController {
         addedSet.add(newSet.getSetNum());
 
         return addedSet;
-    }
-    private static String removeUTF8BOM(String s) {
-        if (s.startsWith("\uFEFF")) {
-            s = s.substring(1);
-        }
-        return s;
     }
 }

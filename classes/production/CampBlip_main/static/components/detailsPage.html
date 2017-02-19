@@ -1,7 +1,7 @@
 <section class="picSec">
 
     <img class="picBig" ng-src="{{ item.image }}">
-    <button class="backResult">Back</button>
+    <a ui-sref="sets-page"><button class="backResult">Back</button></a>
     <a ui-sref="parts-page({ single: item.setNumber })"><button class="parts" ng-click = "getParts(item)">Parts</button></a>
     <a ui-sref="instructions-page({ single: item.setNumber })"><button class="instructions">Instructions</button></a>
 

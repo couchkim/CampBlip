@@ -3,6 +3,8 @@
 
 <div id="partsPage">
     <section id="partHeader">
+        <button id="inProgress">Save in Progress</button>
+        <button id="finalSave">Inventory Complete</button>
         <h1 class="partsHead">Parts Inventory List</h1>
         <h3> {{ partSet.setName }} </h3>
     </section>
@@ -13,9 +15,9 @@
         <li class="onePart" ng-repeat="part in parts">
             <section class="partDisplay">
                 <div class="partBoxes">
-                    <input class="complete" type="checkbox">
-                    <input class="num" type="number">
-                    <p>{{ part.invQty }}</p>
+                    <input class="complete" type="checkbox" ng-change = "changeQty(partSet.setId, part)" ng-model = "checked">
+                    <input class="num" type="number" ng-change = "sendQty(partSet.setId, part)" ng-model ="part.currInv">
+                    <p>{{ part.setQty }}</p>
                 </div>
 
                 <div class="partPic">
@@ -25,7 +27,7 @@
                 <div class="partInfo">
                     <p class = "partName"> {{ part.name }} </p>
                     <p> {{ part.color }} </p>
-                    <p> Need: {{ part.invQty }}</p>
+                    <p> Need: {{ part.setQty }}</p>
                     <p> #{{ part.elementId }} </p>
                 </div>
             </section>

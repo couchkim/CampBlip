@@ -1253,28 +1253,41 @@ button {
       .column-block > :last-child {
         margin-bottom: 0; } }
 
-#title {
-  font-size: 2.5em;
-  text-shadow: 5px 5px 5px #5A5353; }
+#homeText {
+  background-image: url("/images/group.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 15px;
+  border: 15px solid #157C2B;
+  border-radius: 10px; }
+  #homeText p {
+    text-align: center;
+    text-shadow: 5px 5px 5px #5A5353;
+    font-size: 2.5em;
+    font-weight: bold; }
 
-#homeText p {
-  text-align: center;
-  text-shadow: 5px 5px 5px #5A5353;
-  font-size: 2em; }
+#b, #p {
+  color: #B75321; }
+
+#l {
+  color: #B75321; }
+
+#i {
+  color: #B75321; }
 
 #add, #manage, #remove, #addCamper {
   padding: 8px 16px;
   margin: 5px 10px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
   width: 25%;
   display: block; }
 
-#setNumber, #setId, #newCamper, #campWeek {
+#setNumber, #setId, #newCamper {
   width: 25%;
   padding: 8px 16px;
   margin-top: 5%;
@@ -1285,6 +1298,16 @@ button {
   background-color: #157C2B;
   color: white; }
 
+#newCamper {
+  display: block; }
+
+#campWeek {
+  margin-top: 5px;
+  width: 25%;
+  padding: 8px 16px;
+  margin-left: 10px;
+  font-family: "Quicksand", sans-serif; }
+
 #all, #search {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1292,7 +1315,7 @@ button {
   padding: 8px 16px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1311,7 +1334,7 @@ button {
   margin-right: 10px;
   border: 3px solid #B75321;
   padding: 10px;
-  border-radius: 5px; }
+  border-radius: 10px; }
   #inputs::before, #inputs::after {
     display: table;
     content: ' '; }
@@ -1358,7 +1381,7 @@ select {
 
 #searchResults h1 {
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #B75321;
   width: 95%;
   margin: 10px auto; }
@@ -1373,7 +1396,7 @@ select {
   margin-left: auto;
   margin: 0px 10px;
   border: 3px solid #B75321;
-  border-radius: 5px; }
+  border-radius: 10px; }
   .oneSet::before, .oneSet::after {
     display: table;
     content: ' '; }
@@ -1400,7 +1423,7 @@ select {
     text-decoration: none;
     background-color: #157C2B;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 3px solid #5A5353;
     color: #BAB9A5; }
   .words h2 a:hover {
@@ -1435,7 +1458,8 @@ select {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  color: #BAB9A5; }
+  color: #BAB9A5;
+  position: relative; }
   #registerPage::before, #registerPage::after {
     display: table;
     content: ' '; }
@@ -1447,11 +1471,29 @@ select {
   width: 90%;
   margin: 0 auto;
   border: 3px solid #B75321;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #B75321;
   padding-left: 0; }
   #costInfo li {
     margin: 5px 0px; }
+
+#registerPicOne {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  width: 175px;
+  transform: rotate(-10deg);
+  border-radius: 10px;
+  border: 5px solid #B75321; }
+
+#registerPicTwo {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  width: 200px;
+  transform: rotate(7deg);
+  border-radius: 10px;
+  border: 5px solid #B75321; }
 
 .detailHead {
   max-width: 75rem;
@@ -1500,7 +1542,7 @@ select {
     margin: 2px auto; }
 
 .invData {
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid #5A5353;
   color: #22557C;
   background-color: #BAB9A5;
@@ -1513,7 +1555,7 @@ select {
   margin: 10px auto;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1530,7 +1572,7 @@ select {
   margin: 10px 10px;
   background-color: #B75321;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
@@ -1553,6 +1595,18 @@ a {
     content: ' '; }
   #partsPage::after {
     clear: both; }
+
+#finalSave, #inProgress {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: #B75321;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid #5A5353;
+  color: #BAB9A5;
+  font-family: "Fredoka One", sans-serif;
+  display: inline-block; }
 
 #partHeader {
   margin-bottom: 10px;
@@ -1579,7 +1633,7 @@ a {
   padding-left: 0.625rem;
   padding: 10px;
   border: 1px solid #BAB9A5;
-  border-radius: 5px; }
+  border-radius: 10px; }
   @media print, screen and (min-width: 40em) {
     .onePart {
       padding-right: 0.9375rem;
@@ -1657,43 +1711,81 @@ a {
   text-overflow: ellipsis;
   max-width: 200px; }
 
-.counselorItem {
+#counselorPage .counselorItem {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
   margin: 15px; }
-  .counselorItem::before, .counselorItem::after {
+  #counselorPage .counselorItem::before, #counselorPage .counselorItem::after {
     display: table;
     content: ' '; }
-  .counselorItem::after {
+  #counselorPage .counselorItem::after {
     clear: both; }
 
-.counselorPic {
+#counselorPage .counselorPic {
   width: 33.33333%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem; }
   @media print, screen and (min-width: 40em) {
-    .counselorPic {
+    #counselorPage .counselorPic {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
-  .counselorPic:last-child:not(:first-child) {
+  #counselorPage .counselorPic:last-child:not(:first-child) {
     float: right; }
 
-.counselorInfo {
+#counselorPage .counselorInfo {
   width: 66.66667%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem; }
   @media print, screen and (min-width: 40em) {
-    .counselorInfo {
+    #counselorPage .counselorInfo {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
-  .counselorInfo:last-child:not(:first-child) {
+  #counselorPage .counselorInfo:last-child:not(:first-child) {
+    float: right; }
+  #counselorPage .counselorInfo h2 {
+    margin-top: 0px; }
+
+#counselorPage img {
+  width: 200px; }
+
+#counselorPage h1 {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  margin-left: 10px; }
+  @media print, screen and (min-width: 40em) {
+    #counselorPage h1 {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  #counselorPage h1:last-child:not(:first-child) {
     float: right; }
 
-img {
-  width: 250px; }
+#partiesPage {
+  text-align: center;
+  position: relative; }
+  #partiesPage ul {
+    list-style: none;
+    padding-left: 0; }
+  #partiesPage #partyPicOne {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    width: 200px;
+    transform: rotate(-10deg);
+    border-radius: 10px;
+    border: 5px solid #B75321; }
+  #partiesPage #partyPicTwo {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    width: 160px;
+    transform: rotate(7deg);
+    border-radius: 10px;
+    border: 5px solid #B75321; }
 
 body {
   background-color: #BAB9A5;
@@ -1702,13 +1794,14 @@ body {
   margin-top: 2%;
   margin-left: 22%;
   margin-right: 5%;
-  border-radius: 5px; }
+  border-radius: 10px; }
 
 main {
+  padding: 25px 10px;
   background-color: #22557C;
   height: 100%;
   color: #BAB9A5;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 25px;
   width: 95%;
   max-width: 75rem;
@@ -1724,15 +1817,21 @@ main {
 #nav {
   list-style: none;
   width: 20%;
-  height: 95%;
+  height: 90%;
   position: fixed;
+  background-color: #22557C;
   left: 25px;
   top: 15px;
   overflow: auto;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 5px solid #22557C; }
+  #nav img {
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 10px;
+    border: 5px solid #5A5353; }
 
 .navLi a {
   display: block;
@@ -1741,7 +1840,7 @@ main {
   margin: 25px 10px;
   background-color: #157C2B;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 3px solid #5A5353;
   color: #BAB9A5;
   box-shadow: 5px 5px 2px #5A5353; }
@@ -1751,11 +1850,13 @@ main {
   color: white; }
 
 header {
+  background-image: url("images/pile2.png");
   background-color: #22557C;
   color: #BAB9A5;
   width: 95%;
+  padding: 20px 0;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
@@ -1766,10 +1867,16 @@ header {
   header::after {
     clear: both; }
   header h1 {
-    width: 79.16667%;
+    width: 41.66667%;
     float: left;
     padding-right: 0.625rem;
-    padding-left: 0.625rem; }
+    padding-left: 0.625rem;
+    font-size: 2.5em;
+    text-align: center;
+    background-color: #22557C;
+    margin-left: 50px;
+    border-radius: 10px;
+    border: 3px solid #5A5353; }
     @media print, screen and (min-width: 40em) {
       header h1 {
         padding-right: 0.9375rem;
@@ -1777,15 +1884,16 @@ header {
     header h1:last-child:not(:first-child) {
       float: right; }
   header #login {
-    width: 16.66667%;
+    width: 54.16667%;
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem;
     padding: 8px 16px;
     margin: 5px 10px;
+    float: right;
     background-color: #B75321;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 3px solid #5A5353;
     color: #BAB9A5;
     font-family: "Fredoka One", sans-serif;

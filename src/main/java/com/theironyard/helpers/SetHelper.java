@@ -22,6 +22,7 @@ public class SetHelper {
         }
         return apiSetIds;
     }
+
     public static SkillEnum setSkill (int count) {
         if (count < 200) {
             return SkillEnum.BEGINNER;
@@ -34,5 +35,12 @@ public class SetHelper {
         } else {
             return SkillEnum.EXPERT;
         }
+    }
+
+    public static String removeUTF8BOM(String s) {
+        if (s.startsWith("\uFEFF")) {
+            s = s.substring(1);
+        }
+        return s;
     }
 }
