@@ -1,3 +1,5 @@
+#counselorPage{
+
 .counselorItem{
     @include grid-row();
     margin: 15px;
@@ -9,8 +11,19 @@
 
 .counselorInfo{
     @include grid-column(8);
+
+    h2{
+        margin-top: 0px;
+    }
 }
 
 img{
     width: 200px;
+}
+
+h1{
+    @include grid-column(12);
+    margin-left: 10px;;
+}
+
 }

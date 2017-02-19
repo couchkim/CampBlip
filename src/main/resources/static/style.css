@@ -1253,14 +1253,27 @@ button {
       .column-block > :last-child {
         margin-bottom: 0; } }
 
-#title {
-  font-size: 2.5em;
-  text-shadow: 5px 5px 5px #5A5353; }
+#homeText {
+  background-image: url("/images/freebw.png");
+  background-size: 100%;
+  margin: 15px;
+  border: 15px solid #157C2B;
+  border-radius: 10px;
+  padding: 50px 0px; }
+  #homeText p {
+    text-align: center;
+    text-shadow: 5px 5px 5px #5A5353;
+    font-size: 2.5em;
+    font-weight: bold; }
 
-#homeText p {
-  text-align: center;
-  text-shadow: 5px 5px 5px #5A5353;
-  font-size: 2em; }
+#b, #p {
+  color: #B75321; }
+
+#l {
+  color: #B75321; }
+
+#i {
+  color: #B75321; }
 
 #add, #manage, #remove, #addCamper {
   padding: 8px 16px;
@@ -1679,49 +1692,81 @@ a {
   text-overflow: ellipsis;
   max-width: 200px; }
 
-.counselorItem {
+#counselorPage .counselorItem {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
   margin: 15px; }
-  .counselorItem::before, .counselorItem::after {
+  #counselorPage .counselorItem::before, #counselorPage .counselorItem::after {
     display: table;
     content: ' '; }
-  .counselorItem::after {
+  #counselorPage .counselorItem::after {
     clear: both; }
 
-.counselorPic {
+#counselorPage .counselorPic {
   width: 33.33333%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem; }
   @media print, screen and (min-width: 40em) {
-    .counselorPic {
+    #counselorPage .counselorPic {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
-  .counselorPic:last-child:not(:first-child) {
+  #counselorPage .counselorPic:last-child:not(:first-child) {
     float: right; }
 
-.counselorInfo {
+#counselorPage .counselorInfo {
   width: 66.66667%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem; }
   @media print, screen and (min-width: 40em) {
-    .counselorInfo {
+    #counselorPage .counselorInfo {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
-  .counselorInfo:last-child:not(:first-child) {
+  #counselorPage .counselorInfo:last-child:not(:first-child) {
     float: right; }
+  #counselorPage .counselorInfo h2 {
+    margin-top: 0px; }
 
-img {
+#counselorPage img {
   width: 200px; }
 
+#counselorPage h1 {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  margin-left: 10px; }
+  @media print, screen and (min-width: 40em) {
+    #counselorPage h1 {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  #counselorPage h1:last-child:not(:first-child) {
+    float: right; }
+
 #partiesPage {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   #partiesPage ul {
     list-style: none;
     padding-left: 0; }
+  #partiesPage #partyPicOne {
+    position: absolute;
+    bottom: 25px;
+    left: 35px;
+    width: 200px;
+    transform: rotate(-10deg);
+    border-radius: 10px;
+    border: 5px solid #B75321; }
+  #partiesPage #partyPicTwo {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    width: 160px;
+    transform: rotate(7deg);
+    border-radius: 10px;
+    border: 5px solid #B75321; }
 
 body {
   background-color: #BAB9A5;
@@ -1761,6 +1806,11 @@ main {
   padding: 5px;
   border-radius: 10px;
   border: 5px solid #22557C; }
+  #nav img {
+    border-radius: 10px;
+    width: 90%;
+    margin: 25px 10px;
+    border: 3px solid #5A5353; }
 
 .navLi a {
   display: block;
