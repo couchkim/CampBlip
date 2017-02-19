@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
@@ -169,6 +170,7 @@ public class CampBlipController {
         }
         return new Integer[2];
     }
+
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET)
     public Set setPage(@PathVariable("set_id") Integer setId) {
         return sets.findById(setId);
@@ -200,54 +202,66 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/add-all-sets", method = RequestMethod.POST)
-    public List<String> addAllSets () {
+    public Map<String,List<String>> addAllSets () {
+        Map<String,List<String>> createdSets = new HashMap<>();
         if (sets.count() == 0) {
             try {
-                File csvSets = new File("LegoSets.csv");
+                File csvSets = new File("LeogSetsClean.csv");
                 Scanner fileScanner = new Scanner(csvSets);
                 List<String> seedSets = new ArrayList<>();
                 while (fileScanner.hasNext()) {
                     String line = fileScanner.nextLine();
                     String[] columns = line.split(",");
-                    seedSets.add(columns[0].replaceAll("\\s+",""));
+                    seedSets.add(removeUTF8BOM(columns[0].replaceAll("\\s","")));
                 }
                 System.out.println(seedSets.toString());
                 for (String setNum : seedSets) {
-                    System.out.println("THIS IS THE SET NUM" + setNum);
-                    addNewSet(setNum);
+                    createdSets.put(setNum, addNewSet(setNum));
                 }
-                return seedSets;
+                return createdSets;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return new ArrayList<>();
+        return createdSets;
     }
 
     public List<String> addNewSet (String setNum) {
 
+        List<String> addedSet = new ArrayList<>();
         Map<String, String> apiSetIds = SetHelper.setCorrectId(setNum);
         Map<String, String> urlParams = new HashMap<>();
+
+        System.out.println("THIS IS THE SET NUM" + apiSetIds.get("brickSetId"));
 
         urlParams.put("rebrickable_set_num", apiSetIds.get("brickSetId"));
         urlParams.put("lego_set_num", apiSetIds.get("legoSetId"));
         urlParams.put("brickKey", System.getenv("SECRETBRICK_KEY"));
 
-        SetImport newApiSet = restTemplate.getForObject(
-                "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/?key={brickKey}", SetImport.class, urlParams);
-        System.out.println(newApiSet.toString());
+        SetImport newApiSet = null;
+        try {
+            newApiSet = restTemplate.getForObject(
+                    "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/?key={brickKey}", SetImport.class, urlParams);
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+        if (newApiSet == null) {
+            addedSet.add(apiSetIds.get("brickSetId"));
+            return addedSet;
+        }
+        //System.out.println(newApiSet.toString());
         urlParams.put("theme_id", Integer.toString(newApiSet.getTheme_id()));
         ThemeImport newApiThemes = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/themes/{theme_id}/?key={brickKey}", ThemeImport.class, urlParams);
-        System.out.println(newApiThemes.toString());
+        //System.out.println(newApiThemes.toString());
         PartImport newApiParts = restTemplate.getForObject(
                 "https://rebrickable.com/api/v3/lego/sets/{rebrickable_set_num}/parts/?key={brickKey}", PartImport.class, urlParams);
-        System.out.println(newApiParts.toString());
+        //System.out.println(newApiParts.toString());
         LegoWebImport fromlego = restTemplate.getForObject(
                 "https://www.lego.com/service/biservice/search?fromIndex=0&locale=en-US&onlyAlternatives=false&prefixText={lego_set_num}", LegoWebImport.class, urlParams);
-        System.out.println(fromlego.toString());
+        //System.out.println(fromlego.toString());
         Product legoProducts = fromlego.getProducts().get(0);
         Set newSet = new Set(
                 newApiSet.getSet_num(),
@@ -277,10 +291,15 @@ public class CampBlipController {
                     newSet, newPart, thisPart.getQuantity(), thisPart.getQuantity(), null, true);
             setParts.saveAndFlush(legoSetPart);
         }
-        List<String> addedSet = new ArrayList<>();
         addedSet.add(newSet.getSetName());
         addedSet.add(newSet.getSetNum());
 
         return addedSet;
+    }
+    private static String removeUTF8BOM(String s) {
+        if (s.startsWith("\uFEFF")) {
+            s = s.substring(1);
+        }
+        return s;
     }
 }

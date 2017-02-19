@@ -11,12 +11,13 @@ import java.util.Map;
 public class SetHelper {
     public static Map<String,String> setCorrectId (String setId) {
         Map<String,String> apiSetIds = new HashMap<>();
-        //get last two character of input id does is equal -1
-        if(setId.substring(setId.length()-2,setId.length()).equals("-1")){
+        //change input id so that it ends in "-1" for rebrickable api and
+        //doesn't end with -1 for lego API
+        if(setId.endsWith("-1")) {
             apiSetIds.put("brickSetId", setId);
-            apiSetIds.put("legoSetId", setId.substring(0,setId.length()-2));
+            apiSetIds.put("legoSetId", setId.substring(0,setId.length() - 2));
         }else {
-            apiSetIds.put("brickSetId", setId+"-1");
+            apiSetIds.put("brickSetId", setId + "-1");
             apiSetIds.put("legoSetId", setId);
         }
         return apiSetIds;
