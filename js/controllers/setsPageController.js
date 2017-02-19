@@ -9,7 +9,7 @@ module.exports = {
         $scope.available = [];
         $scope.themes = [];
 
-    
+
         $scope.byName = '';
         $scope.byNumber = '';
         $scope.byTheme = '';
@@ -17,16 +17,17 @@ module.exports = {
         $scope.byStatus = '';
         $scope.filters = '';
 
+        // CampService.getSets();
 
         CampService.getFilters().then(function (response) {
-                $scope.levels = response.skills;
-                $scope.available = response.status;
-                $scope.themes = response.themes;
+            $scope.levels = response.skills;
+            $scope.available = response.status;
+            $scope.themes = response.themes;
 
-                console.log(response);
-            });
-          
-       
+            console.log(response);
+        });
+
+
 
         $scope.viewSets = function () {
             $scope.sets = CampService.getSets();
@@ -35,8 +36,8 @@ module.exports = {
 
         $scope.viewSearchSets = function () {
             $scope.sets = CampService.getSearchSets($scope.byName, $scope.byNumber,
-            $scope.byTheme, $scope.byLevel, $scope.byStatus);
-            // $scope.sets = CampService.getSearchSets($scope.byTheme, $scope.byStatus, $scope.byLevel);
+                $scope.byTheme, $scope.byLevel, $scope.byStatus);
+            
             console.log($scope.sets);
         };
 

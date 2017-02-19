@@ -12,7 +12,7 @@
         display: block;
 }
 
-#setNumber, #setId, #newCamper, #campWeek  {
+#setNumber, #setId, #newCamper{
     // @include grid-column(12);
     width: 25%;
     padding: 8px 16px;
@@ -25,4 +25,17 @@
 #add:hover, #manage:hover, #remove:hover, #addCamper:hover{
             background-color: $green-color;
              color: white;
+    }
+
+    #newCamper{
+        display: block;
+       
+    }
+
+    #campWeek{
+        margin-top: 5px;;
+        width: 25%;
+        padding: 8px 16px;
+        margin-left: 10px;
+        font-family: $secondary-font;
     }

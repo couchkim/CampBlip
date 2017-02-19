@@ -4,7 +4,7 @@ module.exports = {
     func: function ($scope, CampService) {
 
        
-            // console.log('display results controller working');
+        
         
 
     },
