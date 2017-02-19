@@ -18,10 +18,14 @@ module.exports = {
             // $scope.changeQty = function(qty, part){
         //    $scope.partQty = part;
             //   qty = part.setQty;
-              part.invQty = part.setQty;
-       }
-           
-           
+              part.currInv = part.setQty;
+       };
+
+         $scope.sendQty = function(set, part){   
+           CampService.updateQty(set, part.setPartId, part.currInv);
+           console.log(set, part.setPartId, part.currInv);
+
+         };
        
         
 

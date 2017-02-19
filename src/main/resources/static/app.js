@@ -496,10 +496,14 @@ module.exports = {
             // $scope.changeQty = function(qty, part){
         //    $scope.partQty = part;
             //   qty = part.setQty;
-              part.invQty = part.setQty;
-       }
-           
-           
+              part.currInv = part.setQty;
+       };
+
+         $scope.sendQty = function(set, part){   
+           CampService.updateQty(set, part.setPartId, part.currInv);
+           console.log(set, part.setPartId, part.currInv);
+
+         };
        
         
 
@@ -721,6 +725,15 @@ module.exports = {
                 return $http.get("/filters/").then(function (response) {
                     console.log(response);
                     return response.data;
+                })
+            },
+
+            updateQty(set, id, update) {
+                const array = [id, update];
+                 $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
                 })
             },
         };

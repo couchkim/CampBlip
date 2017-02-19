@@ -154,6 +154,15 @@ module.exports = {
                     return response.data;
                 })
             },
+
+            updateQty(set, id, update) {
+                const array = [id, update];
+                 $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
         };
 
     },
