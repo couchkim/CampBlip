@@ -17,7 +17,8 @@ public interface SetPartRepository extends JpaRepository<SetPart, Integer> {
     @Query("select new com.theironyard.viewmodels.PartView(s.id, p.name, p.color, p.partUrl, p.elementId, sp.setQty, sp.invQty, sp.currInv, sp.id) from SetPart sp " +
             "join sp.part p" +
             " join sp.set s" +
-            " where s.id = :setId")
+            " where s.id = :setId" +
+            " order by p.color asc")
     List<PartView> partViewFromSetId(@Param("setId") int setId);
 
     SetPart findFirstById(int id);

@@ -387,8 +387,6 @@ module.exports = {
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-        // $scope.item.status = '';
-
     
         $scope.getParts = function (item) {
             CampService.showParts(item);
@@ -491,6 +489,7 @@ module.exports = {
 
        $scope.partQty = '';
        $scope.checked = '';
+      
 
        $scope.changeQty = function(set, part){
               part.currInv = part.setQty;
@@ -504,7 +503,12 @@ module.exports = {
            console.log(set, part.setPartId, part.currInv);
 
          };
-       
+
+         $scope.finalQty = function(set){   
+           CampService.submitInv(set);
+           
+
+         };
         
 
     },
@@ -730,6 +734,15 @@ module.exports = {
 
             updateQty(set, id, update) {
                 const array = [id, update];
+                 $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
+
+            submitInv(set) {
+                const array = [9999, 9999];
                  $http.post("/parts/" + set, array)
                  .then(function (response) {
                     console.log(response);

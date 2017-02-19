@@ -24,6 +24,6 @@ public interface SetRepository extends JpaRepository<Set,Long>, QueryByExampleEx
     List<Set> findByTheme(String theme);
 
     //List<Set> findByThemeByStatusBySkill(String theme, StatusEnum status, SkillEnum skill);
-    @Query("select distinct s.theme from Set s")
+    @Query("select distinct s.theme from Set s order by numParts asc")
     List <String> selectDistinctThemes();
 }
