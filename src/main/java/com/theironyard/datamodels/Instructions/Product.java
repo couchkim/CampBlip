@@ -9,6 +9,7 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
+    private String productId;
     private String productImage;
     private String productName;
     private String themeName;
@@ -18,12 +19,21 @@ public class Product {
     public Product() {
     }
 
-    public Product(String productImage, String productName, String themeName, int launchYear, List<Build> buildingInstructions) {
+    public Product(String productId, String productImage, String productName, String themeName, int launchYear, List<Build> buildingInstructions) {
+        this.productId = productId;
         this.productImage = productImage;
         this.productName = productName;
         this.themeName = themeName;
         this.launchYear = launchYear;
         this.buildingInstructions = buildingInstructions;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductImage() {
@@ -69,7 +79,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "productImage='" + productImage + '\'' +
+                "productId='" + productId + '\'' +
+                ", productImage='" + productImage + '\'' +
                 ", productName='" + productName + '\'' +
                 ", themeName='" + themeName + '\'' +
                 ", launchYear=" + launchYear +
