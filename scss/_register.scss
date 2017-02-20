@@ -26,6 +26,7 @@
         display: none;
 
         @include breakpoint(1400px){
+        
         display: inline;
         position: absolute;
         top: 10px;
@@ -42,6 +43,7 @@
         display: none;
 
         @include breakpoint(1400px){
+       
         display: inline;
         position: absolute;
         top: 25px;

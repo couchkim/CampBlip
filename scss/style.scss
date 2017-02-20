@@ -1,4 +1,3 @@
-/*we use ../ because we created a folder for scss.  need to go up a directory*/
 
 @import '../node_modules/foundation-sites/scss/foundation';
 
@@ -19,7 +18,7 @@
 body{
 
     margin-left: 5%;
-     background-color: $creme-color;;
+    background-color: $creme-color;;
     color: $green-color;
     font-family: $primary-font;
     margin-right: 5%;
@@ -43,20 +42,20 @@ main{
     border-radius: $radius-default;
     margin-left: 25px;
     width: 95%;
-     @include grid-row();
-     border: 5px solid $gray-color;
+    @include grid-row();
+    border: 5px solid $gray-color;
 
 }
 
 #nav{
 
     list-style: none;
-     width: 100%;
+    width: 100%;
     margin: 10px;
     padding:5px;
-     border-radius: $radius-default;
-     border: 5px solid $blue-color;
-     background-color: $blue-color;
+    border-radius: $radius-default;
+    border: 5px solid $blue-color;
+    background-color: $blue-color;
 
      img{
          display: none;
@@ -104,12 +103,11 @@ main{
 
 .navLi a:hover {
     background-color: $orange-color;
-color: white;
+    color: white;
 }
 
 header{
     background-image: url('images/pile2.png');
-    // background-color: $blue-color;
     color: $creme-color;
     width: 95%;
     padding: 20px 0;
@@ -134,15 +132,13 @@ header{
         padding: 8px 16px;
         margin: 5px 10px;
         float: right;
-         background-color:$orange-color;
+        background-color:$orange-color;
         text-align:center;
         border-radius: $radius-default;
         border: 3px solid $gray-color;
         color: $creme-color;
         font-family: $primary-font;
-        width: 15%;
-
-         
+        width: 15%;     
 }
     
 }

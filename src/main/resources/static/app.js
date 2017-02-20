@@ -89,16 +89,13 @@ app.config(function ($stateProvider) {
 
 
 const controllers = [
-    require('./controllers/homePageController'),
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
-    require('./controllers/registerPageController'),
     require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
-    
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -137,7 +134,7 @@ for (let i = 0; i < services.length; i++) {
 
 
 
-},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/homePageController":17,"./controllers/instructionsPageController":18,"./controllers/partsPageController":19,"./controllers/registerPageController":20,"./controllers/setsPageController":21,"./services/CampService":22}],2:[function(require,module,exports){
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/instructionsPageController":17,"./controllers/partsPageController":18,"./controllers/setsPageController":19,"./services/CampService":20}],2:[function(require,module,exports){
 module.exports = {
 
     name: 'aboutPage',
@@ -280,10 +277,8 @@ module.exports = {
 
         templateUrl: 'components/registerPage.html',
         bindings: {
-            // label: '<', 
-
+           
         },
-        controller: 'registerPageController',
     }
 
 }
@@ -471,18 +466,6 @@ module.exports = {
 },{}],17:[function(require,module,exports){
 module.exports = {
 
-    name: "homePageController",
-    func: function ($scope, CampService) {
-
-        //  console.log('home page controller working');
-            
-        
-
-    },
-}
-},{}],18:[function(require,module,exports){
-module.exports = {
-
     name: "instructionsPageController",
     func: function ($scope, $sce, $http, CampService, $stateParams) {
 
@@ -510,7 +493,7 @@ module.exports = {
 
     },
 }
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
 
     name: "partsPageController",
@@ -572,19 +555,7 @@ module.exports = {
 }
 
 
-},{}],20:[function(require,module,exports){
-module.exports = {
-
-    name: "registerPageController",
-    func: function ($scope, CampService) {
-
-        //  console.log('register page controller working');
-            
-        
-
-    },
-}
-},{}],21:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
 
     name: "setsPageController",
@@ -631,7 +602,7 @@ module.exports = {
 
     },
 }
-},{}],22:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
 
     name: "CampService",
