@@ -5,7 +5,7 @@ module.exports = {
 
         templateUrl: 'components/setsPage.html',
         bindings: {
-            // label: '<', 
+            
 
         },
         controller: 'setsPageController',

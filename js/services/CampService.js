@@ -28,12 +28,9 @@ module.exports = {
             // how many parts we had after inventory
             this.missing = 0;
             // number of pieces missing from the set
-            // this.order = 'lots of pieces';
-            // text string from admin input
             this.notes = notes;
             // text string from admin input
             this.parts = [];
-
             // array of all parts in the set that comes when parts button is clicked
             this.instructions = instructions;
 
@@ -44,7 +41,7 @@ module.exports = {
 
         let sets = [];
         let partySets = [];
-         console.log(partySets);
+        console.log(partySets);
 
         return {
 
@@ -73,7 +70,7 @@ module.exports = {
 
             getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
                 $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
-                    // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+
                     console.log(response);
 
 
@@ -96,12 +93,12 @@ module.exports = {
 
             getSet(id) {
 
-                 return $http.get("/set/" + id).then(function (response) {
-                     let item = response.data.setViews[0];
-                        item = new Set(item.set_id, item.name, item.set_num, item.theme,
-                            item.num_parts, item.status, item.set_img_url, item.year,
-                            item.skill_level, item.inv_date, item.inv_name, item.inv_stat, item.inv_parts,
-                            item.last_checkout, item.set_build_url, item.notes);
+                return $http.get("/set/" + id).then(function (response) {
+                    let item = response.data.setViews[0];
+                    item = new Set(item.set_id, item.name, item.set_num, item.theme,
+                        item.num_parts, item.status, item.set_img_url, item.year,
+                        item.skill_level, item.inv_date, item.inv_name, item.inv_stat, item.inv_parts,
+                        item.last_checkout, item.set_build_url, item.notes);
                     console.log(response);
                     return item;
                 })
@@ -160,41 +157,41 @@ module.exports = {
 
             updateQty(set, id, update) {
                 const array = [id, update];
-                 $http.post("/parts/" + set, array)
-                 .then(function (response) {
-                    console.log(response);
-                 
-                })
+                $http.post("/parts/" + set, array)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
             },
 
             submitInv(set) {
                 const array = [9999, 9999];
-                 $http.post("/parts/" + set, array)
-                 .then(function (response) {
-                    console.log(response);
-                 
-                })
+                $http.post("/parts/" + set, array)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
             },
 
             sendUpdate(id, status, note) {
                 const data = [status, note];
-                 $http.post("/set/" + id, data)
-                 .then(function (response) {
-                    console.log(response);
-                 
-                })
+                $http.post("/set/" + id, data)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
             },
 
-            addPartySet(set){
+            addPartySet(set) {
                 partySets.push(set);
-               
+
                 console.log(partySets);
             },
 
-             getpartySets() {
+            getpartySets() {
 
                 $http.get("/sets").then(function (response) {
-                    // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+
                     console.log(response);
 
 

@@ -1,7 +1,6 @@
 <!--hide unless there are results to show-->
+<!-- $ctrl is how you access binding values from the setsPage-->
 
-
-<!-- $ctrl is how you access binding values -->
 <img class = "pic" ng-src="{{ $ctrl.item.image }}">
 <div class="words">
     <h2><a ui-sref="details-page({ single: $ctrl.item.setId })">{{ $ctrl.item.setName }} </a></h2>

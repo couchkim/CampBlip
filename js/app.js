@@ -1,5 +1,4 @@
 const app = angular.module('CampApp', ['ui.router']);
-// const app = angular.module('CampApp', ['ui.router'], ['ngEmbed']);
 
 
 app.config(function ($stateProvider) {
