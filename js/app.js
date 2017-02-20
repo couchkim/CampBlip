@@ -97,11 +97,7 @@ const controllers = [
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
-    require('./controllers/aboutPageController'),
-    require('./controllers/partiesPageController'),
-
-
-
+    
 ];
 
 for (let i = 0; i < controllers.length; i++) {

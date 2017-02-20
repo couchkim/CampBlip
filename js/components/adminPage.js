@@ -5,8 +5,7 @@ module.exports = {
 
         templateUrl: 'components/adminPage.html',
         bindings: {
-            // label: '<', 
-
+            
         },
         controller: 'adminPageController',
     }

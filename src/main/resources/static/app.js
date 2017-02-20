@@ -98,11 +98,7 @@ const controllers = [
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
-    require('./controllers/aboutPageController'),
-    require('./controllers/partiesPageController'),
-
-
-
+    
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -141,7 +137,7 @@ for (let i = 0; i < services.length; i++) {
 
 
 
-},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/aboutPageController":13,"./controllers/accountPageController":14,"./controllers/adminPageController":15,"./controllers/detailsPageController":16,"./controllers/displayResultsController":17,"./controllers/homePageController":18,"./controllers/instructionsPageController":19,"./controllers/partiesPageController":20,"./controllers/partsPageController":21,"./controllers/registerPageController":22,"./controllers/setsPageController":23,"./services/CampService":24}],2:[function(require,module,exports){
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/homePageController":17,"./controllers/instructionsPageController":18,"./controllers/partsPageController":19,"./controllers/registerPageController":20,"./controllers/setsPageController":21,"./services/CampService":22}],2:[function(require,module,exports){
 module.exports = {
 
     name: 'aboutPage',
@@ -149,10 +145,10 @@ module.exports = {
 
         templateUrl: 'components/aboutPage.html',
         bindings: {
-            // label: '<', 
+            
 
         },
-        controller: 'aboutPageController',
+        
     }
 
 };
@@ -179,8 +175,7 @@ module.exports = {
 
         templateUrl: 'components/adminPage.html',
         bindings: {
-            // label: '<', 
-
+            
         },
         controller: 'adminPageController',
     }
@@ -255,11 +250,9 @@ module.exports = {
 
         templateUrl: 'components/partiesPage.html',
         bindings: {
-            // item: '<',
-            // onClick: '&', 
+            
         },
-        controller: 'partiesPageController',
-    }
+    },
 
 }
 
@@ -312,18 +305,6 @@ module.exports = {
 },{}],13:[function(require,module,exports){
 module.exports = {
 
-    name: "aboutPageController",
-    func: function ($scope, CampService) {
-
-        //  console.log('about page controller working');
-            
-        
-
-    },
-}
-},{}],14:[function(require,module,exports){
-module.exports = {
-
     name: "accountPageController",
     func: function ($scope, $http, CampService) {
 
@@ -368,7 +349,7 @@ module.exports = {
 
     },
 }
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
 
     name: "adminPageController",
@@ -414,7 +395,7 @@ module.exports = {
 
     },
 }
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
 
     name: "detailsPageController",
@@ -471,7 +452,7 @@ module.exports = {
 
 
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
 
     name: "displayResultsController",
@@ -487,7 +468,7 @@ module.exports = {
 
 
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = {
 
     name: "homePageController",
@@ -499,7 +480,7 @@ module.exports = {
 
     },
 }
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
 
     name: "instructionsPageController",
@@ -529,19 +510,7 @@ module.exports = {
 
     },
 }
-},{}],20:[function(require,module,exports){
-module.exports = {
-
-    name: "partiesPageController",
-    func: function ($scope, CampService) {
-
-        
-            
-        
-
-    },
-}
-},{}],21:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
 
     name: "partsPageController",
@@ -603,7 +572,7 @@ module.exports = {
 }
 
 
-},{}],22:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
 
     name: "registerPageController",
@@ -615,7 +584,7 @@ module.exports = {
 
     },
 }
-},{}],23:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = {
 
     name: "setsPageController",
@@ -662,7 +631,7 @@ module.exports = {
 
     },
 }
-},{}],24:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = {
 
     name: "CampService",

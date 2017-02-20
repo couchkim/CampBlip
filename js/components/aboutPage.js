@@ -5,10 +5,10 @@ module.exports = {
 
         templateUrl: 'components/aboutPage.html',
         bindings: {
-            // label: '<', 
+            
 
         },
-        controller: 'aboutPageController',
+        
     }
 
 };

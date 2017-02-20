@@ -1,29 +1,29 @@
 <!--This section allows super user to add a new set to the database by set number-->
-<section id="addNewSet">
-    <input id="setNumber" type="text" ng-model="setNumber" placeholder="Enter Set Number">
-    <button id="add" ng-click="newSet(setNumber)">Add Set</button>
+<section id="addNewSet" class = "adminSec">
+    <input id="setNumber" class = "input" type="text" ng-model="setNumber" placeholder="Enter Set Number">
+    <button id="add" class = "button" ng-click="newSet(setNumber)">Add Set</button>
     <p id="confirmSet" ng-hide="newInfo === null"> You added {{ newInfo[0] }} ({{ newInfo[1] }}).</p>
 </section>
 
 <!--This section allows a super user to delete a set from the database by set ID-->
-<section id="removeSet">
-    <input id="setId" type="text" ng-model="setId" placeholder="Enter Unique Set ID">
-    <button id="remove" ng-click="removeSet()">Remove Set</button>
+<section id="removeSet" class = "adminSec">
+    <input id="setId" class = "input" type="text" ng-model="setId" placeholder="Enter Unique Set ID">
+    <button id="remove" class = "button" ng-click="removeSet()">Remove Set</button>
 </section>
 
 <!--This section allows a super user to add new campers to populate the check in and check out
 dropdown menu-->
-<section id="camperInfo">
-    <input id="newCamper" type="text" ng-model="newCamper" placeholder="Enter Camper Name">
-    <input id="campWeek" type="text" ng-model="weeks" placeholder="Pick Camp Session">
-    <button id="addCamper" ng-click="addCamper()">Add New Camper</button>
+<section id="camperInfo" class = "adminSec">
+    <input id="newCamper" class = "input" type="text" ng-model="newCamper" placeholder="Enter Camper Name">
+    <input id="campWeek" class = "input" type="text" ng-model="weeks" placeholder="Pick Camp Session">
+    <button id="addCamper" class = "button" ng-click="addCamper()">Add New Camper</button>
 </section>
 
 <!--This section allows a super user to add sets to a special birthday party catalog and
 to create a printable pdf of those sets-->
-<section id="partyCatalog">
-    <input id="partySet" type="text" ng-model="partySet" placeholder="Enter Party Set Number">
-    <button id="addPartySet" ng-click="newPartySet(partySet)">Add Party Set</button>
-    <button id="createPartyCatalog" ng-click="createPartyCatalog()">Create Party Catalog</button>
-    <button id="clearPartySets" ng-click="clearPartySets()">Clear Party Sets</button>
+<section id="partyCatalog" class = "adminSec">
+    <input id="partySet" class = "input" type="text" ng-model="partySet" placeholder="Enter Party Set Number">
+    <button id="addPartySet" class = "button" ng-click="newPartySet(partySet)">Add Party Set</button>
+    <button id="createPartyCatalog" class = "button" ng-click="createPartyCatalog()">Create Party Catalog</button>
+    <button id="clearPartySets" class = "button" ng-click="clearPartySets()">Clear Party Sets</button>
 </section>
