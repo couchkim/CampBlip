@@ -37,7 +37,7 @@ main{
     margin-left: 25px;
     width: 95%;
      @include grid-row();
-     border: 10px solid $gray-color;
+     border: 5px solid $gray-color;
 }
 
 #nav{
@@ -60,7 +60,6 @@ main{
          margin: 0 10px;
          border: 5px solid $gray-color;
          box-shadow: 5px 5px 2px $gray-color;
-         filter: brightness(75%);
          
      }
      
