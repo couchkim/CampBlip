@@ -11,6 +11,9 @@ module.exports = {
         $scope.newNote = '';
         $scope.byStatus = '';
         $scope.available = [];
+        // $scope.item.statusDisplay = '';
+        
+        // $scope.item.statusDisplay = $scope.item.status;
 
 
         const id = ($stateParams.single);
@@ -26,6 +29,9 @@ module.exports = {
 
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
+            // if($scope.item.status === "CHECKED_OUT"){
+            //     $scope.item.statusDisplay = "Checked Out"
+            // }
         }
 
          CampService.getFilters().then(function (response) {  

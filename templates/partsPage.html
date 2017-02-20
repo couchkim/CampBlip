@@ -8,13 +8,15 @@
         <h3> {{ partSet.setName }} </h3>
     </section>
 
-    <input class='checkAll' type="checkbox" label="Check All">
+    
+    <p><input id='checkAll' type="checkbox" ng-model="selectedAll" ng-click="checkAll()">  Check All</p>
 
     <ul id="partList">
         <li class="onePart" ng-repeat="part in parts">
             <section class="partDisplay">
                 <div class="partBoxes">
-                    <input class="complete" type="checkbox" ng-change = "changeQty(partSet.setId, part)" ng-model = "checked">
+                    <!--<input class="complete" type="checkbox" ng-change = "changeQty(partSet.setId, part)" ng-model = "checked">-->
+                     <input class="complete" type="checkbox" ng-change = "changeQty(partSet.setId, part)" ng-model = "part.Selected">
                     <input class="num" type="number" ng-change = "sendQty(partSet.setId, part)" ng-model ="part.currInv">
                     <p>{{ part.setQty }}</p>
                 </div>
