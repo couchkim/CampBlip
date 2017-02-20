@@ -1,5 +1,6 @@
 package com.theironyard.controllers;
 
+import com.theironyard.datamodels.Enums.InvEnum;
 import com.theironyard.datamodels.Instructions.LegoWebImport;
 import com.theironyard.datamodels.Instructions.Product;
 import com.theironyard.datamodels.PartsImport.Color;
@@ -162,33 +163,41 @@ public class CampBlipController {
         return model;
     }
 
-//    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
-//    public SetViewModel updateSetPage(@PathVariable("set_id") Integer setId @RequestBody) {
-//
-//        SetViewModel model = new SetViewModel();
-//        Set viewSet = sets.findById(setId);
-//
-//        SetView setView = new SetView(
-//                viewSet.getSetName(),
-//                viewSet.getId(),
-//                viewSet.getSetNum(),
-//                viewSet.getYear(),
-//                viewSet.getNumParts(),
-//                viewSet.getSetImgUrl(),
-//                viewSet.getSetBuildUrl(),
-//                viewSet.getTheme(),
-//                viewSet.getStatusEnum(),
-//                viewSet.getSkillEnum(),
-//                "InvDate", //ToDo: populate
-//                "InvName",//ToDo: populate
-//                viewSet.getInvStatus(),
-//                "LastCkout", //Todo:
-//                42, //TODO: Count all the inventory parts
-//                viewSet.getNotes());
-//        model.getSetViews().add(setView);
-//
-//        return model;
-//    }
+    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
+    public SetViewModel updateSetPage(@PathVariable("set_id") Integer setId, @RequestBody String [] infoUpdate) {
+        Set viewSet = sets.findById(setId);
+
+        if(infoUpdate[0] != null) {
+            viewSet.setStatusEnum(StatusEnum.valueOf(infoUpdate[0]));
+        }
+        if(infoUpdate[1]!= null) {
+            viewSet.setNotes(infoUpdate[1]);
+        }
+        sets.save(viewSet);
+
+        SetViewModel model = new SetViewModel();
+
+        SetView setView = new SetView(
+                viewSet.getSetName(),
+                viewSet.getId(),
+                viewSet.getSetNum(),
+                viewSet.getYear(),
+                viewSet.getNumParts(),
+                viewSet.getSetImgUrl(),
+                viewSet.getSetBuildUrl(),
+                viewSet.getTheme(),
+                viewSet.getStatusEnum(),
+                viewSet.getSkillEnum(),
+                "InvDate", //ToDo: populate
+                "InvName",//ToDo: populate
+                viewSet.getInvStatus(),
+                "LastCkout", //Todo:
+                42, //TODO: Count all the inventory parts
+                viewSet.getNotes());
+        model.getSetViews().add(setView);
+
+        return model;
+    }
 
     @RequestMapping (path = "/filters", method = RequestMethod.GET)
     public FilterViewModel filterLayout() {
@@ -196,6 +205,7 @@ public class CampBlipController {
         model.setThemes(sets.selectDistinctThemes());
         model.setSkills(Stream.of(SkillEnum.values()).map(Enum::name).collect(Collectors.toList()));
         model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        model.setInvStat(Stream.of(InvEnum.values()).map(Enum::name).collect(Collectors.toList()));
         return model;
     }
 

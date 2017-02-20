@@ -9,14 +9,16 @@ public class FilterViewModel {
     List<String> themes;
     List<String> skills;
     List<String> status;
+    List<String> invStat;
 
     public FilterViewModel() {
     }
 
-    public FilterViewModel(List<String> themes, List<String> skills, List<String> status) {
+    public FilterViewModel(List<String> themes, List<String> skills, List<String> status, List<String> invStat) {
         this.themes = themes;
         this.skills = skills;
         this.status = status;
+        this.invStat = invStat;
     }
 
     public List<String> getThemes() {
@@ -41,6 +43,14 @@ public class FilterViewModel {
 
     public void setStatus(List<String> status) {
         this.status = status;
+    }
+
+    public List<String> getInvStat() {
+        return invStat;
+    }
+
+    public void setInvStat(List<String> invStat) {
+        this.invStat = invStat;
     }
 }
 
