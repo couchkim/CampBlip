@@ -1654,6 +1654,8 @@ select {
   color: #22557C;
   background-color: #BAB9A5;
   padding: 5px; }
+  .invData .newNote {
+    width: 75%; }
   .invData .updateSet {
     padding: 2px 4px;
     margin: 10px 10px;
@@ -1995,7 +1997,7 @@ main {
     #nav {
       position: fixed;
       width: 20%;
-      height: 95%;
+      height: 90%;
       left: 25px;
       top: 15px;
       overflow: auto; } }

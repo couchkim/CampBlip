@@ -26,15 +26,18 @@
         <p>Number of Pieces Missing: {{ item.missing }}</p>
         <!--<p>Pieces on Order: {{ item.order }}</p>-->
         <p>Notes: {{ item.notes }}</p>
-        <input id = "newNote" type = "text" ng-model = "newNote" placeholder = "Enter Note">
+        <form name="myForm">
+            <input name="newNote" class="newNote" type="text" ng-model="newNote" placeholder="Enter Note (max 200 char)" ng-maxlength="200">
+            <h4 ng-show="!myForm.newNote.$valid">The note is too long</h4>
+        </form>
         <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
-        <button class="updateSet" ng-click = "updateSet(item.setId)">Update Set Info</button>
+        <button class="updateSet" ng-click="updateSet(item.setId)">Update Set Info</button>
     </div>
 
     <div class="admin">
         <select id="camperList" ng-model="camperList" ng-options="camper for camper in campers"></select>
-        <button class='check' ng-show= "(item.status === 'AVAILABLE')" ng-click="checkToggle()">Check Out</button>
-        <button class='check' ng-hide= "(item.status === 'AVAILABLE')" ng-click="checkToggle()">Check In</button>
+        <button class='check' ng-show="(item.status === 'AVAILABLE')" ng-click="checkToggle()">Check Out</button>
+        <button class='check' ng-hide="(item.status === 'AVAILABLE')" ng-click="checkToggle()">Check In</button>
     </div>
 
 </section>
