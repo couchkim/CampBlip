@@ -16,13 +16,18 @@ module.exports = {
         // $scope.item.statusDisplay = $scope.item.status;
 
 
-        const id = ($stateParams.single);
+        const id = parseInt($stateParams.single);
 
-        $scope.item = CampService.getSet(id);
-        console.log($scope.item);
+       CampService.getSet(id).then(function(response){
+            $scope.item = response;
+            console.log($scope.item);
+
+        });
+        
 
 
         $scope.getParts = function (item) {
+            console.log(item);
             CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
@@ -31,6 +36,7 @@ module.exports = {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
             // if($scope.item.status === "CHECKED_OUT"){
             //     $scope.item.statusDisplay = "Checked Out"
+            // in get set function, not here
             // }
         }
 

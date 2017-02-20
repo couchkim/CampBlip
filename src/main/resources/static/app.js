@@ -388,13 +388,18 @@ module.exports = {
         // $scope.item.statusDisplay = $scope.item.status;
 
 
-        const id = ($stateParams.single);
+        const id = parseInt($stateParams.single);
 
-        $scope.item = CampService.getSet(id);
-        console.log($scope.item);
+       CampService.getSet(id).then(function(response){
+            $scope.item = response;
+            console.log($scope.item);
+
+        });
+        
 
 
         $scope.getParts = function (item) {
+            console.log(item);
             CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
@@ -403,6 +408,7 @@ module.exports = {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
             // if($scope.item.status === "CHECKED_OUT"){
             //     $scope.item.statusDisplay = "Checked Out"
+            // in get set function, not here
             // }
         }
 
@@ -501,14 +507,21 @@ module.exports = {
 
         const partSet = ($stateParams.single);
         console.log("parts");
-        $scope.partSet = CampService.getSet(partSet);
-        console.log($scope.partSet);
 
-        $scope.parts = $scope.partSet.parts;
-        console.log($scope.parts);
+        CampService.getSet(partSet).then(function (response) {
+
+            $scope.partSet = response;
+            $scope.parts = $scope.partSet.parts;
+            console.log($scope.partSet);
+            console.log($scope.parts);
+            CampService.showParts(response);
+        }
+        );
+
+
 
         $scope.partQty = '';
-       
+
 
 
         $scope.changeQty = function (set, part) {
@@ -705,15 +718,25 @@ module.exports = {
             },
 
             getSet(id) {
+
+                 return $http.get("/set/" + id).then(function (response) {
+                     let item = response.data.setViews[0];
+                        item = new Set(item.set_id, item.name, item.set_num, item.theme,
+                            item.num_parts, item.status, item.set_img_url, item.year,
+                            item.skill_level, item.inv_date, item.inv_name, item.inv_stat, item.inv_parts,
+                            item.last_checkout, item.set_build_url, item.notes);
+                    console.log(response);
+                    return item;
+                })
                 // if length is 0, make getSets request and then iterate over it.  promises
-                for (let i = 0; i < sets.length; i++) {
-                    // if (sets.length === 0){
-                    //     getSets();
-                    // }
-                    if (sets[i].setNumber === id) {
-                        return sets[i];
-                    }
-                }
+                // for (let i = 0; i < sets.length; i++) {
+                //     // if (sets.length === 0){
+                //     //     getSets();
+                //     // }
+                //     if (sets[i].setId === id) {
+                //         return sets[i];
+                //     }
+                // }
             },
 
             addSet(num) {
@@ -723,6 +746,14 @@ module.exports = {
                     return response.data;
                 })
             },
+
+            // showParts(item) {
+            //     console.log(item);
+            //     $http.get("/parts/" + item).then(function (response) {
+            //         angular.copy(response.data.parts, item.parts)
+            //         console.log(response);
+            //     })
+            // },
 
             showParts(item) {
                 $http.get("/parts/" + item.setId).then(function (response) {
@@ -786,7 +817,7 @@ module.exports = {
 
             sendUpdate(set, status, note) {
                 const data = [status, note];
-                 $http.post("/sets/" + set, data)
+                 $http.post("/set/" + set, data)
                  .then(function (response) {
                     console.log(response);
                  
