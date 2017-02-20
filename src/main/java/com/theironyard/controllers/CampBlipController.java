@@ -162,6 +162,34 @@ public class CampBlipController {
         return model;
     }
 
+//    @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
+//    public SetViewModel updateSetPage(@PathVariable("set_id") Integer setId @RequestBody) {
+//
+//        SetViewModel model = new SetViewModel();
+//        Set viewSet = sets.findById(setId);
+//
+//        SetView setView = new SetView(
+//                viewSet.getSetName(),
+//                viewSet.getId(),
+//                viewSet.getSetNum(),
+//                viewSet.getYear(),
+//                viewSet.getNumParts(),
+//                viewSet.getSetImgUrl(),
+//                viewSet.getSetBuildUrl(),
+//                viewSet.getTheme(),
+//                viewSet.getStatusEnum(),
+//                viewSet.getSkillEnum(),
+//                "InvDate", //ToDo: populate
+//                "InvName",//ToDo: populate
+//                viewSet.getInvStatus(),
+//                "LastCkout", //Todo:
+//                42, //TODO: Count all the inventory parts
+//                viewSet.getNotes());
+//        model.getSetViews().add(setView);
+//
+//        return model;
+//    }
+
     @RequestMapping (path = "/filters", method = RequestMethod.GET)
     public FilterViewModel filterLayout() {
         FilterViewModel model = new FilterViewModel();
@@ -183,11 +211,6 @@ public class CampBlipController {
     public List<String> addSet(@PathVariable("set_num") String setId) {
         return addNewSet(setId);
     }
-
-//    @RequestMapping (path = "/sets", method = RequestMethod.POST) {
-//        public void updateSet(){
-//        }
-//    }
 
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
     public Set updateStatus(@PathVariable("set_id") int setId, String status) {
