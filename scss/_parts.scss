@@ -3,7 +3,7 @@
 }
 
 
-#finalSave, #inProgress{
+#finalSave{
         margin-top: 20px;
         margin-bottom: 20px;
         padding: 8px 16px;
@@ -39,10 +39,17 @@
     }
 
 .onePart{
-    @include grid-column(6);
-    padding: 10px;
-    border: 1px solid $creme-color;
+
+    @include grid-column(12);
+     border: 1px solid $creme-color;
     border-radius: $radius-default;
+    padding: 10px;
+
+    @include breakpoint(1435px){
+
+    @include grid-column(6);
+    
+    }
 }
 
 #partList{
