@@ -1,5 +1,6 @@
 package com.theironyard.viewmodels;
 
+import com.theironyard.datamodels.Enums.InvEnum;
 import com.theironyard.datamodels.Enums.SkillEnum;
 import com.theironyard.datamodels.Enums.StatusEnum;
 
@@ -20,7 +21,7 @@ public class SetView {
     SkillEnum skill_level;
     String inv_date;
     String inv_name;
-    boolean inv_need;
+    InvEnum inv_stat;
     String last_checkout;
     Integer inv_parts;
     String notes;
@@ -28,7 +29,7 @@ public class SetView {
     public SetView() {
     }
 
-    public SetView(String name, int set_id, String set_num, int year, int num_parts, String set_img_url, String set_build_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, boolean inv_need, String last_checkout, Integer inv_parts, String notes) {
+    public SetView(String name, int set_id, String set_num, int year, int num_parts, String set_img_url, String set_build_url, String theme, StatusEnum status, SkillEnum skill_level, String inv_date, String inv_name, InvEnum inv_stat, String last_checkout, Integer inv_parts, String notes) {
         this.name = name;
         this.set_id = set_id;
         this.set_num = set_num;
@@ -41,7 +42,7 @@ public class SetView {
         this.skill_level = skill_level;
         this.inv_date = inv_date;
         this.inv_name = inv_name;
-        this.inv_need = inv_need;
+        this.inv_stat = inv_stat;
         this.last_checkout = last_checkout;
         this.inv_parts = inv_parts;
         this.notes = notes;
@@ -143,12 +144,12 @@ public class SetView {
         this.inv_name = inv_name;
     }
 
-    public boolean isInv_need() {
-        return inv_need;
+    public InvEnum getInv_stat() {
+        return inv_stat;
     }
 
-    public void setInv_need(boolean inv_need) {
-        this.inv_need = inv_need;
+    public void setInv_stat(InvEnum inv_stat) {
+        this.inv_stat = inv_stat;
     }
 
     public String getLast_checkout() {

@@ -125,7 +125,7 @@ public class CampBlipController {
                     viewSet.getSkillEnum(),
                     "inv_date Currently Unavailable", //ToDo: populate
                     "inv_name Currently unavailable",//ToDo: populate
-                    false, //todo:populate and add as a enum
+                    viewSet.getInvStatus(),
                     "last_checkout Currently Unavailable", //Todo:
                     42, //TODO: Count all the inventory parts
                     viewSet.getNotes());
