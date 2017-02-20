@@ -124,10 +124,10 @@ public class CampBlipController {
                     viewSet.getTheme(),
                     viewSet.getStatusEnum(),
                     viewSet.getSkillEnum(),
-                    "inv_date Currently Unavailable", //ToDo: populate
-                    "inv_name Currently unavailable",//ToDo: populate
+                    "InvDate", //ToDo: populate
+                    "InvName",//ToDo: populate
                     viewSet.getInvStatus(),
-                    "last_checkout Currently Unavailable", //Todo:
+                    "LastCkout", //Todo:
                     42, //TODO: Count all the inventory parts
                     viewSet.getNotes());
             model.getSetViews().add(setView);
