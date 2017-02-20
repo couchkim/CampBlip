@@ -15,7 +15,6 @@
     </div>
     <div id="searchDropTwo">
         <p class="criteria">Search by Status</p>
-        <!--<select id="byStatus" ng-model="loadFilters()" ng-options="status for status in available"></select>-->
         <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
     </div>
 </section>
@@ -27,10 +26,6 @@
     <ul id="results">
         <li class="oneSet" ng-repeat="set in sets">
             <display-results item="set" on-click="showSet(target)"></display-results>
-            <!--click on the set name and it will take you to detail page of that set-->
-            <!--but what if i want to show multiple things about the set and if you click
-            on the image or name, you go to a detail page.-->
-            <!--<h2><a ui-sref="show-details({ singleSet: set.set_num })">{{ set.name }}</a></h2>-->
         </li>
     </ul>
 </section>
