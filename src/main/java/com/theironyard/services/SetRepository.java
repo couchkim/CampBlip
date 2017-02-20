@@ -13,17 +13,9 @@ import java.util.List;
  */
 public interface SetRepository extends JpaRepository<Set,Long>, QueryByExampleExecutor<Set> {
 
-    List<Set> findAllBySetNum (String setNum);
-
     Set findById (int id);
 
-    List<Set> findByStatusEnum(StatusEnum status);
-
-    List<Set> findByskillEnum(SkillEnum skill);
-
-    List<Set> findByTheme(String theme);
-
     //List<Set> findByThemeByStatusBySkill(String theme, StatusEnum status, SkillEnum skill);
-    @Query("select distinct s.theme from Set s order by numParts asc")
+    @Query("select distinct s.theme from Set s order by s.theme asc")
     List <String> selectDistinctThemes();
 }

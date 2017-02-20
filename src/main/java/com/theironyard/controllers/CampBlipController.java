@@ -108,7 +108,7 @@ public class CampBlipController {
                     .withMatcher("setName", contains())
                     .withMatcher("setNum", contains());
 
-            viewSets = (List) sets.findAll(Example.of(s,matcher));
+            viewSets = (List) sets.findAll(Example.of(s,matcher));//TODO: order sets Ascending By theme and then Ascending by num-pieces
 
         SetViewModel model = new SetViewModel();
         for ( Set viewSet : viewSets) {
@@ -161,6 +161,11 @@ public class CampBlipController {
         return addNewSet(setId);
     }
 
+//    @RequestMapping (path = "/sets", method = RequestMethod.POST) {
+//        public void updateSet(){
+//        }
+//    }
+
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
     public Set updateStatus(@PathVariable("set_id") int setId, String status) {
         Set update = sets.findById(setId);
@@ -175,6 +180,7 @@ public class CampBlipController {
 
     @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
     public void deleteSet(@PathVariable("set_id") Integer setId) {
+//        sets.findById()
     }
 
     @RequestMapping (path = "/add-all-sets", method = RequestMethod.POST)
@@ -217,9 +223,16 @@ public class CampBlipController {
                 for (SetPart part : updateS.getSetParts()) {
                     part.setInvQty(part.getCurrInv() == null ? 0 : part.getCurrInv());
                     part.setCurrInv(null);
+
+
+
                     setParts.save(part);
+
                 }
+                //set inv status to complete
+                //set
                 updateS.setInvStatus(COMPLETE);
+
             }
             SetPart updateSP = setParts.findFirstById(setPartInv[0]);
             updateS.setInvStatus(IN_PROGRESS);
@@ -267,7 +280,7 @@ public class CampBlipController {
         //System.out.println(fromlego.toString());
         Product legoProducts = fromlego.getProducts().get(0);
         Set newSet = new Set(
-                newApiSet.getSet_num(),
+                (newApiSet.getSet_num()).substring(0,newApiSet.getSet_num().length() - 2),
                 newApiSet.getName(),
                 newApiSet.getYear(),
                 newApiSet.getNum_parts(),
