@@ -26,6 +26,9 @@
         <p>Number of Pieces Missing: {{ item.missing }}</p>
         <!--<p>Pieces on Order: {{ item.order }}</p>-->
         <p>Notes: {{ item.notes }}</p>
+        <input id = "newNote" type = "text" ng-model = "newNote" placeholder = "Enter Note">
+        <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
+        <button class="updateSet" ng-click = "updateSet(item.setId)">Update Set Info</button>
     </div>
 
     <div class="admin">

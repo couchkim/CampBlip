@@ -55,6 +55,18 @@
     background-color: $creme-color;
     padding: 5px;
 
+    .updateSet{
+            padding: 2px 4px;
+            margin: 10px 10px;
+            background-color:$orange-color;
+            text-align:center;
+            border-radius: $radius-default;
+            border: 1px solid $gray-color;
+            color: $creme-color;
+            font-family: $primary-font;
+            width: 50%;
+    }
+
     p{
         margin: 0 auto;
         }

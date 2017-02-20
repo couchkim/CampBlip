@@ -1654,6 +1654,16 @@ select {
   color: #22557C;
   background-color: #BAB9A5;
   padding: 5px; }
+  .invData .updateSet {
+    padding: 2px 4px;
+    margin: 10px 10px;
+    background-color: #B75321;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #5A5353;
+    color: #BAB9A5;
+    font-family: "Fredoka One", sans-serif;
+    width: 50%; }
   .invData p {
     margin: 0 auto; }
 

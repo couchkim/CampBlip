@@ -172,6 +172,15 @@ module.exports = {
                  
                 })
             },
+
+            sendUpdate(set, status, note) {
+                const data = [status, note];
+                 $http.post("/sets/" + set, data)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
         };
 
     },

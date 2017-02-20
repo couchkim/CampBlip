@@ -380,14 +380,17 @@ module.exports = {
             'Alexander Paschal', 'Holden Harrell'];
 
         $scope.camperList = '';
-        
+        $scope.newNote = '';
+        $scope.byStatus = '';
+        $scope.available = [];
+
 
         const id = ($stateParams.single);
 
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-    
+
         $scope.getParts = function (item) {
             CampService.showParts(item);
             console.log(CampService.showParts(item));
@@ -396,6 +399,17 @@ module.exports = {
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
         }
+
+         CampService.getFilters().then(function (response) {  
+            $scope.available = response.status;
+            console.log(response);
+        });
+
+        $scope.updateSet = function (set){
+            CampService.sendUpdate(set, $scope.byStatus, $scope.newNote);
+        }
+
+
 
     },
 }
@@ -744,6 +758,15 @@ module.exports = {
             submitInv(set) {
                 const array = [9999, 9999];
                  $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
+
+            sendUpdate(set, status, note) {
+                const data = [status, note];
+                 $http.post("/sets/" + set, data)
                  .then(function (response) {
                     console.log(response);
                  
