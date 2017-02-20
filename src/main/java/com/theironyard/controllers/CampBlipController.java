@@ -135,8 +135,31 @@ public class CampBlipController {
     }
 
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET)
-    public Set setPage(@PathVariable("set_id") Integer setId) {
-        return sets.findById(setId);
+    public SetViewModel setPage(@PathVariable("set_id") Integer setId) {
+
+        SetViewModel model = new SetViewModel();
+        Set viewSet = sets.findById(setId);
+
+        SetView setView = new SetView(
+                viewSet.getSetName(),
+                viewSet.getId(),
+                viewSet.getSetNum(),
+                viewSet.getYear(),
+                viewSet.getNumParts(),
+                viewSet.getSetImgUrl(),
+                viewSet.getSetBuildUrl(),
+                viewSet.getTheme(),
+                viewSet.getStatusEnum(),
+                viewSet.getSkillEnum(),
+                "InvDate", //ToDo: populate
+                "InvName",//ToDo: populate
+                viewSet.getInvStatus(),
+                "LastCkout", //Todo:
+                42, //TODO: Count all the inventory parts
+                viewSet.getNotes());
+        model.getSetViews().add(setView);
+
+        return model;
     }
 
     @RequestMapping (path = "/filters", method = RequestMethod.GET)
