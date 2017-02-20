@@ -19,7 +19,7 @@ public class CampBlipApplication {
 		SpringApplication.run(CampBlipApplication.class, args);
 	}
 
-	//Creates rest template for bringing in APIs can read over ride provided
+	//Creates rest template for bringing in APIs Overrides canread from http to Json provided
 	// by Ben Sterrett to deal with the text/html headers coming back from Lego API
 	@Bean
 	public RestTemplate restTemplateBuilderBean(RestTemplateBuilder builder) {
