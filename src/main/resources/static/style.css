@@ -1275,7 +1275,7 @@ button {
 #i {
   color: #B75321; }
 
-#add, #manage, #remove, #addCamper {
+#add, #manage, #remove, #addCamper, #addPartySet, #createPartyCatalog, #clearPartySets {
   padding: 8px 16px;
   margin: 5px 10px;
   background-color: #B75321;
@@ -1287,25 +1287,28 @@ button {
   width: 75%;
   display: block; }
   @media screen and (min-width: 68.75em) {
-    #add, #manage, #remove, #addCamper {
+    #add, #manage, #remove, #addCamper, #addPartySet, #createPartyCatalog, #clearPartySets {
       width: 25%; } }
 
-#setNumber, #setId, #newCamper, #campWeek {
+#setNumber, #setId, #newCamper, #campWeek, #partySet {
   width: 75%;
   padding: 8px 16px;
-  margin-top: 5%;
+  margin-top: 10px;
   margin-left: 10px;
   font-family: "Quicksand", sans-serif; }
   @media screen and (min-width: 68.75em) {
-    #setNumber, #setId, #newCamper, #campWeek {
+    #setNumber, #setId, #newCamper, #campWeek, #partySet {
       width: 25%; } }
 
-#add:hover, #manage:hover, #remove:hover, #addCamper:hover {
+#add:hover, #manage:hover, #remove:hover, #addCamper:hover, #addPartySet:hover, #createPartyCatalog:hover, #clearPartySets:hover {
   background-color: #157C2B;
   color: white; }
 
 #newCamper {
   display: block; }
+
+section {
+  border: 5px solid #157C2B; }
 
 #all, #search {
   margin-top: 20px;

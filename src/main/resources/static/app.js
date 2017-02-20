@@ -380,27 +380,37 @@ module.exports = {
         $scope.newCamper = '';
         $scope.weeks = '';
         $scope.newInfo = null;
+        $scope.partySet = '';
+        // $scope.partySets = null;
+       
         
 
         $scope.newSet = function () {
             CampService.addSet($scope.setNumber).then(function(response){
                 $scope.newInfo = response;
                 console.log(response);
-            })
-                ;
+            });
+        
             console.log($scope.newInfo);
             $scope.setNumber = '';
            
-        }
+        };
 
         $scope.removeSet = function(){
                        
             CampService.deleteSet($scope.setId);
-        }
+        };
 
         $scope.addCamper = function(){
             CampService.newCamper($scope.newCamper, $scope.weeks);
-        }
+        };
+
+        $scope.newPartySet = function(set){
+            CampService.addPartySet(set);
+            
+             
+        };
+        
 
     },
 }
@@ -698,7 +708,8 @@ module.exports = {
 
 
         let sets = [];
-
+        let partySets = [];
+         console.log(partySets);
 
         return {
 
@@ -837,6 +848,36 @@ module.exports = {
                     console.log(response);
                  
                 })
+            },
+
+            addPartySet(set){
+                partySets.push(set);
+               
+                console.log(partySets);
+            },
+
+             getpartySets() {
+
+                $http.get("/sets").then(function (response) {
+                    // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+                    console.log(response);
+
+
+                    for (let i = 0; i < response.data.setViews.length; i++) {
+                        let item = response.data.setViews;
+
+                        item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
+                            item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
+                            item[i].last_checkout, item[i].set_build_url, item[i].notes);
+
+                    }
+                    angular.copy(response.data.setViews, partySets);
+
+
+                });
+
+                return sets;
             },
         };
 

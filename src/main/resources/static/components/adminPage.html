@@ -1,18 +1,29 @@
-<input id = "setNumber" type = "text" ng-model = "setNumber" placeholder = "Enter Set Number">
-<button id = "add" ng-click="newSet(setNumber)">Add Set</button>
-<!--<p id = "confirmSet" ng-show= "newMovie.isRated"> You rated {{ newMovie.title}} {{ newMovie.stars }} star(s).</p>-->
-<p id = "confirmSet" ng-hide = "newInfo === null"> You added {{ newInfo[0] }} ({{ newInfo[1] }}).</p>
+<!--This section allows super user to add a new set to the database by set number-->
+<section id="addNewSet">
+    <input id="setNumber" type="text" ng-model="setNumber" placeholder="Enter Set Number">
+    <button id="add" ng-click="newSet(setNumber)">Add Set</button>
+    <p id="confirmSet" ng-hide="newInfo === null"> You added {{ newInfo[0] }} ({{ newInfo[1] }}).</p>
+</section>
 
-<input id = "setId" type = "text" ng-model = "setId" placeholder = "Enter Unique Set ID">
-<button id = "remove" ng-click="removeSet()">Remove Set</button>
-<button id = "manage">Manage Set</button>
+<!--This section allows a super user to delete a set from the database by set ID-->
+<section id="removeSet">
+    <input id="setId" type="text" ng-model="setId" placeholder="Enter Unique Set ID">
+    <button id="remove" ng-click="removeSet()">Remove Set</button>
+</section>
 
-<input id = "newCamper" type = "text" ng-model = "newCamper" placeholder = "Enter Camper Name">
-<input id = "campWeek" type = "text" ng-model = "weeks" placeholder = "Pick Camp Session">
-<button id = "addCamper" ng-click="addCamper()">Add New Camper</button>
+<!--This section allows a super user to add new campers to populate the check in and check out
+dropdown menu-->
+<section id="camperInfo">
+    <input id="newCamper" type="text" ng-model="newCamper" placeholder="Enter Camper Name">
+    <input id="campWeek" type="text" ng-model="weeks" placeholder="Pick Camp Session">
+    <button id="addCamper" ng-click="addCamper()">Add New Camper</button>
+</section>
 
-<!--<p>Upon login, this will be the landing page for super user (Kim)</p>
-<p>When click manage set, you get to set detail page</p>
-<p>On detail page, can now edit on order input, needs inventory toggle</p>
-<p>Counselors will land on the set search page after login</p>-->
-
+<!--This section allows a super user to add sets to a special birthday party catalog and
+to create a printable pdf of those sets-->
+<section id="partyCatalog">
+    <input id="partySet" type="text" ng-model="partySet" placeholder="Enter Party Set Number">
+    <button id="addPartySet" ng-click="newPartySet(partySet)">Add Party Set</button>
+    <button id="createPartyCatalog" ng-click="createPartyCatalog()">Create Party Catalog</button>
+    <button id="clearPartySets" ng-click="clearPartySets()">Clear Party Sets</button>
+</section>
