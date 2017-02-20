@@ -1596,7 +1596,7 @@ a {
   #partsPage::after {
     clear: both; }
 
-#finalSave, #inProgress {
+#finalSave {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 8px 16px;
@@ -1627,19 +1627,32 @@ a {
     margin: 0; }
 
 .onePart {
-  width: 50%;
+  width: 100%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
-  padding: 10px;
   border: 1px solid #BAB9A5;
-  border-radius: 10px; }
+  border-radius: 10px;
+  padding: 10px; }
   @media print, screen and (min-width: 40em) {
     .onePart {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
   .onePart:last-child:not(:first-child) {
     float: right; }
+  @media screen and (min-width: 89.6875em) {
+    .onePart {
+      width: 50%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem; } }
+  @media screen and (min-width: 89.6875em) and (min-width: 40em) {
+    .onePart {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  @media screen and (min-width: 89.6875em) {
+      .onePart:last-child:not(:first-child) {
+        float: right; } }
 
 #partList {
   list-style: none;
@@ -1788,13 +1801,16 @@ a {
     border: 5px solid #B75321; }
 
 body {
+  margin-left: 5%;
   background-color: #BAB9A5;
   color: #157C2B;
   font-family: "Fredoka One", sans-serif;
-  margin-top: 2%;
-  margin-left: 22%;
   margin-right: 5%;
-  border-radius: 10px; }
+  border-radius: 10px;
+  margin-top: 2%; }
+  @media screen and (min-width: 62.5em) {
+    body {
+      margin-left: 22%; } }
 
 main {
   padding: 25px 10px;
@@ -1816,23 +1832,30 @@ main {
 
 #nav {
   list-style: none;
-  width: 20%;
-  height: 95%;
-  position: fixed;
-  background-color: #22557C;
-  left: 25px;
-  top: 15px;
-  overflow: auto;
+  width: 100%;
   margin: 10px;
   padding: 5px;
   border-radius: 10px;
-  border: 5px solid #22557C; }
+  border: 5px solid #22557C;
+  background-color: #22557C; }
   #nav img {
-    border-radius: 10px;
-    width: 90%;
-    margin: 0 10px;
-    border: 5px solid #5A5353;
-    box-shadow: 5px 5px 2px #5A5353; }
+    display: none; }
+    @media screen and (min-width: 62.5em) {
+      #nav img {
+        display: block;
+        border-radius: 10px;
+        width: 90%;
+        margin: 0 10px;
+        border: 5px solid #5A5353;
+        box-shadow: 5px 5px 2px #5A5353; } }
+  @media screen and (min-width: 62.5em) {
+    #nav {
+      position: fixed;
+      width: 20%;
+      height: 95%;
+      left: 25px;
+      top: 15px;
+      overflow: auto; } }
 
 .navLi a {
   display: block;
@@ -1872,7 +1895,7 @@ header {
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem;
-    font-size: 2.5em;
+    font-size: 2.25em;
     text-align: center;
     background-color: #22557C;
     margin-left: 50px;
