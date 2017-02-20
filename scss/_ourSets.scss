@@ -33,16 +33,31 @@
         }
 
     #searchBox{
+        @include grid-column(12);
+
+        @include breakpoint(1050){
+
         @include grid-column(4);
+        }
     }
 
     #searchDropOne{
+        @include grid-column(12);
+
+         @include breakpoint(1050){
+
         @include grid-column(4);
+        }
 
     }
 
     #searchDropTwo{
-         @include grid-column(4);
+         @include grid-column(12);
+
+          @include breakpoint(1050){
+
+        @include grid-column(4);
+        }
     }
 }
 
@@ -72,7 +87,8 @@ select{
 }
 
 .words{
-    @include grid-column(8);
+
+    @include grid-column(12);
     text-align: center;
     color: $creme-color;
     margin-top: 20px;
@@ -102,12 +118,30 @@ select{
         font-size: 1.25em;
         margin: 0;
     }
+
+    @include breakpoint(1050px){
+
+        @include grid-column(8);
+
+    }
 }
 
 .pic{
-    @include grid-column(4);
-    margin: 10px;
-    width: 200px;
+
+    @include grid-column(12);
+    width: 300px;
+    margin-left: 25%;
+    margin-right:25%;
+    margin-top: 10px;
+   
+   
+
+    @include breakpoint(1050px){
+        @include grid-column(4);
+        margin: 10px;
+        width: 200px;
+        
+    }
 
 }
 

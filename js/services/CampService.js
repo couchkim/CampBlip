@@ -5,7 +5,7 @@ module.exports = {
 
 
         function Set(id, name, number, theme, pieces, status, image, year, skill, invDate, invName,
-            invNeed, invParts, checkout, instructions, notes) {
+            invStat, invParts, checkout, instructions, notes) {
             this.setId = id;
             this.setName = name;
             this.setNumber = number;
@@ -20,15 +20,15 @@ module.exports = {
             // last inventoried date
             this.invName = invName;
             // who inventoried it
-            this.invNeed = invNeed;
-            // Boolean t or f for needs inventory
+            this.invStat = invStat;
+            // three possible states
             this.lastCheckout = checkout;
             // last date that set was checked out
             this.invParts = invParts;
             // how many parts we had after inventory
             this.missing = 0;
             // number of pieces missing from the set
-            this.order = 'lots of pieces';
+            // this.order = 'lots of pieces';
             // text string from admin input
             this.notes = notes;
             // text string from admin input
@@ -58,7 +58,7 @@ module.exports = {
                         let item = response.data.setViews;
                         item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
@@ -80,7 +80,7 @@ module.exports = {
                         let item = response.data.setViews;
                         item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }

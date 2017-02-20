@@ -63,9 +63,9 @@
         }
     }
 
-.backResult, .parts, .instructions{
+.backResult, .parts,{
             padding: 2px 4px;
-            margin: 10px 10px;
+            margin: 20px 10px;
             background-color:$orange-color;
             text-align:center;
             border-radius: $radius-default;
@@ -74,6 +74,18 @@
             font-family: $primary-font;
             width: 25%;
 
+}
+
+.instructions{
+            padding: 2px 4px;
+            margin: 10px 10px;
+            background-color:$orange-color;
+            text-align:center;
+            border-radius: $radius-default;
+            border: 1px solid $gray-color;
+            color: $creme-color;
+            font-family: $primary-font;
+            width: 50%;
 }
 
 .check:hover,.backResult:hover, .parts:hover, .instructions:hover {

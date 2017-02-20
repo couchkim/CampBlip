@@ -1343,7 +1343,7 @@ button {
   #inputs p {
     margin: 0; }
   #inputs #searchBox {
-    width: 33.33333%;
+    width: 100%;
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem; }
@@ -1353,8 +1353,21 @@ button {
         padding-left: 0.9375rem; } }
     #inputs #searchBox:last-child:not(:first-child) {
       float: right; }
+    @media screen and (min-width: 65.625em) {
+      #inputs #searchBox {
+        width: 33.33333%;
+        float: left;
+        padding-right: 0.625rem;
+        padding-left: 0.625rem; } }
+  @media screen and (min-width: 65.625em) and (min-width: 40em) {
+    #inputs #searchBox {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+    @media screen and (min-width: 65.625em) {
+        #inputs #searchBox:last-child:not(:first-child) {
+          float: right; } }
   #inputs #searchDropOne {
-    width: 33.33333%;
+    width: 100%;
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem; }
@@ -1364,8 +1377,21 @@ button {
         padding-left: 0.9375rem; } }
     #inputs #searchDropOne:last-child:not(:first-child) {
       float: right; }
+    @media screen and (min-width: 65.625em) {
+      #inputs #searchDropOne {
+        width: 33.33333%;
+        float: left;
+        padding-right: 0.625rem;
+        padding-left: 0.625rem; } }
+  @media screen and (min-width: 65.625em) and (min-width: 40em) {
+    #inputs #searchDropOne {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+    @media screen and (min-width: 65.625em) {
+        #inputs #searchDropOne:last-child:not(:first-child) {
+          float: right; } }
   #inputs #searchDropTwo {
-    width: 33.33333%;
+    width: 100%;
     float: left;
     padding-right: 0.625rem;
     padding-left: 0.625rem; }
@@ -1375,6 +1401,19 @@ button {
         padding-left: 0.9375rem; } }
     #inputs #searchDropTwo:last-child:not(:first-child) {
       float: right; }
+    @media screen and (min-width: 65.625em) {
+      #inputs #searchDropTwo {
+        width: 33.33333%;
+        float: left;
+        padding-right: 0.625rem;
+        padding-left: 0.625rem; } }
+  @media screen and (min-width: 65.625em) and (min-width: 40em) {
+    #inputs #searchDropTwo {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+    @media screen and (min-width: 65.625em) {
+        #inputs #searchDropTwo:last-child:not(:first-child) {
+          float: right; } }
 
 select {
   width: 75%; }
@@ -1404,7 +1443,7 @@ select {
     clear: both; }
 
 .words {
-  width: 66.66667%;
+  width: 100%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
@@ -1434,20 +1473,50 @@ select {
   .words p {
     font-size: 1.25em;
     margin: 0; }
+  @media screen and (min-width: 65.625em) {
+    .words {
+      width: 66.66667%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem; } }
+  @media screen and (min-width: 65.625em) and (min-width: 40em) {
+    .words {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  @media screen and (min-width: 65.625em) {
+      .words:last-child:not(:first-child) {
+        float: right; } }
 
 .pic {
-  width: 33.33333%;
+  width: 100%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
-  margin: 10px;
-  width: 200px; }
+  width: 300px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 10px; }
   @media print, screen and (min-width: 40em) {
     .pic {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
   .pic:last-child:not(:first-child) {
     float: right; }
+  @media screen and (min-width: 65.625em) {
+    .pic {
+      width: 33.33333%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem;
+      margin: 10px;
+      width: 200px; } }
+  @media screen and (min-width: 65.625em) and (min-width: 40em) {
+    .pic {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  @media screen and (min-width: 65.625em) {
+      .pic:last-child:not(:first-child) {
+        float: right; } }
 
 .color-green {
   color: #157C2B;
@@ -1567,7 +1636,18 @@ select {
   margin-top: 10px;
   padding: 10px; }
 
-.backResult, .parts, .instructions {
+.backResult, .parts {
+  padding: 2px 4px;
+  margin: 20px 10px;
+  background-color: #B75321;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #5A5353;
+  color: #BAB9A5;
+  font-family: "Fredoka One", sans-serif;
+  width: 25%; }
+
+.instructions {
   padding: 2px 4px;
   margin: 10px 10px;
   background-color: #B75321;
@@ -1576,7 +1656,7 @@ select {
   border: 1px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
-  width: 25%; }
+  width: 50%; }
 
 .check:hover, .backResult:hover, .parts:hover, .instructions:hover {
   background-color: #157C2B;
@@ -1875,7 +1955,6 @@ main {
 
 header {
   background-image: url("images/pile2.png");
-  background-color: #22557C;
   color: #BAB9A5;
   width: 95%;
   padding: 20px 0;
