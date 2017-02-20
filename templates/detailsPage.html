@@ -33,7 +33,7 @@
             <h4 ng-show="!myForm.newNote.$valid">The note is too long</h4>
         </form>
         <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
-        <button class="updateSet" ng-click="updateSet(item.setId)">Update Set Info</button>
+        <button class="updateSet" ng-click="updateSet(item)">Update Set Info</button>
     </div>
 
     <div class="admin">

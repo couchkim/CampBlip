@@ -400,7 +400,6 @@ module.exports = {
 
         $scope.getParts = function (item) {
             console.log(item);
-            CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
 
@@ -417,11 +416,9 @@ module.exports = {
             console.log(response);
         });
 
-        $scope.updateSet = function (set){
-            CampService.sendUpdate(set, $scope.byStatus, $scope.newNote);
+        $scope.updateSet = function (item){
+            CampService.sendUpdate(item.setId, $scope.byStatus, $scope.newNote);
         }
-
-
 
     },
 }
@@ -515,8 +512,7 @@ module.exports = {
             console.log($scope.partSet);
             console.log($scope.parts);
             CampService.showParts(response);
-        }
-        );
+        });
 
 
 
@@ -728,15 +724,6 @@ module.exports = {
                     console.log(response);
                     return item;
                 })
-                // if length is 0, make getSets request and then iterate over it.  promises
-                // for (let i = 0; i < sets.length; i++) {
-                //     // if (sets.length === 0){
-                //     //     getSets();
-                //     // }
-                //     if (sets[i].setId === id) {
-                //         return sets[i];
-                //     }
-                // }
             },
 
             addSet(num) {
@@ -747,13 +734,6 @@ module.exports = {
                 })
             },
 
-            // showParts(item) {
-            //     console.log(item);
-            //     $http.get("/parts/" + item).then(function (response) {
-            //         angular.copy(response.data.parts, item.parts)
-            //         console.log(response);
-            //     })
-            // },
 
             showParts(item) {
                 $http.get("/parts/" + item.setId).then(function (response) {
@@ -815,9 +795,9 @@ module.exports = {
                 })
             },
 
-            sendUpdate(set, status, note) {
+            sendUpdate(id, status, note) {
                 const data = [status, note];
-                 $http.post("/set/" + set, data)
+                 $http.post("/set/" + id, data)
                  .then(function (response) {
                     console.log(response);
                  

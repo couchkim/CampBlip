@@ -13,8 +13,7 @@ module.exports = {
             console.log($scope.partSet);
             console.log($scope.parts);
             CampService.showParts(response);
-        }
-        );
+        });
 
 
 

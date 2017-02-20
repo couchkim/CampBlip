@@ -28,7 +28,6 @@ module.exports = {
 
         $scope.getParts = function (item) {
             console.log(item);
-            CampService.showParts(item);
             console.log(CampService.showParts(item));
         }
 
@@ -45,11 +44,9 @@ module.exports = {
             console.log(response);
         });
 
-        $scope.updateSet = function (set){
-            CampService.sendUpdate(set, $scope.byStatus, $scope.newNote);
+        $scope.updateSet = function (item){
+            CampService.sendUpdate(item.setId, $scope.byStatus, $scope.newNote);
         }
-
-
 
     },
 }

@@ -104,15 +104,6 @@ module.exports = {
                     console.log(response);
                     return item;
                 })
-                // if length is 0, make getSets request and then iterate over it.  promises
-                // for (let i = 0; i < sets.length; i++) {
-                //     // if (sets.length === 0){
-                //     //     getSets();
-                //     // }
-                //     if (sets[i].setId === id) {
-                //         return sets[i];
-                //     }
-                // }
             },
 
             addSet(num) {
@@ -123,13 +114,6 @@ module.exports = {
                 })
             },
 
-            // showParts(item) {
-            //     console.log(item);
-            //     $http.get("/parts/" + item).then(function (response) {
-            //         angular.copy(response.data.parts, item.parts)
-            //         console.log(response);
-            //     })
-            // },
 
             showParts(item) {
                 $http.get("/parts/" + item.setId).then(function (response) {
@@ -191,9 +175,9 @@ module.exports = {
                 })
             },
 
-            sendUpdate(set, status, note) {
+            sendUpdate(id, status, note) {
                 const data = [status, note];
-                 $http.post("/set/" + set, data)
+                 $http.post("/set/" + id, data)
                  .then(function (response) {
                     console.log(response);
                  
