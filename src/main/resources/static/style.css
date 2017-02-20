@@ -1284,15 +1284,21 @@ button {
   border: 3px solid #5A5353;
   color: #BAB9A5;
   font-family: "Fredoka One", sans-serif;
-  width: 25%;
+  width: 75%;
   display: block; }
+  @media screen and (min-width: 68.75em) {
+    #add, #manage, #remove, #addCamper {
+      width: 25%; } }
 
-#setNumber, #setId, #newCamper {
-  width: 25%;
+#setNumber, #setId, #newCamper, #campWeek {
+  width: 75%;
   padding: 8px 16px;
   margin-top: 5%;
   margin-left: 10px;
   font-family: "Quicksand", sans-serif; }
+  @media screen and (min-width: 68.75em) {
+    #setNumber, #setId, #newCamper, #campWeek {
+      width: 25%; } }
 
 #add:hover, #manage:hover, #remove:hover, #addCamper:hover {
   background-color: #157C2B;
@@ -1300,13 +1306,6 @@ button {
 
 #newCamper {
   display: block; }
-
-#campWeek {
-  margin-top: 5px;
-  width: 25%;
-  padding: 8px 16px;
-  margin-left: 10px;
-  font-family: "Quicksand", sans-serif; }
 
 #all, #search {
   margin-top: 20px;
@@ -1547,22 +1546,30 @@ select {
     margin: 5px 0px; }
 
 #registerPicOne {
-  position: absolute;
-  top: 10px;
-  left: 25px;
-  width: 175px;
-  transform: rotate(-10deg);
-  border-radius: 10px;
-  border: 5px solid #B75321; }
+  display: none; }
+  @media screen and (min-width: 87.5em) {
+    #registerPicOne {
+      display: inline;
+      position: absolute;
+      top: 10px;
+      left: 25px;
+      width: 175px;
+      transform: rotate(-10deg);
+      border-radius: 10px;
+      border: 5px solid #B75321; } }
 
 #registerPicTwo {
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  width: 200px;
-  transform: rotate(7deg);
-  border-radius: 10px;
-  border: 5px solid #B75321; }
+  display: none; }
+  @media screen and (min-width: 87.5em) {
+    #registerPicTwo {
+      display: inline;
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      width: 200px;
+      transform: rotate(7deg);
+      border-radius: 10px;
+      border: 5px solid #B75321; } }
 
 .detailHead {
   max-width: 75rem;
@@ -1899,21 +1906,29 @@ a {
     list-style: none;
     padding-left: 0; }
   #partiesPage #partyPicOne {
-    position: absolute;
-    bottom: 10px;
-    left: 25px;
-    width: 200px;
-    transform: rotate(-10deg);
-    border-radius: 10px;
-    border: 5px solid #B75321; }
+    display: none; }
+    @media screen and (min-width: 81.25em) {
+      #partiesPage #partyPicOne {
+        display: inline;
+        position: absolute;
+        bottom: 5px;
+        left: 30px;
+        width: 150px;
+        transform: rotate(-10deg);
+        border-radius: 10px;
+        border: 5px solid #B75321; } }
   #partiesPage #partyPicTwo {
-    position: absolute;
-    bottom: 10px;
-    right: 50px;
-    width: 160px;
-    transform: rotate(7deg);
-    border-radius: 10px;
-    border: 5px solid #B75321; }
+    display: none; }
+    @media screen and (min-width: 81.25em) {
+      #partiesPage #partyPicTwo {
+        display: inline;
+        position: absolute;
+        bottom: 10px;
+        right: 50px;
+        width: 160px;
+        transform: rotate(7deg);
+        border-radius: 10px;
+        border: 5px solid #B75321; } }
 
 body {
   margin-left: 5%;
