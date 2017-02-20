@@ -1,5 +1,5 @@
 #add, #manage, #remove, #addCamper{
-        // @include grid-column(6);
+        
         padding: 8px 16px;
         margin: 5px 10px;
          background-color:$orange-color;
@@ -8,17 +8,26 @@
         border: 3px solid $gray-color;
         color: $creme-color;
         font-family: $primary-font;
-        width: 25%;
+        width: 75%;
         display: block;
+
+         @include breakpoint(1100px){
+            width: 25%;
+         }
 }
 
-#setNumber, #setId, #newCamper{
-    // @include grid-column(12);
-    width: 25%;
+#setNumber, #setId, #newCamper, #campWeek{
+    
+    width: 75%;
     padding: 8px 16px;
     margin-top: 5%;
     margin-left: 10px;
     font-family: $secondary-font;
+
+    @include breakpoint(1100px){
+    width: 25%;
+    }
+    
 }
 
 
@@ -32,10 +41,4 @@
        
     }
 
-    #campWeek{
-        margin-top: 5px;;
-        width: 25%;
-        padding: 8px 16px;
-        margin-left: 10px;
-        font-family: $secondary-font;
-    }
+   

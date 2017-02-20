@@ -22,6 +22,11 @@
 }
 
 #registerPicOne{
+
+        display: none;
+
+        @include breakpoint(1400px){
+        display: inline;
         position: absolute;
         top: 10px;
         left: 25px;
@@ -29,9 +34,15 @@
         transform: rotate(-10deg);
         border-radius: $radius-default;
         border: 5px solid $orange-color;
+        }
     }
 
 #registerPicTwo{
+
+        display: none;
+
+        @include breakpoint(1400px){
+        display: inline;
         position: absolute;
         top: 25px;
         right: 30px;
@@ -39,4 +50,5 @@
         transform: rotate(7deg);
         border-radius: $radius-default;
         border: 5px solid $orange-color;
+        }
     }

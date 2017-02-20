@@ -380,14 +380,20 @@ module.exports = {
             'Alexander Paschal', 'Holden Harrell'];
 
         $scope.camperList = '';
+        $scope.newNote = '';
+        $scope.byStatus = '';
+        $scope.available = [];
+        // $scope.item.statusDisplay = '';
         
+        // $scope.item.statusDisplay = $scope.item.status;
+
 
         const id = ($stateParams.single);
 
         $scope.item = CampService.getSet(id);
         console.log($scope.item);
 
-    
+
         $scope.getParts = function (item) {
             CampService.showParts(item);
             console.log(CampService.showParts(item));
@@ -395,7 +401,21 @@ module.exports = {
 
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
+            // if($scope.item.status === "CHECKED_OUT"){
+            //     $scope.item.statusDisplay = "Checked Out"
+            // }
         }
+
+         CampService.getFilters().then(function (response) {  
+            $scope.available = response.status;
+            console.log(response);
+        });
+
+        $scope.updateSet = function (set){
+            CampService.sendUpdate(set, $scope.byStatus, $scope.newNote);
+        }
+
+
 
     },
 }
@@ -479,37 +499,51 @@ module.exports = {
     name: "partsPageController",
     func: function ($scope, CampService, $stateParams) {
 
-       const partSet = ($stateParams.single);
-       console.log("parts");
-       $scope.partSet = CampService.getSet(partSet);
-       console.log($scope.partSet);
+        const partSet = ($stateParams.single);
+        console.log("parts");
+        $scope.partSet = CampService.getSet(partSet);
+        console.log($scope.partSet);
 
-       $scope.parts = $scope.partSet.parts;
-       console.log($scope.parts);
+        $scope.parts = $scope.partSet.parts;
+        console.log($scope.parts);
 
-       $scope.partQty = '';
-       $scope.checked = '';
-      
+        $scope.partQty = '';
+       
 
-       $scope.changeQty = function(set, part){
-              part.currInv = part.setQty;
-              CampService.updateQty(set, part.setPartId, part.currInv);
-              console.log(set, part.setPartId, part.currInv);
 
-       };
+        $scope.changeQty = function (set, part) {
+            part.currInv = part.setQty;
+            CampService.updateQty(set, part.setPartId, part.currInv);
+            console.log(set, part.setPartId, part.currInv);
 
-         $scope.sendQty = function(set, part){   
-           CampService.updateQty(set, part.setPartId, part.currInv);
-           console.log(set, part.setPartId, part.currInv);
+        };
 
-         };
+        $scope.sendQty = function (set, part) {
+            CampService.updateQty(set, part.setPartId, part.currInv);
+            console.log(set, part.setPartId, part.currInv);
 
-         $scope.finalQty = function(set){   
-           CampService.submitInv(set);
-           
+        };
 
-         };
-        
+        $scope.finalQty = function (set) {
+            CampService.submitInv(set);
+
+
+        };
+
+        $scope.checkAll = function () {
+            if ($scope.selectedAll) {
+                $scope.selectedAll = true;
+            } else {
+                $scope.selectedAll = false;
+            }
+            angular.forEach($scope.parts, function (part) {
+                part.Selected = $scope.selectedAll;
+                $scope.changeQty(part.setId, part);
+            });
+
+        };
+
+
 
     },
 }
@@ -582,7 +616,7 @@ module.exports = {
 
 
         function Set(id, name, number, theme, pieces, status, image, year, skill, invDate, invName,
-            invNeed, invParts, checkout, instructions, notes) {
+            invStat, invParts, checkout, instructions, notes) {
             this.setId = id;
             this.setName = name;
             this.setNumber = number;
@@ -597,15 +631,15 @@ module.exports = {
             // last inventoried date
             this.invName = invName;
             // who inventoried it
-            this.invNeed = invNeed;
-            // Boolean t or f for needs inventory
+            this.invStat = invStat;
+            // three possible states
             this.lastCheckout = checkout;
             // last date that set was checked out
             this.invParts = invParts;
             // how many parts we had after inventory
             this.missing = 0;
             // number of pieces missing from the set
-            this.order = 'lots of pieces';
+            // this.order = 'lots of pieces';
             // text string from admin input
             this.notes = notes;
             // text string from admin input
@@ -635,7 +669,7 @@ module.exports = {
                         let item = response.data.setViews;
                         item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
@@ -657,7 +691,7 @@ module.exports = {
                         let item = response.data.setViews;
                         item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_need, item[i].inv_parts,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
                     }
@@ -744,6 +778,15 @@ module.exports = {
             submitInv(set) {
                 const array = [9999, 9999];
                  $http.post("/parts/" + set, array)
+                 .then(function (response) {
+                    console.log(response);
+                 
+                })
+            },
+
+            sendUpdate(set, status, note) {
+                const data = [status, note];
+                 $http.post("/sets/" + set, data)
                  .then(function (response) {
                     console.log(response);
                  
