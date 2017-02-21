@@ -23,14 +23,17 @@ import com.theironyard.viewmodels.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.OrderBy;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.annotation.Native;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,6 +42,8 @@ import static com.theironyard.datamodels.Enums.InvEnum.COMPLETE;
 import static com.theironyard.datamodels.Enums.InvEnum.IN_PROGRESS;
 import static com.theironyard.datamodels.Enums.StatusEnum.AVAILABLE;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
+import static org.springframework.data.domain.Sort.Direction.ASC;
+import static org.springframework.data.domain.Sort.NullHandling.NATIVE;
 
 /**
  * Created by graceconnelly on 2/7/17.
@@ -108,9 +113,11 @@ public class CampBlipController {
                     .withIgnoreNullValues()
                     .withMatcher("setName", contains())
                     .withMatcher("setNum", contains());
+            Sort sort = new Sort(Sort.Direction.ASC, "Theme", "numParts");
 
-            viewSets = (List) sets.findAll(Example.of(s,matcher));//TODO: order sets Ascending By theme and then Ascending by num-pieces
 
+
+            viewSets = (List) sets.findAll(Example.of(s,matcher), sort);//TODO: order sets Ascending By theme and then Ascending by num-pieces
         SetViewModel model = new SetViewModel();
         for ( Set viewSet : viewSets) {
             SetView setView = new SetView(
