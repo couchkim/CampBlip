@@ -12,7 +12,8 @@ module.exports = {
         $scope.partySet = '';
         $scope.partySets = null;
         $scope.allPartySetInfo = null;
-
+        $scope.parseInt = parseInt;
+        $scope.partyChild = '';
 
 
         $scope.newSet = function () {
@@ -37,6 +38,7 @@ module.exports = {
 
         $scope.newPartySet = function (set) {
             $scope.partySets = CampService.addPartySet(set);
+            $scope.partySet = '';
 
         };
 

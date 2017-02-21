@@ -1322,25 +1322,6 @@ button {
     content: ' '; }
   #catalogView::after {
     clear: both; }
-  #catalogView ul {
-    list-style: none; }
-  #catalogView img {
-    width: 300px; }
-  #catalogView li {
-    width: 45.83333%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
-    height: 400p;
-    margin: 10px;
-    border: 1px solid black;
-    height: 100%; }
-    @media print, screen and (min-width: 40em) {
-      #catalogView li {
-        padding-right: 0.9375rem;
-        padding-left: 0.9375rem; } }
-    #catalogView li:last-child:not(:first-child) {
-      float: right; }
   #catalogView h1 {
     width: 100%;
     float: left;
@@ -1352,6 +1333,32 @@ button {
         padding-left: 0.9375rem; } }
     #catalogView h1:last-child:not(:first-child) {
       float: right; }
+  #catalogView ul {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto;
+    list-style: none;
+    margin: 0 auto;
+    padding-left: 0; }
+    #catalogView ul::before, #catalogView ul::after {
+      display: table;
+      content: ' '; }
+    #catalogView ul::after {
+      clear: both; }
+    #catalogView ul li {
+      width: 45.83333%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem;
+      height: 450px; }
+      @media print, screen and (min-width: 40em) {
+        #catalogView ul li {
+          padding-right: 0.9375rem;
+          padding-left: 0.9375rem; } }
+      #catalogView ul li:last-child:not(:first-child) {
+        float: right; }
+  #catalogView img {
+    width: 300px; }
 
 #all, #search {
   margin-top: 20px;
@@ -2006,7 +2013,6 @@ body {
 main {
   padding: 25px 10px;
   background-color: #22557C;
-  height: 100%;
   color: #BAB9A5;
   border-radius: 10px;
   margin-left: 25px;
