@@ -1,5 +1,4 @@
 const app = angular.module('CampApp', ['ui.router']);
-// const app = angular.module('CampApp', ['ui.router'], ['ngEmbed']);
 
 
 app.config(function ($stateProvider) {
@@ -88,20 +87,13 @@ app.config(function ($stateProvider) {
 
 
 const controllers = [
-    require('./controllers/homePageController'),
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
-    require('./controllers/registerPageController'),
     require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
     require('./controllers/instructionsPageController'),
-    require('./controllers/aboutPageController'),
-    require('./controllers/partiesPageController'),
-
-
-
 ];
 
 for (let i = 0; i < controllers.length; i++) {

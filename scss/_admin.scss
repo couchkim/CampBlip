@@ -1,4 +1,8 @@
-#add, #manage, #remove, #addCamper{
+.adminSec{
+    border: 5px solid $green-color;
+}
+
+.button{
         
         padding: 8px 16px;
         margin: 5px 10px;
@@ -16,11 +20,15 @@
          }
 }
 
-#setNumber, #setId, #newCamper, #campWeek{
-    
+.button:hover{
+            background-color: $green-color;
+             color: white;
+    }
+
+.input{
     width: 75%;
     padding: 8px 16px;
-    margin-top: 5%;
+    margin-top: 10px;
     margin-left: 10px;
     font-family: $secondary-font;
 
@@ -30,15 +38,11 @@
     
 }
 
-
-#add:hover, #manage:hover, #remove:hover, #addCamper:hover{
-            background-color: $green-color;
-             color: white;
-    }
-
-    #newCamper{
+#newCamper{
         display: block;
        
     }
+
+
 
    

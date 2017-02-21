@@ -2,8 +2,10 @@
 
     <img class="picBig" ng-src="{{ item.image }}">
     <a ui-sref="sets-page"><button class="backResult">Back</button></a>
-    <a ui-sref="parts-page({ single: item.setNumber })"><button class="parts" ng-click = "getParts(item)">Parts</button></a>
-    <a ui-sref="instructions-page({ single: item.setNumber })"><button class="instructions">Instructions</button></a>
+    <a ui-sref="parts-page({ single: item.setId })"><button class="parts" ng-click = "getParts(item)">Parts</button></a>
+    <a ui-sref="instructions-page({ single: item.setId })"><button class="instructions">Instructions</button></a>
+    <!--<a ui-sref="parts-page({ single: $ctrl.item.setId })"><button class="parts" ng-click = "getParts(item)">Parts</button></a>
+    <a ui-sref="instructions-page({ single: $ctrl.item.setId })"><button class="instructions">Instructions</button></a>-->
 
 </section>
 
@@ -31,7 +33,7 @@
             <h4 ng-show="!myForm.newNote.$valid">The note is too long</h4>
         </form>
         <select id="byStatus" ng-model="byStatus" ng-options="status for status in available"></select>
-        <button class="updateSet" ng-click="updateSet(item.setId)">Update Set Info</button>
+        <button class="updateSet" ng-click="updateSet(item)">Update Set Info</button>
     </div>
 
     <div class="admin">

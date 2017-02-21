@@ -28,12 +28,9 @@ module.exports = {
             // how many parts we had after inventory
             this.missing = 0;
             // number of pieces missing from the set
-            // this.order = 'lots of pieces';
-            // text string from admin input
             this.notes = notes;
             // text string from admin input
             this.parts = [];
-
             // array of all parts in the set that comes when parts button is clicked
             this.instructions = instructions;
 
@@ -43,7 +40,8 @@ module.exports = {
 
 
         let sets = [];
-
+        let partySets = [];
+        console.log(partySets);
 
         return {
 
@@ -72,7 +70,7 @@ module.exports = {
 
             getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
                 $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
-                    // $http.get("https://camp-blip-legos.herokuapp.com/sets").then(function (response) {
+
                     console.log(response);
 
 
@@ -94,15 +92,16 @@ module.exports = {
             },
 
             getSet(id) {
-                // if length is 0, make getSets request and then iterate over it.  promises
-                for (let i = 0; i < sets.length; i++) {
-                    // if (sets.length === 0){
-                    //     getSets();
-                    // }
-                    if (sets[i].setNumber === id) {
-                        return sets[i];
-                    }
-                }
+
+                return $http.get("/set/" + id).then(function (response) {
+                    let item = response.data.setViews[0];
+                    item = new Set(item.set_id, item.name, item.set_num, item.theme,
+                        item.num_parts, item.status, item.set_img_url, item.year,
+                        item.skill_level, item.inv_date, item.inv_name, item.inv_stat, item.inv_parts,
+                        item.last_checkout, item.set_build_url, item.notes);
+                    console.log(response);
+                    return item;
+                })
             },
 
             addSet(num) {
@@ -112,6 +111,7 @@ module.exports = {
                     return response.data;
                 })
             },
+
 
             showParts(item) {
                 $http.get("/parts/" + item.setId).then(function (response) {
@@ -157,29 +157,59 @@ module.exports = {
 
             updateQty(set, id, update) {
                 const array = [id, update];
-                 $http.post("/parts/" + set, array)
-                 .then(function (response) {
-                    console.log(response);
-                 
-                })
+                $http.post("/parts/" + set, array)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
             },
 
             submitInv(set) {
                 const array = [9999, 9999];
-                 $http.post("/parts/" + set, array)
-                 .then(function (response) {
-                    console.log(response);
-                 
-                })
+                $http.post("/parts/" + set, array)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
             },
 
-            sendUpdate(set, status, note) {
+            sendUpdate(id, status, note) {
                 const data = [status, note];
-                 $http.post("/sets/" + set, data)
-                 .then(function (response) {
+                $http.post("/set/" + id, data)
+                    .then(function (response) {
+                        console.log(response);
+
+                    })
+            },
+
+            addPartySet(set) {
+                partySets.push(set);
+
+                console.log(partySets);
+            },
+
+            getpartySets() {
+
+                $http.get("/sets").then(function (response) {
+
                     console.log(response);
-                 
-                })
+
+
+                    for (let i = 0; i < response.data.setViews.length; i++) {
+                        let item = response.data.setViews;
+
+                        item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
+                            item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
+                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
+                            item[i].last_checkout, item[i].set_build_url, item[i].notes);
+
+                    }
+                    angular.copy(response.data.setViews, partySets);
+
+
+                });
+
+                return sets;
             },
         };
 

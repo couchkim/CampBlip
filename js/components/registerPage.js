@@ -5,10 +5,8 @@ module.exports = {
 
         templateUrl: 'components/registerPage.html',
         bindings: {
-            // label: '<', 
-
+           
         },
-        controller: 'registerPageController',
     }
 
 }

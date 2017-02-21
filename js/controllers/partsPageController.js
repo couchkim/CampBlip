@@ -5,14 +5,20 @@ module.exports = {
 
         const partSet = ($stateParams.single);
         console.log("parts");
-        $scope.partSet = CampService.getSet(partSet);
-        console.log($scope.partSet);
 
-        $scope.parts = $scope.partSet.parts;
-        console.log($scope.parts);
+        CampService.getSet(partSet).then(function (response) {
+
+            $scope.partSet = response;
+            $scope.parts = $scope.partSet.parts;
+            console.log($scope.partSet);
+            console.log($scope.parts);
+            CampService.showParts(response);
+        });
+
+
 
         $scope.partQty = '';
-       
+
 
 
         $scope.changeQty = function (set, part) {

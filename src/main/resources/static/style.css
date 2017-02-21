@@ -1,4 +1,3 @@
-/*we use ../ because we created a folder for scss.  need to go up a directory*/
 /**
  * Foundation for Sites by ZURB
  * Version 6.3.0
@@ -1275,7 +1274,10 @@ button {
 #i {
   color: #B75321; }
 
-#add, #manage, #remove, #addCamper {
+.adminSec {
+  border: 5px solid #157C2B; }
+
+.button {
   padding: 8px 16px;
   margin: 5px 10px;
   background-color: #B75321;
@@ -1287,22 +1289,22 @@ button {
   width: 75%;
   display: block; }
   @media screen and (min-width: 68.75em) {
-    #add, #manage, #remove, #addCamper {
+    .button {
       width: 25%; } }
 
-#setNumber, #setId, #newCamper, #campWeek {
+.button:hover {
+  background-color: #157C2B;
+  color: white; }
+
+.input {
   width: 75%;
   padding: 8px 16px;
-  margin-top: 5%;
+  margin-top: 10px;
   margin-left: 10px;
   font-family: "Quicksand", sans-serif; }
   @media screen and (min-width: 68.75em) {
-    #setNumber, #setId, #newCamper, #campWeek {
+    .input {
       width: 25%; } }
-
-#add:hover, #manage:hover, #remove:hover, #addCamper:hover {
-  background-color: #157C2B;
-  color: white; }
 
 #newCamper {
   display: block; }
