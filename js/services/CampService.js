@@ -41,10 +41,13 @@ module.exports = {
 
         let sets = [];
         let partySets = [];
+        let partySetInfo = [];
         console.log(partySets);
 
         return {
 
+            // Gets all sets from database and pushes them through the Set constructor and into the sets array
+            // Returns the array of sets.
             getSets() {
 
                 $http.get("/sets").then(function (response) {
@@ -68,6 +71,16 @@ module.exports = {
                 return sets;
             },
 
+            // Gets the lists of filters for the search dropdowns, returns a promise and the response
+            getFilters() {
+                return $http.get("/filters/").then(function (response) {
+                    console.log(response);
+                    return response.data;
+                })
+            },
+
+            // Gets the sets that match the search filters, puts them through the constructor and into the sets array for display
+            // Returns the sets array/
             getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
                 $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
 
@@ -80,12 +93,8 @@ module.exports = {
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
                             item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
-
                     }
-
                     angular.copy(response.data.setViews, sets);
-
-
                 });
 
                 return sets;
@@ -120,19 +129,6 @@ module.exports = {
                 })
             },
 
-            deleteSet(id) {
-                // $http.delete("/parts/" + id).then(function (response) {
-
-                //     console.log(response);
-                // })
-            },
-
-            newCamper(person, time) {
-                // $http.post("/campers/").then(function (response) {
-
-                //     console.log(response);
-                // })
-            },
 
             changeStatus(set, status) {
 
@@ -147,13 +143,6 @@ module.exports = {
                 return status;
             },
 
-
-            getFilters() {
-                return $http.get("/filters/").then(function (response) {
-                    console.log(response);
-                    return response.data;
-                })
-            },
 
             updateQty(set, id, update) {
                 const array = [id, update];
@@ -184,33 +173,49 @@ module.exports = {
 
             addPartySet(set) {
                 partySets.push(set);
-
-                console.log(partySets);
+                return partySets;
             },
 
-            getpartySets() {
 
-                $http.get("/sets").then(function (response) {
+            getPartyInfo(array) {
+               return $http.get("/sets").then(function (response) {
 
                     console.log(response);
 
-
                     for (let i = 0; i < response.data.setViews.length; i++) {
                         let item = response.data.setViews;
-
-                        item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
-                            item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
-                            item[i].last_checkout, item[i].set_build_url, item[i].notes);
-
+                        for (let j = 0; j < array.length; j++) {
+                            if (parseInt(array[j]) === parseInt(item[i].set_num)) {
+                                partySetInfo.push(new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
+                                    item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
+                                    item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
+                                    item[i].last_checkout, item[i].set_build_url, item[i].notes));   
+                            }    
+                        }
                     }
-                    angular.copy(response.data.setViews, partySets);
-
+                    console.log(partySetInfo);
+                    return partySetInfo;
 
                 });
 
                 return sets;
+
             },
+
+            deleteSet(id) {
+                // $http.delete("/parts/" + id).then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
+            newCamper(person, time) {
+                // $http.post("/campers/").then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
         };
 
     },

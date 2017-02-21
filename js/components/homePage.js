@@ -5,10 +5,9 @@ module.exports = {
 
         templateUrl: 'components/homePage.html',
         bindings: {
-            // label: '<', 
-
+    
         },
-        controller: 'homePageController',
+        
     }
 
 }

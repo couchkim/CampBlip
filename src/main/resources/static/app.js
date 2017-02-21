@@ -90,7 +90,6 @@ app.config(function ($stateProvider) {
 const controllers = [
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
-    require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
@@ -98,7 +97,6 @@ const controllers = [
 ];
 
 for (let i = 0; i < controllers.length; i++) {
-    // console.log(controllers[i].name)
     app.controller(controllers[i].name, controllers[i].func);
 };
 
@@ -109,6 +107,7 @@ const components = [
     require('./components/registerPage'),
     require('./components/displayResults'),
     require('./components/detailsPage'),
+    require('./components/displayCatalog'),
     require('./components/partsPage'),
     require('./components/accountPage'),
     require('./components/instructionsPage'),
@@ -133,7 +132,7 @@ for (let i = 0; i < services.length; i++) {
 
 
 
-},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayResults":6,"./components/homePage":7,"./components/instructionsPage":8,"./components/partiesPage":9,"./components/partsPage":10,"./components/registerPage":11,"./components/setsPage":12,"./controllers/accountPageController":13,"./controllers/adminPageController":14,"./controllers/detailsPageController":15,"./controllers/displayResultsController":16,"./controllers/instructionsPageController":17,"./controllers/partsPageController":18,"./controllers/setsPageController":19,"./services/CampService":20}],2:[function(require,module,exports){
+},{"./components/aboutPage":2,"./components/accountPage":3,"./components/adminPage":4,"./components/detailsPage":5,"./components/displayCatalog":6,"./components/displayResults":7,"./components/homePage":8,"./components/instructionsPage":9,"./components/partiesPage":10,"./components/partsPage":11,"./components/registerPage":12,"./components/setsPage":13,"./controllers/accountPageController":14,"./controllers/adminPageController":15,"./controllers/detailsPageController":16,"./controllers/instructionsPageController":17,"./controllers/partsPageController":18,"./controllers/setsPageController":19,"./services/CampService":20}],2:[function(require,module,exports){
 module.exports = {
 
     name: 'aboutPage',
@@ -196,6 +195,21 @@ module.exports = {
 },{}],6:[function(require,module,exports){
 module.exports = {
 
+    name: 'displayCatalog',
+    object: {
+
+        templateUrl: 'components/displayCatalog.html',
+        bindings: {
+            info: '<',
+            onChange: '&', 
+        },
+       
+    }
+
+}
+},{}],7:[function(require,module,exports){
+module.exports = {
+
     name: 'displayResults',
     object: {
 
@@ -204,11 +218,11 @@ module.exports = {
             item: '<',
             onClick: '&', 
         },
-        controller: 'displayResultsController',
+       
     }
 
 }
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = {
 
     name: 'homePage',
@@ -216,14 +230,13 @@ module.exports = {
 
         templateUrl: 'components/homePage.html',
         bindings: {
-            // label: '<', 
-
+    
         },
-        controller: 'homePageController',
+        
     }
 
 }
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = {
 
     name: 'instructionsPage',
@@ -238,7 +251,7 @@ module.exports = {
     }
 
 }
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = {
 
     name: 'partiesPage',
@@ -252,7 +265,7 @@ module.exports = {
 
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = {
 
     name: 'partsPage',
@@ -268,7 +281,7 @@ module.exports = {
 
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = {
 
     name: 'registerPage',
@@ -281,7 +294,7 @@ module.exports = {
     }
 
 }
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = {
 
     name: 'setsPage',
@@ -296,7 +309,7 @@ module.exports = {
     }
 
 }
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
 
     name: "accountPageController",
@@ -343,7 +356,7 @@ module.exports = {
 
     },
 }
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
 
     name: "adminPageController",
@@ -356,73 +369,76 @@ module.exports = {
         $scope.weeks = '';
         $scope.newInfo = null;
         $scope.partySet = '';
-        // $scope.partySets = null;
-       
-        
+        $scope.partySets = null;
+        $scope.allPartySetInfo = null;
+
+
 
         $scope.newSet = function () {
-            CampService.addSet($scope.setNumber).then(function(response){
+            CampService.addSet($scope.setNumber).then(function (response) {
                 $scope.newInfo = response;
                 console.log(response);
             });
-        
+
             console.log($scope.newInfo);
             $scope.setNumber = '';
-           
+
         };
 
-        $scope.removeSet = function(){
-                       
+        $scope.removeSet = function () {
+
             CampService.deleteSet($scope.setId);
         };
 
-        $scope.addCamper = function(){
+        $scope.addCamper = function () {
             CampService.newCamper($scope.newCamper, $scope.weeks);
         };
 
-        $scope.newPartySet = function(set){
-            CampService.addPartySet(set);
-            
-             
+        $scope.newPartySet = function (set) {
+            $scope.partySets = CampService.addPartySet(set);
+
         };
-        
+
+        $scope.createPartyCatalog = function () {
+            CampService.getPartyInfo($scope.partySets).then(function (response) {
+                $scope.allPartySetInfo = response;
+                console.log($scope.allPartySetInfo);
+            })
+
+
+        }
+
 
     },
 }
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
 
     name: "detailsPageController",
     func: function ($scope, CampService, $stateParams) {
 
 
-        $scope.campers = ['Wilson Rhee', 'Carter Bateman', 'Collier McElroy',
-            'Alexander Paschal', 'Holden Harrell'];
+        // $scope.campers = ['Wilson Rhee', 'Carter Bateman', 'Collier McElroy',
+        //     'Alexander Paschal', 'Holden Harrell'];
 
-        $scope.camperList = '';
+        // $scope.camperList = '';
         $scope.newNote = '';
         $scope.byStatus = '';
-        $scope.available = [];
+        $scope.statusList = [];
         // $scope.item.statusDisplay = '';
-        
         // $scope.item.statusDisplay = $scope.item.status;
 
 
         const id = parseInt($stateParams.single);
 
-       CampService.getSet(id).then(function(response){
+        // Getting specific set so that details for just that set are displayed
+        CampService.getSet(id).then(function (response) {
             $scope.item = response;
             console.log($scope.item);
-
         });
-        
 
 
-        $scope.getParts = function (item) {
-            console.log(item);
-            console.log(CampService.showParts(item));
-        }
-
+        // When click Check In or Check Out button it toggles the button and changes the status
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
             // if($scope.item.status === "CHECKED_OUT"){
@@ -431,30 +447,17 @@ module.exports = {
             // }
         }
 
-         CampService.getFilters().then(function (response) {  
-            $scope.available = response.status;
+
+        // Getting list of status options from database
+        CampService.getFilters().then(function (response) {
+            $scope.statusList = response.status;
             console.log(response);
         });
 
-        $scope.updateSet = function (item){
+        // Updating database with admin notes or admin change to status
+        $scope.updateSet = function (item) {
             CampService.sendUpdate(item.setId, $scope.byStatus, $scope.newNote);
         }
-
-    },
-}
-
-
-
-
-},{}],16:[function(require,module,exports){
-module.exports = {
-
-    name: "displayResultsController",
-    func: function ($scope, CampService) {
-
-       
-        
-        
 
     },
 }
@@ -475,21 +478,7 @@ module.exports = {
         console.log($scope.partSet);
 
         $scope.instructions = $scope.partSet.instructions;
-        // $scope.instructions = $sce.trustAsResourceUrl($scope.partSet.instructions);
-        // $http.get($scope.instructions, { responseType: 'arraybuffer' })
-        //     .then(function (response) {
-        //         const pdf = new Blob([response.data], {
-        //             type: 'application/pdf',
-        //         });
-
-        //         const url = URL.createObjectURL(pdf);
-        //         $scope.knowledge = $sce.trustAsResourceUrl(url);
-        //         console.log(url);
-        //     });
-        // console.log($scope.instructions);
-
-
-
+       
     },
 }
 },{}],18:[function(require,module,exports){
@@ -505,16 +494,11 @@ module.exports = {
 
             $scope.partSet = response;
             $scope.parts = $scope.partSet.parts;
-            console.log($scope.partSet);
-            console.log($scope.parts);
+         
             CampService.showParts(response);
         });
 
-
-
         $scope.partQty = '';
-
-
 
         $scope.changeQty = function (set, part) {
             part.currInv = part.setQty;
@@ -644,10 +628,13 @@ module.exports = {
 
         let sets = [];
         let partySets = [];
+        let partySetInfo = [];
         console.log(partySets);
 
         return {
 
+            // Gets all sets from database and pushes them through the Set constructor and into the sets array
+            // Returns the array of sets.
             getSets() {
 
                 $http.get("/sets").then(function (response) {
@@ -671,6 +658,16 @@ module.exports = {
                 return sets;
             },
 
+            // Gets the lists of filters for the search dropdowns, returns a promise and the response
+            getFilters() {
+                return $http.get("/filters/").then(function (response) {
+                    console.log(response);
+                    return response.data;
+                })
+            },
+
+            // Gets the sets that match the search filters, puts them through the constructor and into the sets array for display
+            // Returns the sets array/
             getSearchSets(nameFilter, numFilter, themeFilter, levelFilter, statFilter) {
                 $http.get("/sets/?setName=" + nameFilter + "&setNum=" + numFilter + "&theme=" + themeFilter + "&status=" + statFilter + "&skill=" + levelFilter).then(function (response) {
 
@@ -683,12 +680,8 @@ module.exports = {
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
                             item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
-
                     }
-
                     angular.copy(response.data.setViews, sets);
-
-
                 });
 
                 return sets;
@@ -723,19 +716,6 @@ module.exports = {
                 })
             },
 
-            deleteSet(id) {
-                // $http.delete("/parts/" + id).then(function (response) {
-
-                //     console.log(response);
-                // })
-            },
-
-            newCamper(person, time) {
-                // $http.post("/campers/").then(function (response) {
-
-                //     console.log(response);
-                // })
-            },
 
             changeStatus(set, status) {
 
@@ -750,13 +730,6 @@ module.exports = {
                 return status;
             },
 
-
-            getFilters() {
-                return $http.get("/filters/").then(function (response) {
-                    console.log(response);
-                    return response.data;
-                })
-            },
 
             updateQty(set, id, update) {
                 const array = [id, update];
@@ -787,33 +760,49 @@ module.exports = {
 
             addPartySet(set) {
                 partySets.push(set);
-
-                console.log(partySets);
+                return partySets;
             },
 
-            getpartySets() {
 
-                $http.get("/sets").then(function (response) {
+            getPartyInfo(array) {
+               return $http.get("/sets").then(function (response) {
 
                     console.log(response);
 
-
                     for (let i = 0; i < response.data.setViews.length; i++) {
                         let item = response.data.setViews;
-
-                        item[i] = new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
-                            item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
-                            item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
-                            item[i].last_checkout, item[i].set_build_url, item[i].notes);
-
+                        for (let j = 0; j < array.length; j++) {
+                            if (parseInt(array[j]) === parseInt(item[i].set_num)) {
+                                partySetInfo.push(new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
+                                    item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
+                                    item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
+                                    item[i].last_checkout, item[i].set_build_url, item[i].notes));   
+                            }    
+                        }
                     }
-                    angular.copy(response.data.setViews, partySets);
-
+                    console.log(partySetInfo);
+                    return partySetInfo;
 
                 });
 
                 return sets;
+
             },
+
+            deleteSet(id) {
+                // $http.delete("/parts/" + id).then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
+            newCamper(person, time) {
+                // $http.post("/campers/").then(function (response) {
+
+                //     console.log(response);
+                // })
+            },
+
         };
 
     },

@@ -10,16 +10,11 @@ module.exports = {
 
             $scope.partSet = response;
             $scope.parts = $scope.partSet.parts;
-            console.log($scope.partSet);
-            console.log($scope.parts);
+         
             CampService.showParts(response);
         });
 
-
-
         $scope.partQty = '';
-
-
 
         $scope.changeQty = function (set, part) {
             part.currInv = part.setQty;

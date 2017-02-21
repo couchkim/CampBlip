@@ -4,33 +4,27 @@ module.exports = {
     func: function ($scope, CampService, $stateParams) {
 
 
-        $scope.campers = ['Wilson Rhee', 'Carter Bateman', 'Collier McElroy',
-            'Alexander Paschal', 'Holden Harrell'];
+        // $scope.campers = ['Wilson Rhee', 'Carter Bateman', 'Collier McElroy',
+        //     'Alexander Paschal', 'Holden Harrell'];
 
-        $scope.camperList = '';
+        // $scope.camperList = '';
         $scope.newNote = '';
         $scope.byStatus = '';
-        $scope.available = [];
+        $scope.statusList = [];
         // $scope.item.statusDisplay = '';
-        
         // $scope.item.statusDisplay = $scope.item.status;
 
 
         const id = parseInt($stateParams.single);
 
-       CampService.getSet(id).then(function(response){
+        // Getting specific set so that details for just that set are displayed
+        CampService.getSet(id).then(function (response) {
             $scope.item = response;
             console.log($scope.item);
-
         });
-        
 
 
-        $scope.getParts = function (item) {
-            console.log(item);
-            console.log(CampService.showParts(item));
-        }
-
+        // When click Check In or Check Out button it toggles the button and changes the status
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
             // if($scope.item.status === "CHECKED_OUT"){
@@ -39,12 +33,15 @@ module.exports = {
             // }
         }
 
-         CampService.getFilters().then(function (response) {  
-            $scope.available = response.status;
+
+        // Getting list of status options from database
+        CampService.getFilters().then(function (response) {
+            $scope.statusList = response.status;
             console.log(response);
         });
 
-        $scope.updateSet = function (item){
+        // Updating database with admin notes or admin change to status
+        $scope.updateSet = function (item) {
             CampService.sendUpdate(item.setId, $scope.byStatus, $scope.newNote);
         }
 

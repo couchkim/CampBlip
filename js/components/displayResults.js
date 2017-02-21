@@ -8,7 +8,7 @@ module.exports = {
             item: '<',
             onClick: '&', 
         },
-        controller: 'displayResultsController',
+       
     }
 
 }

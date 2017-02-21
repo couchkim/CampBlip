@@ -89,7 +89,6 @@ app.config(function ($stateProvider) {
 const controllers = [
     require('./controllers/adminPageController'),
     require('./controllers/setsPageController'),
-    require('./controllers/displayResultsController'),
     require('./controllers/detailsPageController'),
     require('./controllers/partsPageController'),
     require('./controllers/accountPageController'),
@@ -97,7 +96,6 @@ const controllers = [
 ];
 
 for (let i = 0; i < controllers.length; i++) {
-    // console.log(controllers[i].name)
     app.controller(controllers[i].name, controllers[i].func);
 };
 
@@ -108,6 +106,7 @@ const components = [
     require('./components/registerPage'),
     require('./components/displayResults'),
     require('./components/detailsPage'),
+    require('./components/displayCatalog'),
     require('./components/partsPage'),
     require('./components/accountPage'),
     require('./components/instructionsPage'),
