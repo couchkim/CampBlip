@@ -1327,10 +1327,14 @@ button {
   #catalogView img {
     width: 300px; }
   #catalogView li {
-    width: 50%;
+    width: 45.83333%;
     float: left;
     padding-right: 0.625rem;
-    padding-left: 0.625rem; }
+    padding-left: 0.625rem;
+    height: 400p;
+    margin: 10px;
+    border: 1px solid black;
+    height: 100%; }
     @media print, screen and (min-width: 40em) {
       #catalogView li {
         padding-right: 0.9375rem;
