@@ -43,14 +43,25 @@ module.exports = {
         };
 
         $scope.createPartyCatalog = function () {
+
             CampService.getPartyInfo($scope.partySets).then(function (response) {
                 $scope.allPartySetInfo = response;
                 console.log($scope.allPartySetInfo);
+
+                // html2canvas(document.querySelector("#exportthis"), {
+                //     onrendered: function (canvas) {
+                //         const data = canvas.toDataURL();
+                //         const docDefinition = {
+                //             content: [{
+                //                 image: data,
+                //                 width: 500,
+                //             }]
+                //         };
+                //         pdfMake.createPdf(docDefinition).download("Birthday_Catalog.pdf");
+                //     }
+                // });
+
             })
-
-
         }
-
-
     },
 }
