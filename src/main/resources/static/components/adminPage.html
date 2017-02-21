@@ -24,8 +24,9 @@ to create a printable pdf of those sets-->
 <section id="partyCatalog" class="adminSec">
     <input id="partySet" class="input" type="text" ng-model="partySet" placeholder="Enter Party Set Number">
     <button id="addPartySet" class="button" ng-click="newPartySet(partySet)">Add Party Set</button>
+    <button id="clearPartySets" class="button" ng-click="clearPartySets()">Clear Party Sets</button>
     <button id="createPartyCatalog" class="button" ng-click="createPartyCatalog()">Create Party Catalog</button>
-    <!--<section id='partyCatalog'>-->
+    
         <h1>Birthday Catalog</h1>
         <ul id="partySets">
             <li class="info" ng-repeat="info in allPartySetInfo">
@@ -34,7 +35,5 @@ to create a printable pdf of those sets-->
                 <display-catalog info="info" on-change="showPartySet(target)"></display-catalog>
 
             </li>
-        </ul>
-    <!--</section>-->
-    <button id="clearPartySets" class="button" ng-click="clearPartySets()">Clear Party Sets</button>
+        </ul>    
 </section>

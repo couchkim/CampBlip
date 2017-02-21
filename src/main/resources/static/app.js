@@ -78,6 +78,12 @@ app.config(function ($stateProvider) {
         component: 'partiesPage',
     });
 
+     $stateProvider.state({
+        name: 'display-catalog',
+        url: '/catalog',
+        component: 'displayCatalog',
+    });
+
     $stateProvider.state({
         name: 'home',
         url: '',
