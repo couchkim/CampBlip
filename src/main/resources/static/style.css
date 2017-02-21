@@ -1309,6 +1309,46 @@ button {
 #newCamper {
   display: block; }
 
+#catalogView {
+  background-color: white;
+  color: black;
+  border: 2px solid #157C2B;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center; }
+  #catalogView::before, #catalogView::after {
+    display: table;
+    content: ' '; }
+  #catalogView::after {
+    clear: both; }
+  #catalogView ul {
+    list-style: none; }
+  #catalogView img {
+    width: 300px; }
+  #catalogView li {
+    width: 50%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem; }
+    @media print, screen and (min-width: 40em) {
+      #catalogView li {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    #catalogView li:last-child:not(:first-child) {
+      float: right; }
+  #catalogView h1 {
+    width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem; }
+    @media print, screen and (min-width: 40em) {
+      #catalogView h1 {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    #catalogView h1:last-child:not(:first-child) {
+      float: right; }
+
 #all, #search {
   margin-top: 20px;
   margin-bottom: 20px;

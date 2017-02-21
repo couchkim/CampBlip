@@ -43,6 +43,33 @@
        
     }
 
+#catalogView{
+    background-color: white;
+    color: black;
+    border: 2px solid $green-color;
+    @include grid-row();
+    text-align: center;
+
+    ul{
+        list-style: none;
+    }
+
+    img{
+        width: 300px;
+    }
+
+    li{
+        @include grid-column(6);
+    }
+
+    h1{
+        @include grid-column(12);
+    }
+
+}
+
+
+
 
 
    
