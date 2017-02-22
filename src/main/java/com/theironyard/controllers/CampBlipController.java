@@ -229,11 +229,11 @@ public class CampBlipController {
     //Gets for Users
     @RequestMapping (path = "/user", method = RequestMethod.GET)
     public UserRole userRolePage(UsernamePasswordAuthenticationToken p) {
-
+        List<String> userRoles = new ArrayList<>();
         Collection<GrantedAuthority> roles = p.getAuthorities();
 
         for(GrantedAuthority ga : roles) {
-            if (ga.getAuthority().equals("ROLE_SOMETHING")){
+            if (ga.getAuthority().equals("ROLE_ADMIN")){
 
             }
         }
