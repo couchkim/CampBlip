@@ -364,7 +364,7 @@ public class CampBlipController {
                 newApiSet.getYear(),
                 newApiSet.getNum_parts(),
                 //If the lego set doesn't exist in the lego api then it grabs the theme from rebrickable
-                legoProducts.getProductId() == apiSetIds.get("legoSetId") ? newApiThemes.getName() : legoProducts.getThemeName(),
+                legoProducts.getProductId() != apiSetIds.get("legoSetId") ? newApiThemes.getName() : legoProducts.getThemeName(),
                 newApiSet.getSet_img_url(),
                 //If the lego  set doesn't exist in the lego api then sets the directions to null rather than giving the wrong directions.
                 legoProducts.getProductId() == apiSetIds.get("legoSetId") ? null : legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
