@@ -1,0 +1,3 @@
+/* Hides the Page Title and Source URL and several sections */
+#pf-src, .adminSec, header, nav {
+  display: none; }
