@@ -24,6 +24,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Sort;
+//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -48,6 +52,8 @@ import static org.springframework.data.domain.Sort.NullHandling.NATIVE;
 /**
  * Created by graceconnelly on 2/7/17.
  */
+
+//changed from rest controller
 @RestController
 public class CampBlipController {
     @Autowired
@@ -87,7 +93,6 @@ public class CampBlipController {
 //            addNewSet("4866");
 //        }
     }
-
     //Gets For Sets
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
@@ -115,9 +120,6 @@ public class CampBlipController {
                     .withMatcher("setName", contains())
                     .withMatcher("setNum", contains());
             Sort sort = new Sort(Sort.Direction.ASC, "Theme", "numParts");
-
-
-
             viewSets = (List) sets.findAll(Example.of(s,matcher), sort);
         SetViewModel model = new SetViewModel();
         for ( Set viewSet : viewSets) {
@@ -224,19 +226,32 @@ public class CampBlipController {
         model.setSet_name(sets.findById(setId).getSetName());
         return model;
     }
+    //Gets for Users
+    @RequestMapping (path = "/user", method = RequestMethod.GET)
+    public UserRole userRolePage(UsernamePasswordAuthenticationToken p) {
+
+        Collection<GrantedAuthority> roles = p.getAuthorities();
+
+        for(GrantedAuthority ga : roles) {
+            if (ga.getAuthority().equals("ROLE_SOMETHING")){
+
+            }
+        }
+
+    }
     //Posts for Sets
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
     public List<String> addSet(@PathVariable("set_num") String setId) {
         return addNewSet(setId);
     }
-
+    //Change current status of set and record status and add to status table
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
     public Set updateStatus(@PathVariable("set_id") int setId, String status) {
         Set update = sets.findById(setId);
-        System.out.println(update);
+//        System.out.println(update);
         update.setStatusEnum(StatusEnum.valueOf(status));
-
-        System.out.println(update);
+//        System.out.println(update);
+        //get user by id and add the user and and the current status to the enum record
         sets.save(update);
 
         return sets.findById(setId);
@@ -244,7 +259,9 @@ public class CampBlipController {
 
     @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
     public void deleteSet(@PathVariable("set_id") Integer setId) {
-//        sets.findById()
+        Set remove = sets.findById(setId);
+        remove.setActive(false);
+        sets.save(remove);
     }
 
     @RequestMapping (path = "/add-all-sets", method = RequestMethod.POST)
@@ -349,10 +366,10 @@ public class CampBlipController {
                 newApiSet.getYear(),
                 newApiSet.getNum_parts(),
                 //If the lego set doesn't exist in the lego api then it grabs the theme from rebrickable
-                legoProducts.getProductId() != apiSetIds.get("legoSetId") ? newApiThemes.getName() : legoProducts.getThemeName(),
+                legoProducts.getProductId() == apiSetIds.get("legoSetId") ? newApiThemes.getName() : legoProducts.getThemeName(),
                 newApiSet.getSet_img_url(),
                 //If the lego  set doesn't exist in the lego api then sets the directions to null rather than giving the wrong directions.
-                legoProducts.getProductId() != apiSetIds.get("legoSetId") ? null : legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
+                legoProducts.getProductId() == apiSetIds.get("legoSetId") ? null : legoProducts.getBuildingInstructions().get(0).getPdfLocation(),
                 AVAILABLE,
                 SetHelper.setSkill(newApiSet.getNum_parts()),
                 COMPLETE, null, true);

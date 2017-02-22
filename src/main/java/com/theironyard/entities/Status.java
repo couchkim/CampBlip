@@ -1,5 +1,7 @@
 package com.theironyard.entities;
 
+import com.theironyard.datamodels.Enums.StatusEnum;
+
 import javax.persistence.*;
 
 /**
@@ -18,11 +20,5 @@ public class Status {
     @ManyToOne
     Set set;
 
-    @Column
-    String invDate;
-
-    @Column
-    int missingParts;
-
-
+    StatusEnum statusEnum;
 }
