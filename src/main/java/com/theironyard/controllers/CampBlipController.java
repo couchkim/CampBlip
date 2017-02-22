@@ -91,6 +91,7 @@ public class CampBlipController {
     //Gets For Sets
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
+        //Gets all sets filtered by existing filters and sorted by theme and num parts ascending
         List<Set> viewSets = new ArrayList<Set>();
         Set s = new Set();
             if (setName != null && setName.length() != 0) {
@@ -117,7 +118,7 @@ public class CampBlipController {
 
 
 
-            viewSets = (List) sets.findAll(Example.of(s,matcher), sort);//TODO: order sets Ascending By theme and then Ascending by num-pieces
+            viewSets = (List) sets.findAll(Example.of(s,matcher), sort);
         SetViewModel model = new SetViewModel();
         for ( Set viewSet : viewSets) {
             SetView setView = new SetView(
