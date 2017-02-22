@@ -18,8 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/sets")
-                    .hasRole("COUNCELOR")
+                .antMatchers("/set")
+                    .hasRole("COUNSELOR")
                 .antMatchers("/filters")
                     .hasRole("ADMIN")
                 .and()
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("Kim")
                 .password(System.getenv("KIMPW"))
-                .roles("COUNCELOR","ADMIN")
+                .roles("COUNSELOR","ADMIN")
                 .and()
                 .withUser("Ben")
                 .password("pants").roles("Pants");

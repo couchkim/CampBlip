@@ -227,18 +227,19 @@ public class CampBlipController {
         return model;
     }
     //Gets for Users
-    @RequestMapping (path = "/user", method = RequestMethod.GET)
-    public UserRole userRolePage(UsernamePasswordAuthenticationToken p) {
-        List<String> userRoles = new ArrayList<>();
-        Collection<GrantedAuthority> roles = p.getAuthorities();
-
-        for(GrantedAuthority ga : roles) {
-            if (ga.getAuthority().equals("ROLE_ADMIN")){
-
-            }
-        }
-
-    }
+//    @RequestMapping (path = "/user", method = RequestMethod.GET)
+//    public UserRole userRolePage(UsernamePasswordAuthenticationToken p) {
+//        List<String> userRoles = new ArrayList<>();
+//        Collection<GrantedAuthority> roles = p.getAuthorities();
+//
+//        for(GrantedAuthority ga : roles) {
+//            if (ga.getAuthority().equals("ROLE_ADMIN")){
+//
+//            }
+//        }
+//
+//        return new UserRole();
+//    }
     //Posts for Sets
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
     public List<String> addSet(@PathVariable("set_num") String setId) {
@@ -304,11 +305,7 @@ public class CampBlipController {
                 for (SetPart part : updateS.getSetParts()) {
                     part.setInvQty(part.getCurrInv() == null ? 0 : part.getCurrInv());
                     part.setCurrInv(null);
-
-
-
                     setParts.save(part);
-
                 }
                 //set inv status to complete
                 //set
