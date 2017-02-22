@@ -134,11 +134,11 @@ public class CampBlipController {
                     viewSet.getTheme(),
                     viewSet.getStatusEnum(),
                     viewSet.getSkillEnum(),
-                    "InvDate", //ToDo: populate
-                    "InvName",//ToDo: populate
+                    "06/30/2016", //ToDo: populate
+                    "Marshall",//ToDo: populate
                     viewSet.getInvStatus(),
-                    "LastCkout", //Todo:
-                    42, //TODO: Count all the inventory parts
+                    "05/01/2016", //Todo:
+                    viewSet.getNumParts(), //TODO: Count all the inventory parts
                     viewSet.getNotes());
             model.getSetViews().add(setView);
         }
@@ -162,11 +162,11 @@ public class CampBlipController {
                 viewSet.getTheme(),
                 viewSet.getStatusEnum(),
                 viewSet.getSkillEnum(),
-                "InvDate", //ToDo: populate
-                "InvName",//ToDo: populate
+                "06/30/2016", //ToDo: populate
+                "Marshall",//ToDo: populate
                 viewSet.getInvStatus(),
-                "LastCkout", //Todo:
-                42, //TODO: Count all the inventory parts
+                "05/01/2016", //Todo:
+                viewSet.getNumParts(), //TODO: Count all the inventory parts
                 viewSet.getNotes());
         model.getSetViews().add(setView);
 
@@ -198,11 +198,11 @@ public class CampBlipController {
                 viewSet.getTheme(),
                 viewSet.getStatusEnum(),
                 viewSet.getSkillEnum(),
-                "InvDate", //ToDo: populate
-                "InvName",//ToDo: populate
+                "06/30/2016", //ToDo: populate
+                "Marshall",//ToDo: populate
                 viewSet.getInvStatus(),
-                "LastCkout", //Todo:
-                42, //TODO: Count all the inventory parts
+                "05/01/2016", //Todo:
+                viewSet.getNumParts(), //TODO: Count all the inventory parts
                 viewSet.getNotes());
         model.getSetViews().add(setView);
 
@@ -310,6 +310,7 @@ public class CampBlipController {
                 //set inv status to complete
                 //set
                 updateS.setInvStatus(COMPLETE);
+                sets.save(updateS);
 
             }
             SetPart updateSP = setParts.findFirstById(setPartInv[0]);
