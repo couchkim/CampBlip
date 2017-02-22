@@ -1,4 +1,6 @@
-/* Hides the Page Title and Source URL and several sections */
+main {
+  border: solid white; }
+
 #pf-src, .adminSec, header, nav {
   display: none; }
 
