@@ -26,7 +26,7 @@ module.exports = {
             // last date that set was checked out
             this.invParts = invParts;
             // how many parts we had after inventory
-            this.missing = 0;
+            this.missing = this.pieces - this.invParts;
             // number of pieces missing from the set
             this.notes = notes;
             // text string from admin input

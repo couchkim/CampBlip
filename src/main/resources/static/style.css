@@ -2057,14 +2057,13 @@ main {
         display: block;
         border-radius: 10px;
         width: 90%;
-        margin: 0 10px;
+        margin: 10px 10px;
         border: 5px solid #5A5353;
         box-shadow: 5px 5px 2px #5A5353; } }
   @media screen and (min-width: 62.5em) {
     #nav {
       position: fixed;
       width: 20%;
-      height: 90%;
       left: 25px;
       top: 15px;
       overflow: auto; } }

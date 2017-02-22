@@ -64,7 +64,7 @@ main{
                 display:block;
                 border-radius: $radius-default;
                 width: 90%;
-                margin: 0 10px;
+                margin: 10px 10px;
                 border: 5px solid $gray-color;
                 box-shadow: 5px 5px 2px $gray-color;
             }
@@ -74,7 +74,7 @@ main{
     
         position: fixed;
         width: 20%;
-        height: 90%;    
+        // height: 90%;    
         left: 25px;
         top: 15px;
         overflow: auto;
