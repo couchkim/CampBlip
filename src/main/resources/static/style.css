@@ -1967,6 +1967,21 @@ a {
   #counselorPage h1:last-child:not(:first-child) {
     float: right; }
 
+form #login, form #create {
+  padding: 8px 16px;
+  margin: 10px 10px;
+  background-color: #B75321;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid #5A5353;
+  color: #BAB9A5;
+  font-family: "Fredoka One", sans-serif;
+  width: 15%; }
+
+form input {
+  width: 20%;
+  margin: 5px; }
+
 #partiesPage {
   text-align: center;
   position: relative; }
