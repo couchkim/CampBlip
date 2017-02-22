@@ -1,3 +1,9 @@
 /* Hides the Page Title and Source URL and several sections */
 #pf-src, .adminSec, header, nav {
   display: none; }
+
+#catalogView {
+  border: none; }
+
+ul li {
+  page-break-after: always; }

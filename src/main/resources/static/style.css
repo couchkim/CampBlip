@@ -1350,7 +1350,7 @@ button {
       float: left;
       padding-right: 0.625rem;
       padding-left: 0.625rem;
-      height: 450px; }
+      height: 500px; }
       @media print, screen and (min-width: 40em) {
         #catalogView ul li {
           padding-right: 0.9375rem;
