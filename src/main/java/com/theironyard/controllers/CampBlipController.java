@@ -93,6 +93,7 @@ public class CampBlipController {
 //            addNewSet("4866");
 //        }
     }
+
     //Gets For Sets
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
@@ -245,6 +246,7 @@ public class CampBlipController {
     public List<String> addSet(@PathVariable("set_num") String setId) {
         return addNewSet(setId);
     }
+
     //Change current status of set and record status and add to status table
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
     public Set updateStatus(@PathVariable("set_id") int setId, String status) {
