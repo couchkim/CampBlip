@@ -444,8 +444,7 @@ module.exports = {
         $scope.newNote = '';
         $scope.byStatus = '';
         $scope.statusList = [];
-        // $scope.item.statusDisplay = '';
-        // $scope.item.statusDisplay = $scope.item.status;
+        // $scope.item.displayStatus = '';
 
 
         const id = parseInt($stateParams.single);
@@ -460,10 +459,18 @@ module.exports = {
         // When click Check In or Check Out button it toggles the button and changes the status
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
-            // if($scope.item.status === "CHECKED_OUT"){
-            //     $scope.item.statusDisplay = "Checked Out"
-            // in get set function, not here
-            // }
+            // if ($scope.item.status === "CHECKED_OUT") {
+            //     $scope.item.displayStatus = "Checked Out"
+            // } else
+            //     if ($scope.item.status === "MISSING_PIECES") {
+            //         $scope.item.displayStatus = "Missing Pieces";
+            //     } else
+            //         if ($scope.item.status === "ON_DISPLAY") {
+            //             $scope.item.displayStatus = "On Display";
+            //         } else {
+            //             $scope.item.displayStatus = "Available";
+
+            //         }
         }
 
 
@@ -639,6 +646,7 @@ module.exports = {
             this.parts = [];
             // array of all parts in the set that comes when parts button is clicked
             this.instructions = instructions;
+            this.displayStatus = '';
 
 
             return this;
@@ -668,6 +676,18 @@ module.exports = {
                             item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
 
+                        if (item[i].status === "CHECKED_OUT") {
+                            item[i].displayStatus = "Checked Out"
+                        } else
+                            if (item[i].status === "MISSING_PIECES") {
+                                item[i].displayStatus = "Missing Pieces";
+                            } else
+                                if (item[i].status === "ON_DISPLAY") {
+                                    item[i].displayStatus = "On Display";
+                                } else {
+                                    item[i].displayStatus = "Available";
+
+                                }
                     }
                     angular.copy(response.data.setViews, sets);
 
@@ -699,6 +719,19 @@ module.exports = {
                             item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
                             item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
                             item[i].last_checkout, item[i].set_build_url, item[i].notes);
+
+                            if (item[i].status === "CHECKED_OUT") {
+                            item[i].displayStatus = "Checked Out"
+                        } else
+                            if (item[i].status === "MISSING_PIECES") {
+                                item[i].displayStatus = "Missing Pieces";
+                            } else
+                                if (item[i].status === "ON_DISPLAY") {
+                                    item[i].displayStatus = "On Display";
+                                } else {
+                                    item[i].displayStatus = "Available";
+
+                                }
                     }
                     angular.copy(response.data.setViews, sets);
                 });
@@ -784,7 +817,7 @@ module.exports = {
 
 
             getPartyInfo(array) {
-               return $http.get("/sets").then(function (response) {
+                return $http.get("/sets").then(function (response) {
 
                     console.log(response);
 
@@ -795,8 +828,8 @@ module.exports = {
                                 partySetInfo.push(new Set(item[i].set_id, item[i].name, item[i].set_num, item[i].theme,
                                     item[i].num_parts, item[i].status, item[i].set_img_url, item[i].year,
                                     item[i].skill_level, item[i].inv_date, item[i].inv_name, item[i].inv_stat, item[i].inv_parts,
-                                    item[i].last_checkout, item[i].set_build_url, item[i].notes));   
-                            }    
+                                    item[i].last_checkout, item[i].set_build_url, item[i].notes));
+                            }
                         }
                     }
                     console.log(partySetInfo);

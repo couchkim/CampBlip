@@ -11,8 +11,7 @@ module.exports = {
         $scope.newNote = '';
         $scope.byStatus = '';
         $scope.statusList = [];
-        // $scope.item.statusDisplay = '';
-        // $scope.item.statusDisplay = $scope.item.status;
+        // $scope.item.displayStatus = '';
 
 
         const id = parseInt($stateParams.single);
@@ -27,10 +26,18 @@ module.exports = {
         // When click Check In or Check Out button it toggles the button and changes the status
         $scope.checkToggle = function () {
             $scope.item.status = CampService.changeStatus($scope.item.setId, $scope.item.status);
-            // if($scope.item.status === "CHECKED_OUT"){
-            //     $scope.item.statusDisplay = "Checked Out"
-            // in get set function, not here
-            // }
+            // if ($scope.item.status === "CHECKED_OUT") {
+            //     $scope.item.displayStatus = "Checked Out"
+            // } else
+            //     if ($scope.item.status === "MISSING_PIECES") {
+            //         $scope.item.displayStatus = "Missing Pieces";
+            //     } else
+            //         if ($scope.item.status === "ON_DISPLAY") {
+            //             $scope.item.displayStatus = "On Display";
+            //         } else {
+            //             $scope.item.displayStatus = "Available";
+
+            //         }
         }
 
 

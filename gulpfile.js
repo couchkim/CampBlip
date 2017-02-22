@@ -35,7 +35,12 @@ gulp.task('images', function () {
 gulp.task('css', function () {
     // Convert style.scss into style.css.
     // Copy to public/
-   return gulp.src('scss/style.scss')
+    gulp.src('scss/printfriendly.scss')
+        .pipe(sass())
+        .pipe(gulp.dest(BUILD_URL))
+        .pipe(gulp.dest(SRC_URL));
+
+    return gulp.src('scss/style.scss')
         .pipe(sass())
         .pipe(gulp.dest(BUILD_URL))
         .pipe(gulp.dest(SRC_URL));
