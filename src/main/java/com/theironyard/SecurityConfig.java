@@ -27,9 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                 .and()
                     .logout()
-                    .invalidateHttpSession(true)
-
-         ;
+                    .invalidateHttpSession(true);
     }
 
     @Autowired

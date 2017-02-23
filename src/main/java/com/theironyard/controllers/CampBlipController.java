@@ -313,14 +313,14 @@ public class CampBlipController {
                 //set
                 updateS.setInvStatus(COMPLETE);
                 sets.save(updateS);
-
+            }else {
+                SetPart updateSP = setParts.findFirstById(setPartInv[0]);
+                updateS.setInvStatus(IN_PROGRESS);
+                updateSP.setCurrInv(setPartInv[1]);
+                sets.save(updateS);
+                setParts.save(updateSP);
+                return setPartInv;
             }
-            SetPart updateSP = setParts.findFirstById(setPartInv[0]);
-            updateS.setInvStatus(IN_PROGRESS);
-            updateSP.setCurrInv(setPartInv[1]);
-            sets.save(updateS);
-            setParts.save(updateSP);
-            return setPartInv;
         }
         return new Integer[2];
     }
