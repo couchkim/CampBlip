@@ -846,10 +846,10 @@ module.exports = {
             },
 
             deleteSet(id) {
-                // $http.delete("/parts/" + id).then(function (response) {
+                $http.post("/delete-set/" + id).then(function (response) {
 
-                //     console.log(response);
-                // })
+                    console.log(response);
+                })
             },
 
             newCamper(person, time) {
