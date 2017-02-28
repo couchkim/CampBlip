@@ -14,6 +14,7 @@ import com.theironyard.datamodels.ThemeImport;
 import com.theironyard.entities.Part;
 import com.theironyard.entities.Set;
 import com.theironyard.entities.SetPart;
+import com.theironyard.entities.Status;
 import com.theironyard.helpers.SetHelper;
 import com.theironyard.services.SetPartRepository;
 import com.theironyard.services.UsersRepository;
@@ -44,7 +45,9 @@ import java.util.stream.Stream;
 
 import static com.theironyard.datamodels.Enums.InvEnum.COMPLETE;
 import static com.theironyard.datamodels.Enums.InvEnum.IN_PROGRESS;
+import static com.theironyard.datamodels.Enums.InvEnum.REQUIRED;
 import static com.theironyard.datamodels.Enums.StatusEnum.AVAILABLE;
+import static com.theironyard.datamodels.Enums.StatusEnum.CHECKED_OUT;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.data.domain.Sort.NullHandling.NATIVE;
@@ -239,6 +242,10 @@ public class CampBlipController {
         Set update = sets.findById(setId);
 //        System.out.println(update);
         update.setStatusEnum(StatusEnum.valueOf(status));
+        //In the case that the status is changed to checked out the inventory status will be set to required.
+        if(StatusEnum.valueOf(status).equals(CHECKED_OUT)) {
+            update.setInvStatus(REQUIRED);
+        }
 //        System.out.println(update);
         //get user by id and add the user and and the current status to the enum record
         sets.save(update);
