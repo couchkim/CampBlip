@@ -4,12 +4,16 @@ module.exports = {
     func: function ($scope, $sce, $http, CampService, $stateParams) {
 
         const partSet = ($stateParams.single);
-        console.log("parts");
+       
+         CampService.getSet(partSet).then(function (response) {
 
-        $scope.partSet = CampService.getSet(partSet);
-        console.log($scope.partSet);
-
-        $scope.instructions = $scope.partSet.instructions;
+            $scope.partSet = response;
+            $scope.instructions = $scope.partSet.instructions;
+         
+        });
+        
+        // $scope.instructions = $scope.partSet.instructions;
+        console.log($scope.instructions);
        
     },
 }
