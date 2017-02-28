@@ -227,21 +227,7 @@ public class CampBlipController {
         model.setSet_name(sets.findById(setId).getSetName());
         return model;
     }
-    //Gets for Users
-//    @RequestMapping (path = "/user", method = RequestMethod.GET)
-//    public UserRole userRolePage(UsernamePasswordAuthenticationToken p) {
-//        List<String> userRoles = new ArrayList<>();
-//        Collection<GrantedAuthority> roles = p.getAuthorities();
-//
-//        for(GrantedAuthority ga : roles) {
-//            if (ga.getAuthority().equals("ROLE_ADMIN")){
-//
-//            }
-//        }
-//
-//        return new UserRole();
-//    }
-    //Posts for Sets
+
     @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
     public List<String> addSet(@PathVariable("set_num") String setId) {
         return addNewSet(setId);
