@@ -48,6 +48,8 @@ import static com.theironyard.datamodels.Enums.InvEnum.IN_PROGRESS;
 import static com.theironyard.datamodels.Enums.InvEnum.REQUIRED;
 import static com.theironyard.datamodels.Enums.StatusEnum.AVAILABLE;
 import static com.theironyard.datamodels.Enums.StatusEnum.CHECKED_OUT;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.data.domain.Sort.NullHandling.NATIVE;
@@ -98,11 +100,13 @@ public class CampBlipController {
     }
 
     //Gets For Sets
+    //PERMISSIONS: All
     @RequestMapping (path = "/sets", method = RequestMethod.GET)
     public SetViewModel setsPage(String setName, String setNum, String theme, String status, String skill) {
         //Gets all sets filtered by existing filters and sorted by theme and num parts ascending
         List<Set> viewSets = new ArrayList<Set>();
         Set s = new Set();
+            s.setActive(TRUE);
             if (setName != null && setName.length() != 0) {
                 s.setSetName(setName);
             }
@@ -149,6 +153,42 @@ public class CampBlipController {
         return model;
     }
 
+    @RequestMapping (path = "/deleted" , method = RequestMethod.GET)
+    public SetViewModel deleted() {
+            List<Set> viewSets = new ArrayList<Set>();
+            Set s = new Set();
+            s.setActive(FALSE);
+            ExampleMatcher matcher = ExampleMatcher.matching()
+                    .withIgnoreCase()
+                    .withIgnoreNullValues()
+                    .withMatcher("setName", contains())
+                    .withMatcher("setNum", contains());
+            Sort sort = new Sort(Sort.Direction.ASC, "Theme", "numParts");
+            viewSets = (List) sets.findAll(Example.of(s, matcher), sort);
+            SetViewModel model = new SetViewModel();
+            for (Set viewSet : viewSets) {
+                SetView setView = new SetView(
+                        viewSet.getSetName(),
+                        viewSet.getId(),
+                        viewSet.getSetNum(),
+                        viewSet.getYear(),
+                        viewSet.getNumParts(),
+                        viewSet.getSetImgUrl(),
+                        viewSet.getSetBuildUrl(),
+                        viewSet.getTheme(),
+                        viewSet.getStatusEnum(),
+                        viewSet.getSkillEnum(),
+                        "06/30/2016", //ToDo: populate
+                        "Marshall",//ToDo: populate
+                        viewSet.getInvStatus(),
+                        "05/01/2016", //Todo:
+                        viewSet.getNumParts(), //TODO: Count all the inventory parts
+                        viewSet.getNotes());
+                model.getSetViews().add(setView);
+            }
+            return model;
+    }
+    //PERMISSIONS: All
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.GET)
     public SetViewModel setPage(@PathVariable("set_id") Integer setId) {
 
@@ -177,14 +217,41 @@ public class CampBlipController {
         return model;
     }
 
+    //PERMISSIONS: ALL
+    @RequestMapping (path = "/filters", method = RequestMethod.GET)
+    public FilterViewModel filterLayout() {
+        FilterViewModel model = new FilterViewModel();
+        model.setThemes(sets.selectDistinctThemes());
+        model.setSkills(Stream.of(SkillEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        model.setInvStat(Stream.of(InvEnum.values()).map(Enum::name).collect(Collectors.toList()));
+        return model;
+    }
+
+    //PERMISSIONS: COUNSELOR
+    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
+    public PartViewModel partsPage(@PathVariable("set_id") int setId) {
+        PartViewModel model = new PartViewModel();
+        model.setParts(setParts.partViewFromSetId(setId));
+        model.setSet_name(sets.findById(setId).getSetName());
+        return model;
+    }
+
+    //PERMISSIONS: ADMIN
+    @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
+    public List<String> addSet(@PathVariable("set_num") String setId) {
+        return addNewSet(setId);
+    }
+
+    //PERMISSIONS: COUNSELOR
     @RequestMapping (path = "/set/{set_id}", method = RequestMethod.POST)
     public SetViewModel updateSetPage(@PathVariable("set_id") Integer setId, @RequestBody String [] infoUpdate) {
         Set viewSet = sets.findById(setId);
 
-        if(infoUpdate[0] != null) {
+        if(infoUpdate[0] != null || infoUpdate[0].length() == 0) {
             viewSet.setStatusEnum(StatusEnum.valueOf(infoUpdate[0]));
         }
-        if(infoUpdate[1]!= null) {
+        if(infoUpdate[1]!= null || infoUpdate[1].length() == 0) {
             viewSet.setNotes(infoUpdate[1]);
         }
         sets.save(viewSet);
@@ -213,29 +280,7 @@ public class CampBlipController {
         return model;
     }
 
-    @RequestMapping (path = "/filters", method = RequestMethod.GET)
-    public FilterViewModel filterLayout() {
-        FilterViewModel model = new FilterViewModel();
-        model.setThemes(sets.selectDistinctThemes());
-        model.setSkills(Stream.of(SkillEnum.values()).map(Enum::name).collect(Collectors.toList()));
-        model.setStatus(Stream.of(StatusEnum.values()).map(Enum::name).collect(Collectors.toList()));
-        model.setInvStat(Stream.of(InvEnum.values()).map(Enum::name).collect(Collectors.toList()));
-        return model;
-    }
-
-    @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.GET)
-    public PartViewModel partsPage(@PathVariable("set_id") int setId) {
-        PartViewModel model = new PartViewModel();
-        model.setParts(setParts.partViewFromSetId(setId));
-        model.setSet_name(sets.findById(setId).getSetName());
-        return model;
-    }
-
-    @RequestMapping (path = "/add-set/{set_num}", method = RequestMethod.POST)
-    public List<String> addSet(@PathVariable("set_num") String setId) {
-        return addNewSet(setId);
-    }
-
+    //PERMISSIONS: COUNSELOR
     //Change current status of set and record status and add to status table
     @RequestMapping (path = "set/status/{set_id}", method = RequestMethod.POST)
     public Set updateStatus(@PathVariable("set_id") int setId, String status) {
@@ -253,6 +298,7 @@ public class CampBlipController {
         return sets.findById(setId);
     }
 
+    //PERMISSIONS: ADMIN
     @RequestMapping (path = "/delete-set/{set_id}", method = RequestMethod.POST)
     public void deleteSet(@PathVariable("set_id") Integer setId) {
         Set remove = sets.findById(setId);
@@ -260,6 +306,7 @@ public class CampBlipController {
         sets.save(remove);
     }
 
+    //PERMISSIONS: ADMIN
     @RequestMapping (path = "/add-all-sets", method = RequestMethod.POST)
     public Map<String,List<String>> addAllSets () {
         Map<String,List<String>> createdSets = new HashMap<>();
@@ -287,6 +334,8 @@ public class CampBlipController {
         return createdSets;
     }
     //Posts for Parts
+
+    //PERMISSIONS: COUNSELOR
     @RequestMapping (path = "/parts/{set_id}", method = RequestMethod.POST)
     public Integer [] setPartInv(@PathVariable("set_id") int setId, @RequestBody Integer[] setPartInv) {
         if(setPartInv != null) {
@@ -318,6 +367,7 @@ public class CampBlipController {
         return new Integer[2];
     }
     //Methods for Sets
+
     public List<String> addNewSet (String setNum) {
 
         List<String> addedSet = new ArrayList<>();
